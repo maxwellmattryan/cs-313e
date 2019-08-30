@@ -8,12 +8,11 @@ def fillSquare(square):
     rowIter = len(square[0]) - 1
     # column iterator
     colIter = len(square[0]) // 2
-    print(str(rowIter) + " " + str(colIter))
 
     for i in range(len(square[0])):
         for j in range(len(square[0])):
             if(count > len(square[0]) ** 2):
-                return(square)
+                break
             if(rowIter >= len(square[0]) and rowIter == colIter):
                 square[rowIter - 2][colIter - 1] = count
                 rowIter -= 1
@@ -42,12 +41,13 @@ def printSquare(square):
         for j in range(len(square[i])):
             row += str(square[i][j]).center(3)
         print(row)
+    print()
 
 def main():
-    size = eval(input("Enter a size: "))
+    size = eval(input("Enter an odd number: "))
     mySquare = makeSquare(size)
     printSquare(mySquare)
-    square = fillSquare(mySquare)
+    fillSquare(mySquare)
     printSquare(mySquare)
 
 main()
