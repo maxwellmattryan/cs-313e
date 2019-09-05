@@ -89,18 +89,41 @@ def checkSquare ( magicSquare ):
 
   rowSum = 0
   columnSum = 0
+  diagonalSum = 0
   for i in range(len(magicSquare)):
     for j in range(len(magicSquare[i])):
 
-      # if first row is selected, sum the respective column of j
+      # if first row is selected...
       if(i == 0):
+        # sum column of j
         for k in range(len(magicSquare[i])):
           columnSum += magicSquare[k][j]
         if(columnSum != canonicalSum):
           print("This is not a magic square")
           return
         columnSum = 0
-
+      
+      # checks diagonals
+      # top-left to bottom-right diagonal
+      if(i == 0 and j == 0):
+        for k in range(len(magicSquare[i])):
+          diagonalSum += magicSquare[k][k]
+        if(diagonalSum != canonicalSum):
+          print("This is not a magic square")
+          return
+        diagonalSum = 0
+      elif (i == 0 and j == len(magicSquare[i]) - 1):
+        rowIter = i
+        colIter = j
+        for k in range(len(magicSquare[i])):
+          diagonalSum += magicSquare[rowIter][colIter]
+          rowIter += 1
+          colIter -= 1
+        if(diagonalSum != canonicalSum):
+          print("This is not a magic square")
+          return
+        diagonalSum = 0
+      
       # but still keeps track of the row sum
       rowSum += magicSquare[i][j]
     if(rowSum != canonicalSum):
