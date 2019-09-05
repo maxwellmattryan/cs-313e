@@ -34,6 +34,7 @@ def makeSquare ( n ):
   rowIter = len(magicSquare[0]) - 1
   colIter = len(magicSquare[0]) // 2
 
+  # filling
   for i in range(len(magicSquare[0])):
     for j in range(len(magicSquare[0])):
       if(count > len(magicSquare[0]) ** 2):
@@ -120,7 +121,7 @@ def main():
 
   # Check the user input
   while(isOdd(num) != True):
-    print("INVALID NUMBER")
+    print("ERROR: Invalid number\n")
     num = eval(input("Please enter an odd number: "))
 
   # Create the magic square
@@ -133,13 +134,13 @@ def main():
   checkSquare(magicSquare)
 
   # testing
-  testSquare = [
-    [4, 9, 2], 
-    [3, 5, 7], 
-    [8, 1, 6]
-  ]
-  printSquare(testSquare)
-  checkSquare(testSquare)
+  # testSquare = [
+  #   [4, 9, 2], 
+  #   [3, 5, 7], 
+  #   [8, 1, 6]
+  # ]
+  # printSquare(testSquare)
+  # checkSquare(testSquare)
 
 # This line above main is for grading purposes. It will not affect how
 # your code will run while you develop and test it.
