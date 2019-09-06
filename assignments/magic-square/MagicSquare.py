@@ -156,15 +156,6 @@ def main():
   # Verify that it is a magic square
   checkSquare(magicSquare)
 
-  # testing
-  # testSquare = [
-  #   [4, 9, 2], 
-  #   [3, 5, 7], 
-  #   [8, 1, 6]
-  # ]
-  # printSquare(testSquare)
-  # checkSquare(testSquare)
-
 # This line above main is for grading purposes. It will not affect how
 # your code will run while you develop and test it.
 # DO NOT REMOVE THE LINE ABOVE MAIN
