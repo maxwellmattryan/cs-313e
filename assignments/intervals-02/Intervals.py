@@ -20,9 +20,9 @@
 
 # READ FILE, RETURN LIST OF TUPLES
 def getTuples():
-    # myFile = open("C:/Users/Matt/Documents/School/2019/Fall/cs-313e/assignments/intervals-02/backup.txt", "r")
+    myFile = open("C:/Users/Matt/Documents/School/2019/Fall/cs-313e/assignments/intervals-02/intervals.txt", "r")
     # only an absolute path worked on my machine, but here is the proper way
-    myFile = open("intervals.txt", "r")
+    # myFile = open("intervals.txt", "r")
     
     myTuples = []
     for line in myFile:
