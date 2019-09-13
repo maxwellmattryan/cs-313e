@@ -5,10 +5,6 @@
 #  Student's Name: Matthew Maxwell
 
 #  Student's UT EID: mrm5632
- 
-#  Partner's Name: n/a
-
-#  Partner's UT EID: n/a
 
 #  Course Name: CS 313E 
 

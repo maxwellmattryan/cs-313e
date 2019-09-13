@@ -6,10 +6,6 @@
 
 #  Student UT EID: mrm5632
 
-#  Partner Name: n/a
-
-#  Partner UT EID: n/a
-
 #  Course Name: CS 313E
 
 #  Unique Number: 50205
