@@ -12,7 +12,7 @@
 
 #  Date Created: 09-10-2019
 
-#  Date Last Modified: 09-12-2019
+#  Date Last Modified: 09-13-2019
 
 # read names from file, return stored data in dictionary
 def getNames():
@@ -46,7 +46,7 @@ def searchName(names):
         if(names[name][i] == minRank):
             indeces.append(i)
 
-    print("The matches with their highest ranking decade are: ")
+    print("The matches with their highest ranking decade(s) are: ")
     lineString = name + " "
     for i in indeces:
         if(i == 10):
@@ -157,26 +157,26 @@ def main():
             "Enter 7 to quit.\n"
             )
 
-        # COMMAND ROUTING
-        command = eval(input("Enter choice: "))
-        if(command == 1):
-            searchName(names)
-        elif(command == 2):
-            findName(names)
-        elif(command == 3):
-            displayNamesOfDecade(names)
-        elif(command == 4):
-            displayNamesOfAllDecades(names)
-        elif(command == 5):
-            displayNamesOfIncreasingPopularity(names)
-        elif(command == 6):
-            displayNamesOfDecreasingPopularity(names)
-        elif(command == 7):
-            print("\nGoodbye.")
-            break
-        else:
-            print("Not a valid command.\n")
-            continue
+        # COMMAND ROUTING / ERROR HANDLING
+        try:
+            command = eval(input("Enter choice: "))
+            if(command == 1):
+                searchName(names)
+            elif(command == 2):
+                findName(names)
+            elif(command == 3):
+                displayNamesOfDecade(names)
+            elif(command == 4):
+                displayNamesOfAllDecades(names)
+            elif(command == 5):
+                displayNamesOfIncreasingPopularity(names)
+            elif(command == 6):
+                displayNamesOfDecreasingPopularity(names)
+            elif(command == 7):
+                print("\nGoodbye.")
+                break
+        except:
+            print()
     return
 
 main()
