@@ -31,7 +31,7 @@ def getNames():
 
 # 1: searches for a name, returns true if in dictionary, false otherwise
 def searchName(names):
-    name = input("Enter a name: ")
+    name = input("Enter a name: ").capitalize()
     print()
 
     # in case name is not within names
@@ -57,7 +57,7 @@ def searchName(names):
 
 # 2: display data for one name
 def findName(names):
-    name = input("Enter a name: ")
+    name = input("Enter a name: ").capitalize()
     print()
     
     # print data for name
