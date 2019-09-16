@@ -16,9 +16,7 @@
 
 # Read file and return important variables / necessary data
 def readFile():
-    # absolute directory
-    myFile = open(r"C:/Users/Matt/Documents/School/2019/Fall/cs-313e/assignments/4-word-search/hidden.txt", "r")
-    # myFile = open("hidden.txt", "r")
+    myFile = open("hidden.txt", "r")
 
     # Parse through the file, scraping important information
     # number of lines
@@ -42,8 +40,7 @@ def readFile():
         elif(lineIndex >= m + 4):
             words.append(line)
         lineIndex += 1
-    print(m, n, wordSearch, words)
-    return(m, n, wordSearch, words)
+    return(wordSearch, words)
     myFile.close()
 
 # Convert a list of chars to a string
@@ -73,31 +70,84 @@ def searchForWord(wordSearch, word):
             elif(word in listToString(rowChars)[::-1]):
                 return(( i, len(rowChars) - listToString(rowChars)[::-1].find(word) - 1 ))
 
-        # check rows (and reverse)
-        # check diagonals (and reverse)
+        # Loop through left => right diagonals, check every diagonal for word
+        i = len(wordSearch) - 1
+        j = 0
+        for k in range(len(wordSearch) + len(wordSearch[0]) - 1): # k = amount of diagonals
+            row = i
+            col = j
+            diagonalChars = []
+            # diagonal starting from 0, 0
+            if(i == 0 and j == 0):
+                diagonalChars = [wordSearch[iter][iter] for iter in range(len(wordSearch))]
+                j += 1
+                if(word in listToString(diagonalChars)):
+                    return(( listToString(diagonalChars).find(word), listToString(diagonalChars).find(word) ))
+                elif(word in listToString(diagonalChars)[::-1]):
+                    return(( len(listToString(diagonalChars)) - listToString(diagonalChars)[::-1].find(word) - 1, len(listToString(diagonalChars)) - listToString(diagonalChars)[::-1].find(word) - 1 ))
+            # other diagonals
+            elif((i == 0 and j > 0) or (i > 0 and j == 0)):
+                while(row < len(wordSearch) and col < len(wordSearch[0])):
+                    diagonalChars.append(wordSearch[row][col])
+                    row += 1
+                    col += 1
+                if(word in listToString(diagonalChars)):
+                    return(( i + listToString(diagonalChars).find(word), j + listToString(diagonalChars).find(word) ))
+                elif(word in listToString(diagonalChars)[::-1]):
+                    return(( i + listToString(diagonalChars).find(word[::-1]) + len(word) - 1, j + listToString(diagonalChars).find(word[::-1]) + len(word) - 1 ))
+                
+                # index maintenance
+                if(i == 0 and j > 0):
+                    j += 1
+                elif(i > 0 and j == 0):
+                    i -= 1   
+
+        # Loop through right => left diagonals, check every diagonal for word
+        i = len(wordSearch) - 1
+        j = len(wordSearch) - 1
+        for k in range(len(wordSearch) + len(wordSearch[0]) - 1): # k = amount of diagonals
+            row = i
+            col = j
+            diagonalChars = []
+            # diagonal starting from 0, 0
+            if(i == 0 and j == len(wordSearch) - 1):
+                diagonalChars = [wordSearch[len(wordSearch) - iter - 1][iter] for iter in range(len(wordSearch) - 1, -1, -1)]
+                j -= 1
+                if(word in listToString(diagonalChars)):
+                    return(( i + listToString(diagonalChars).find(word), j - listToString(diagonalChars).find(word) ))
+                elif(word in listToString(diagonalChars)[::-1]):
+                    return(( len(listToString(diagonalChars)) - listToString(diagonalChars)[::-1].find(word) - 1, listToString(diagonalChars)[::-1].find(word) ))
+            # other diagonals
+            elif((i == 0 and j < len(wordSearch) - 1) or (i > 0 and j == len(wordSearch) - 1)):
+                while(row < len(wordSearch) and col < len(wordSearch[0])):
+                    diagonalChars.append(wordSearch[row][col])
+                    row += 1
+                    col -= 1
+                if(word in listToString(diagonalChars)):
+                    return(( i + listToString(diagonalChars).find(word), j - listToString(diagonalChars).find(word) ))
+                elif(word in listToString(diagonalChars)[::-1]):
+                    return(( j - listToString(diagonalChars)[::-1].find(word), i + listToString(diagonalChars)[::-1].find(word) ))
+
+                # index maintenance
+                if(i == 0 and j < len(wordSearch) - 1):
+                    j -= 1
+                elif(i > 0 and j == len(wordSearch) - 1):
+                    i -= 1
+
         break
     return((-1, -1))
 
-# Checks a column for a word, returns a 
-def checkColumn(columnString, word):
-    print(columnString)
-    print(word)
-    print(word in columnString)
-    print()
-
-# Checks a row for a word, returns a string
-def checkRow(rowString, word):
-    print()
-
-# Checks a diagonal for a word, returns a string
-def checkDiagonal(diagonalString, word):  
-    print()
+# Write to an output file
+def writeToFile(myString):
+    myFile = open("found.txt", "a")
+    myFile.write(myString)
+    myFile.close()
+    print(myString)
 
 def main():
-    numberOfRows, numberOfColumns, wordSearch, words = readFile()
+    wordSearch, words = readFile()
     for word in words:
         index = searchForWord(wordSearch, word)
-        # add one for proper row / column numbering 
-        print(word.ljust(16) + str(index[0] + 1).rjust(4) + str(index[1] + 1).rjust(4))
+        writeToFile(word.ljust(max([len(myWord) for myWord in words])) + str(index[0] + 1).rjust(4) + str(index[1] + 1).rjust(4) + "\n")
 
 main()
