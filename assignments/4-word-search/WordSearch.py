@@ -142,7 +142,6 @@ def writeToFile(myString):
     myFile = open("found.txt", "a")
     myFile.write(myString)
     myFile.close()
-    print(myString)
 
 def main():
     wordSearch, words = readFile()
