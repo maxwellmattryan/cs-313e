@@ -136,6 +136,7 @@ class Rectangle (object):
   # sides of the rectangle are tangents to circle c
   # takes a circle object c as input and returns a rectangle object
   def rectangle_circumscribe (self, c):
+    ## COMPLETE
 
   # give string representation of a rectangle
   # takes no arguments, returns a string
