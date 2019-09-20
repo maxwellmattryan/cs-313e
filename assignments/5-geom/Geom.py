@@ -100,27 +100,33 @@ class Rectangle (object):
   # determine length of Rectangle (distance along the x axis)
   # takes no arguments, returns a float
   def length (self):
+    return(self.lr.x - self.ul.x)
 
   # determine width of Rectangle (distance along the y axis)
   # takes no arguments, returns a float
   def width (self):
+    return(self.ul.y - self.lr.y)
 
   # determine the perimeter
   # takes no arguments, returns a float
   def perimeter (self):
+    return(2 * (self.length() + self.width()))
     
   # determine the area
   # takes no arguments, returns a float
   def area (self):
+    return(self.length() * self.width())
 
   # determine if a point is strictly inside the Rectangle
   # takes a point object p as an argument, returns a boolean
-  def point_inside (self, p)
+  def point_inside (self, p):
+    return(self.lr.x > p.x > self.ul.x and self.ul.y > p.y > self.lr.y)
 
   # determine if another Rectangle is strictly inside this Rectangle
   # takes a rectangle object r as an argument, returns a boolean
   # should return False if self and r are equal
   def rectangle_inside (self, r):
+    return(r.ul.x > self.ul.x and r.ul.y < self.ul.y and r.lr.x < self.lr.x and r.lr.y > self.lr.y)
 
   # determine if two Rectangles overlap (non-zero area of overlap)
   # takes a rectangle object r as an argument returns a boolean
@@ -139,6 +145,7 @@ class Rectangle (object):
   # determine if two rectangles have the same length and width
   # takes a rectangle other as argument and returns a boolean
   def __eq__ (self, other):
+    return(self.ul == other.ul and self.lr == other.lr)
 
 def main():
   # open the file geom.txt
