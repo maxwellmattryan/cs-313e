@@ -70,11 +70,17 @@ class Circle (object):
   # the only argument c is a Circle object
   # returns a boolean
   def circle_overlap (self, c):
+    distance = self.center.dist(c.center)
+    if(distance < self.radius + c.radius and self.circle_inside(c) != True):
+      return(True)
+    return(False)
    
   # determine the smallest circle that circumscribes a rectangle
   # the circle goes through all the vertices of the rectangle
   # the only argument, r, is a rectangle object
   def circle_circumscribe (self, r):
+    center = Point(r.lr.x - (r.length () / 2), r.ul.y - (r.width() / 2))
+    return(Circle(center.dist(Point(r.lr.x, r.ul.y)), center.x, center.y))
 
   # string representation of a circle
   # takes no arguments and returns a string
@@ -86,6 +92,7 @@ class Circle (object):
   # returns a boolean
   def __eq__ (self, other):
     tol = 1.0e-8
+    return(abs(self.radius - other.radius) < tol)
 
 class Rectangle (object):
   # constructor
@@ -120,7 +127,7 @@ class Rectangle (object):
   # determine if a point is strictly inside the Rectangle
   # takes a point object p as an argument, returns a boolean
   def point_inside (self, p):
-    return(self.lr.x > p.x > self.ul.x and self.ul.y > p.y > self.lr.y)
+    return(self.lr.x > p.x and p.x > self.ul.x and self.ul.y > p.y and p.y > self.lr.y)
 
   # determine if another Rectangle is strictly inside this Rectangle
   # takes a rectangle object r as an argument, returns a boolean
@@ -131,12 +138,21 @@ class Rectangle (object):
   # determine if two Rectangles overlap (non-zero area of overlap)
   # takes a rectangle object r as an argument returns a boolean
   def rectangle_overlap (self, r):
+    if(self.rectangle_inside(r)):
+      return(False)
+    elif(self.point_inside(r.ul) or self.point_inside(r.lr) or self.point_inside(Point(r.ul.x, r.lr.y)) or self.point_inside(Point(r.lr.x, r.ul.y))):
+      return(True)
+    elif((self.ul.x < r.ul.x and r.ul.x < r.lr.x and r.lr.x < self.lr.x) and (r.lr.y < self.lr.y and self.lr.y < self.ul.y and self.ul.y < r.ul.y)):
+      return(True)
+    elif((r.ul.x < self.ul.x and self.ul.x < self.lr.x and self.lr.x < r.lr.x) and (self.lr.y < r.lr.y and r.lr.y < r.ul.y and r.ul.y < self.ul.y)):
+      return(True)
+    return(False)
 
   # determine the smallest rectangle that circumscribes a circle
   # sides of the rectangle are tangents to circle c
   # takes a circle object c as input and returns a rectangle object
   def rectangle_circumscribe (self, c):
-    ## COMPLETE
+    return(Rectangle(c.center.x - c.radius, c.center.y + c.radius, c.center.x + c.radius, c.center.y - c.radius))
 
   # give string representation of a rectangle
   # takes no arguments, returns a string
@@ -148,58 +164,117 @@ class Rectangle (object):
   def __eq__ (self, other):
     return(self.ul == other.ul and self.lr == other.lr)
 
+# Read file's data
+def readFile():
+  #file = open("geom.txt", "r")
+  file = open(r"c:/users/matt/documents/school/2019/fall/cs-313e/assignments/5-geom/geom.txt", "r")
+  lineIndex = 0
+  variables = []
+  for line in file: 
+    line = line.strip()
+    lineItems = line.split(" ")
+    if(lineIndex <= 1):
+      variables.append(Point(float(lineItems[0]), float(lineItems[1])))
+    elif(1 < lineIndex <= 3):
+      variables.append(Circle(float(lineItems[0]), float(lineItems[1]), float(lineItems[2])))
+    elif(3 < lineIndex <= 5):
+      variables.append(Rectangle(float(lineItems[0]), float(lineItems[1]), float(lineItems[2]), float(lineItems[3])))
+    lineIndex += 1
+  file.close()
+  return(variables[0], variables[1], variables[2], variables[3], variables[4], variables[5])
+
 def main():
-  # open the file geom.txt
+  # Open the file geom.txt
+  P, Q, C, D, G, H = readFile()
 
-  # create Point objects P and Q
+  # Print the coordinates of the points P and Q
+  print("Coordinates of P: " + str(P))
+  print("Coordinates of Q: " + str(Q))
 
-  # print the coordinates of the points P and Q
+  # Find the distance between the points P and Q
+  print("Distance between P and Q: " + str(P.dist(Q)))
 
-  # find the distance between the points P and Q
- 
-  # create two Circle objects C and D
+  # Print C and D
+  print("Circle C: " + str(C))
+  print("Circle D: " + str(D))
 
-  # print C and D
+  # Compute the circumference of C
+  print("Circumference of C: " + str(C.circumference()))
 
-  # compute the circumference of C
+  # Compute the area of D
+  print("Area of D: " + str(D.area()))
 
-  # compute the area of D
-
-  # determine if P is strictly inside C
+  # Determine if P is strictly inside C
+  if(C.point_inside(P)):
+    print("P is inside C")
+  else:
+    print("P is not inside C")
 
   # determine if C is strictly inside D
+  if(D.circle_inside(C)):
+    print("C is inside D")
+  else:
+    print("C is not inside D")
 
   # determine if C and D intersect (non zero area of intersection)
+  if(D.circle_overlap(C)):
+    print("C does intersect D")
+  else:
+    print("C does not intersect D")
 
-  # determine if C and D are equal (have the same radius)
-
-  # create two rectangle objects G and H
+  # Determine if C and D are equal (have the same radius)
+  if(C == D):
+    print("C is equal to D")
+  else:
+    print("C is not equal to D")
 
   # print the two rectangles G and H
+  print("Rectangle G: " + str(G))
+  print("Rectangle H: " + str(H))
 
-  # determine the length of G (distance along x axis)
+  # Determine the length of G (distance along x axis)
+  print("Length of G: " + str(G.length()))
 
-  # determine the width of H (distance along y axis)
+  # Determine the width of H (distance along y axis)
+  print("Width of H: " + str(H.width()))
 
-  # determine the perimeter of G
+  # Determine the perimeter of G
+  print("Perimeter of G: " + str(G.perimeter()))
 
-  # determine the area of H
+  # Determine the area of H
+  print("Area of H: " + str(H.area()))
 
-  # determine if point P is strictly inside rectangle G
+  # Determine if point P is strictly inside rectangle G
+  if(G.point_inside(P)):
+    print("P is inside G")
+  else:
+    print("P is not inside G")
 
-  # determine if rectangle G is strictly inside rectangle H
+  # Determine if rectangle G is strictly inside rectangle H
+  if(H.rectangle_inside(G)):
+    print("G is inside H")
+  else:
+    print("G is not inside H")
 
-  # determine if rectangles G and H overlap (non-zero area of overlap)
+  # Determine if rectangles G and H overlap (non-zero area of overlap)
+  if(G.rectangle_overlap(H)):
+    print("G does overlap H")
+  else:
+    print("G does not overlap H")
 
-  # find the smallest circle that circumscribes rectangle G
+  # Find the smallest circle that circumscribes rectangle G
   # goes through the four vertices of the rectangle
+  print("Circle that circumscribes G: " + str(C.circle_circumscribe(G)))
 
-  # find the smallest rectangle that circumscribes circle D
+  # Find the smallest rectangle that circumscribes circle D
   # all four sides of the rectangle are tangents to the circle
+  print("Rectangle that circumscribes D: " + str(H.rectangle_circumscribe(D)))
 
-  # determine if the two rectangles have the same length and width
-
-  # close the file geom.txt
+  # Determine if the two rectangles have the same length and width
+  if(G == H):
+    print("Rectangle G is equal to H")
+  else:
+    print("Rectangle G is not equal to H")
 
 # This line above main is for grading purposes. It will not affect how
 # your code will run while you develop and test it.
