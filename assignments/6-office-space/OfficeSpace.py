@@ -45,11 +45,11 @@ class Rectangle (object):
   # constructor
   def __init__ (self, ll_x = 0, ll_y = 0, ur_x = 1, ur_y = 1):
     if ((ll_x < ur_x) and (ll_y < ur_y)):
-      self.ul = Point (ll_x, ll_y)
-      self.lr = Point (ur_x, ur_y)
+      self.ll = Point (ll_x, ll_y)
+      self.ur = Point (ur_x, ur_y)
     else:
-      self.ul = Point (0, 0)
-      self.lr = Point (1, 1)
+      self.ll = Point (0, 0)
+      self.ur = Point (1, 1)
 
   # determine length of Rectangle (distance along the x axis)
   # takes no arguments, returns a float
@@ -86,17 +86,17 @@ class Rectangle (object):
   # takes a rectangle object r as an argument returns a boolean
   def rectangle_overlap (self, r):
       print("FIXME: Complete rectangle overlap function...")
-      return -1
+      return(-1)
 
   # give string representation of a rectangle
   # takes no arguments, returns a string
   def __str__ (self):
-    return "UL: " + str(self.ul) + ", LR: " + str(self.lr)
+    return "LL: " + str(self.ll) + ", UR: " + str(self.ur)
 
   # determine if two rectangles have the same length and width
   # takes a rectangle other as argument and returns a boolean
   def __eq__ (self, other):
-    return(self.ul == other.ul and self.lr == other.lr)
+    return(self.ll == other.ll and self.ur == other.ur)
 
 # read data from file
 def readFile():
@@ -112,13 +112,27 @@ def readFile():
                 employee = lines[j].split(" ")
                 name = employee[0]
                 requestedSpace = Rectangle(int(employee[1]), int(employee[2]), int(employee[3]), int(employee[4]))
-                data.append([name, str(requestedSpace)])
+                data.append([name, requestedSpace])
     myFile.close()
     [print(item) for item in data]
     return(data)
 
+# print data according to format
+def printData(myData):
+    totalArea = myData[0][0] * myData[0][1]
+    # total area of office space (x times y)
+    print("Total " + str(totalArea))
+    # unallocated area of office space (total minus area of squares)
+    totalRequestedArea = sum([employee[1].area() for employee in myData[1:]])
+    print("FIXME: Unallocated office space is " + str(totalArea - totalRequestedArea))
+    # contested area of office space (find total area of rectangular overlap)
+    print("FIXME: Contested office space")
+    # each employee with guaranteed space (original request minus contested) * same order as input
+    for employee in myData[1:]:
+        print("FIXME: " + employee[0] + "'s guaranteed space is " + str(employee[1].area()))
 
 def main():
     myData = readFile()
+    printData(myData)
 
 main()
