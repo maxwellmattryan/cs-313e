@@ -1,0 +1,140 @@
+
+<!-- saved from url=(0072)https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/assgn2.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>  Programming Assignment 2 </title>
+</head>
+
+<body>
+<h3> Collapsing Intervals (Due 09 Sep 2019) </h3>
+
+<p>
+An interval on the number line is denoted by a pair of values like
+so: (3, 8). Our intervals are closed. So this interval represents all
+numbers between 3 and 8 inclusive. The first number is always going
+to be strictly less than the second number. Normally in mathematics
+we represent a closed interval with square brackets. But in our
+program we will represent an interval by means of a tuple and tuples
+in Python are represented with parentheses. 
+</p>
+
+<p>
+If we have two intervals like (7, 12) and (4, 9), they overlap. We can
+collapse overlapping intervals into a single interval (4, 12). But the
+following two intervals (-10, -2) and (1, 5) are non-intersecting
+intervals and cannot be collapsed. 
+</p>
+
+<p>
+The aim in this assignment is take a set of intervals and collapse all
+the overlapping intervals and print the smallest set of non-intersecting
+intervals in ascending order of the lower end of the interval.
+</p>
+
+<p>
+The input data will be in a file called <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/intervals.txt">
+intervals.txt</a>. There will be one or more lines of data in the file. 
+Each line will have two integer numbers denoting an interval. The first 
+number will be strictly less than the second number. Assume that the data 
+file is correct.
+</p>
+
+<p>
+You will read in each pair of numbers and create a tuple out of them.
+You will store the tuples in a list. After you have read all the intervals
+and the list of tuples is complete <b>you will sort the list</b>. Then you
+will go through the list systematically and replace each pair of overlapping
+tuples with a single tuple. When you are done you should print out the
+list of non-intersecting tuples with one tuple per line. The list should
+be in ascending order of the lower end of the tuples.
+</p>
+
+<p>
+For the data file that is given with this problem statement, your output
+will have the following format:
+</p><pre>Non-intersecting Intervals:
+(-25, -14)
+(-10, -3)
+(2, 6)
+(12, 18)
+(22, 30)
+</pre>
+<p></p>
+
+<p>
+<b>Extra Credit (10 points): </b> We will give you extra credit if you
+can figure out how to print the non-intersecting intervals in increasing
+order of the size of the intervals. If two intervals are of the same
+size then you should print the two intervals in ascending order of their
+lower ends. So the extra credit output will have the following format:
+</p><pre>Non-intersecting Intervals:
+(-25, -14)
+(-10, -3)
+(2, 6)
+(12, 18)
+(22, 30)
+
+Non-intersecting Intervals in order of size:
+(2, 6)
+(12, 18)
+(-10, -3)
+(22, 30)
+(-25, -14)
+</pre>
+<p></p>
+
+<p>
+For this assignment you may work with a partner. Both of you
+must read the paper on <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/PairProg-CACM-1999.pdf">
+Pair Programming</a>.
+</p>
+
+<p>
+The file that you will be turning in will be called <b> Intervals.py</b>.
+The file will have a header of the following form:
+</p><pre>#  File: Intervals.py
+
+#  Description:
+
+#  Student Name:
+
+#  Student UT EID:
+
+#  Partner Name:
+
+#  Partner UT EID:
+
+#  Course Name: CS 313E
+
+#  Unique Number: 
+
+#  Date Created:
+
+#  Date Last Modified:
+</pre>
+<p></p>
+
+<p>
+If you are working with a partner both of you will be submitting the <b>
+same</b> copy of the program but make sure that you have your partner's
+name and EID in your program. If you are working alone, then remove the
+two lines that has the partner's name and eid in the header.
+</p>
+
+<p>
+Use the <a href="http://canvas.utexas.edu/"> Canvas </a> program to 
+submit your <b>Intervals.py</b> file. We should receive your work by 11 PM 
+on Monday, 09 Sep 2019. There will be substantial penalties if you do 
+not adhere to the guidelines. 
+</p><ul>
+<li> Your Python program should have the header with the proper 
+     documentation. </li>
+<li> Your code must run before submission. </li>
+<li> You should be submitting your file through the web based 
+     <i>Canvas</i> program. We will not accept files e-mailed to us.</li>
+<li> Here is the <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/grading.html"> Grading Criteria. </a></li>
+</ul>
+<p></p>
+
+
+
+</body></html>

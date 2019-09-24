@@ -1,0 +1,174 @@
+
+<!-- saved from url=(0072)https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/assgn6.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>  Programming Assignment 6 </title>
+</head>
+
+<body>
+<h3> Office Space (due 23 Sep 2019) </h3>
+<p>
+The company that you work for is moving to a larger building. The
+new office is rectangular and will be subdivided into cubicles.
+Your employees want to request particular positions for their
+cubicles. You want to set up a system that lets them make their
+requests.
+</p>
+
+<p>
+You have expressed the new office space as a coordinate system 
+where each unit is one foot. The south-west corner of this space
+is assigned the coordinate (0, 0). The positive X axis is aligned
+with the inner edge of the building's south wall. The positive
+Y axis is aligned with the west wall. Employees request a position
+for their cubicle by giving the coordinates of the cubicle's
+south-west corner and the cubicle's north-east corner.
+</p>
+
+<p>
+<img src="./6-office-space_files/office.png" width="600" height="500">
+</p>
+
+<p>
+<b>Input: </b> Input consists of up to 10 test cases. Each case
+starts with a line containing a pair of integers w and h giving 
+the size of the new office space (w is the number of feet 
+west-to-east, h is the number of feet south-to-north). Both of
+these numbers are in the range 1 to 100. 
+</p>
+
+<p>
+After this is a line containing an integer <i>n</i> between 1 and 
+20 inclusive, giving the number of employees you have. Following
+this are <i>n</i> cubicle placement requests, one per line. 
+</p>
+
+<p>
+Each request starts with the name of the employee. The name is a 
+string of 1 to 20 characters (mix of upper and lower case letters 
+a-z, no spaces). The name is followed by four integers x1, y1, x2, 
+y2 where (x1, y1) indicate the coordinates of the south-west corner 
+of the desired cubicle and (x2, y2) indicate the coordinates of the 
+north-east corner. Each set of request coordinates satisfies
+0 &#8804; x1 &#8804; x2 &#8804; w and 0 &#8804; y1 &#8804; y2 &#8804; h. The sequence
+of test cases ends at the end of file.
+</p>
+
+<p>
+<b>Output: </b> For each test case, print out a report that starts
+with the total number of square feet in the building and the number
+of square feet that no employee has requested (the unallocated space).
+</p>
+
+<p>
+Next give the total number of square feet that are contested because
+more than one empoyee has requested the same region of the floor.
+</p>
+
+<p>
+Finally, for each employee give the number of square feet that that
+employee can be guaranteed to have. This is the total area that they 
+requested minus any regions that were requested by another employee.
+</p>
+
+<p>
+List the employees in the same order they were given in the input.
+Leave a blank line after the output for each test case.
+</p>
+
+<p>
+The input file will be called <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/office.txt">
+office.txt</a>. It will have the following format:
+</p><pre>33 26
+3
+Alice 2 3 10 11
+Ted 7 2 18 8
+GreedyBob 17 11 30 24
+20 10
+2
+Employee1 0 0 9 10
+Employee2 11 0 20 10
+</pre>
+<p></p>
+
+<p>
+Your output will be on the console and must have the following format:
+</p><pre>Total 858
+Unallocated 574
+Contested 15
+Alice 49
+Ted 51
+GreedyBob 169
+
+Total 200
+Unallocated 20
+Contested 0
+Employee1 90
+Employee2 90
+</pre>
+<p></p>
+
+<p>
+For this assignment you may work with a partner. Both of you
+must read the paper on <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/PairProg-CACM-1999.pdf">
+Pair Programming. </a>.
+</p>
+
+<p>
+We will be looking at documentation, descriptive variable and function 
+names, clean logical structure, and adherence to the coding conventions 
+discussed in class. The file will have a header of the following form:
+</p><pre>#  File: OfficeSpace.py
+
+#  Description:
+
+#  Student Name:
+
+#  Student UT EID:
+
+#  Partner Name:
+
+#  Partner UT EID:
+
+#  Course Name: CS 313E
+
+#  Unique Number:
+
+#  Date Created:
+
+#  Date Last Modified:
+</pre>
+<p></p>
+
+<p>
+If you are working with a partner both of you will be submitting the
+same program from both accounts but make sure that you have your partner's
+name and eid in your program. If you are working alone, then remove the
+two lines that has the partner's name and eid in the header.
+</p>
+
+<p>
+Use the <a href="http://canvas.utexas.edu/"> Canvas </a> system to
+to submit your <b>OfficeSpace.py</b> file. We should receive your work by 
+11 PM on Monday, 23 Sep 2019. There will be substantial penalties 
+if you do not adhere to the guidelines. Remember Python is case sensitive.
+The name of your file must match exactly what we have specified.
+</p>
+ 
+<ul>
+<li> Your Python program should have the header with the proper
+     documentation. </li>
+<li> Your code must run before submission. </li>
+<li> You should be submitting your file through the web based
+     <i>Canvas</i> program. We will not accept files e-mailed to us.</li>
+<li> Here is the <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/grading.html"> Grading Criteria. </a></li>
+</ul>
+<p></p>
+
+<p>
+This problem was taken from <a href="https://open.kattis.com/">
+Kattis</a>.
+</p>
+
+
+
+</body></html>
