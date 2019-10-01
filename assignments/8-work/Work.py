@@ -14,9 +14,11 @@
 
 #  Date Last Modified: 09-30-2019
 
+import time
+
 # read file from data
 def readFile():
-    myFile = open("work.txt", "r")
+    myFile = open("work2.txt", "r")
     lines = [line.strip() for line in myFile][1:]
     myFile.close()
     return([(int(line.split(" ")[0]), int(line.split(" ")[1])) for line in lines])
@@ -37,6 +39,12 @@ def findLowestLines(test):
         return(mid + 1)
     return(mid)
 
+# use sequential search to find lowest amount of lines
+def sequentiallyFindLowestLines(test):
+    for num in range(test[0]):
+        if(sumSeries(num, test[1]) >= test[0]):
+            return(num)
+    return(-1)
 
 # sum results while (v // k ** i) is greater than 0
 def sumSeries(v, k):
@@ -49,6 +57,15 @@ def sumSeries(v, k):
 
 def main():
     myTests = readFile()
+    
+    print("Binary Search: ")
+    startTime = time.time()
     [print(findLowestLines(test)) for test in myTests]
+    print("Total time: %.2f" % ((time.time() - startTime) * 1000), "milliseconds\n")
+
+    print("\nSequential Search: ")
+    startTime = time.time()
+    [print(sequentiallyFindLowestLines(test)) for test in myTests]
+    print("Total time: %.2f" % ((time.time() - startTime) * 1000), "milliseconds\n")
 
 main()
