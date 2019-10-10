@@ -6,10 +6,6 @@
 def selectionSort(arr, *argv):
     n = len(arr)
     for i in range(n):
-        # # PYTHONIC
-        # minIdx = arr.index(min(arr[i:]))
-        # arr[i], arr[minIdx] = arr[minIdx], arr[i]
-        # NON-PYTHONIC
         minimum = arr[i]
         minIdx = i
         for j in range(i, n):
