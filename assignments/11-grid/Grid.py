@@ -12,17 +12,38 @@
 
 #  Date Created: 10-07-2019
 
-#  Date Last Modified: 10-07-2019
+#  Date Last Modified: 10-11-2019
 
 # counts all the possible paths in a grid recursively
 def count_paths (n, row, col):
-    print("FIXME: count_paths (n, row, col)")
-    return -1
+  if(row == n - 1 or col == n - 1):
+    return(1)
+  else:
+    return(count_paths(n, row + 1, col) + count_paths(n, row, col + 1))
 
 # recursively gets the greatest sum of all the paths in the grid
 def path_sum (grid, n, row, col):
-    print("FIXME: path_sum(grid, n, row, col)")
-    return -1
+  pathSum = 0
+  return(pathSumHelper(grid, n, row, col, pathSum))
+
+def pathSumHelper(grid, n, row, col, mySum):
+  if(row == n - 1):
+    while(col < n):
+      mySum += grid[row][col]
+      col += 1
+    return(mySum)
+  elif(col == n - 1):
+    while(row < n):
+      mySum += grid[row][col]
+      row += 1
+    return(mySum)
+  else:
+    mySum += grid[row][col]
+    if(grid[row + 1][col] < grid[row][col + 1]):
+      col += 1
+    else:
+      row += 1
+    return(pathSumHelper(grid, n, row, col, mySum))
     
 def main():
   # open file for reading

@@ -43,16 +43,49 @@ def insertionSort(arr, *argv):
 
 # Merge Sort -
 # description ...
-def mergeSort(arr, left, right):
-    if(left < right):
-        print("FIXME: Start merge sort !")
+def mergeSort(arr, *argv):
+    if(len(arr) > 1):
+        mid = len(arr) // 2
+        left = arr[:mid]
+        right = arr[mid:]
+        mergeSort(left)
+        mergeSort(right)
+        i = j = k = 0
+        while(i < len(left) and j < len(right)):
+            if(left[i] < right[j]):
+                arr[k] = left[i]
+                i += 1
+            else:
+                arr[k] = right[j]
+                j += 1
+            k += 1
+        while(i < len(left)):
+            arr[k] = left[i]
+            i += 1
+            k += 1
+        while(j < len(right)):
+            arr[k] = right[j]
+            j += 1
+            k += 1
 
 # Quick Sort -
 # description ...
 def quickSort(arr, lo, hi):
-    print("FIXME: Start quick sort !")
-    if(lo >= hi):
-        print()
+    if(lo < hi):
+        pivot = partition(arr, lo, hi)
+        quickSort(arr, lo, pivot - 1)
+        quickSort(arr, pivot + 1, hi)
+
+def partition(arr, lo, hi):
+    m = lo - 1
+    pivot = arr[hi]
+    for j in range(lo, hi):
+        if(arr[j] < pivot):
+            m += 1
+            arr[m], arr[j] = arr[j], arr[m]
+    arr[m + 1], arr[hi] = arr[hi], arr[m + 1]
+    return(m + 1)
+
 
 # PRINT METHOD FOR TIME 
 # displays in ms if under 1 second, otherwise in s
@@ -69,7 +102,7 @@ def printAlg(method, name, arr):
     # PRINT ALGORITHM
     print(name, "\n\nUnsorted:\n", tempList, "\n")
     totalTime = time.time()
-    method(tempList, 0, len(tempList))
+    method(tempList, 0, len(tempList) - 1)
     totalTime -= time.time()
     print("Sorted:\n", tempList, "\n")
     printTime(totalTime)
