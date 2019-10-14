@@ -1,6 +1,6 @@
 #  File: Grid.py
 
-#  Description: Assignment 11 | Greatest Path Sym in a Grid
+#  Description: Assignment 11 | Greatest Path Sum in a Grid
 
 #  Student Name: Matthew Maxwell
 
@@ -12,7 +12,7 @@
 
 #  Date Created: 10-07-2019
 
-#  Date Last Modified: 10-11-2019
+#  Date Last Modified: 10-13-2019
 
 # counts all the possible paths in a grid recursively
 def count_paths (n, row, col):
@@ -22,29 +22,40 @@ def count_paths (n, row, col):
     return(count_paths(n, row + 1, col) + count_paths(n, row, col + 1))
 
 # recursively gets the greatest sum of all the paths in the grid
-def path_sum (grid, n, row, col):
-  pathSum = 0
-  return(pathSumHelper(grid, n, row, col, pathSum))
-
-def pathSumHelper(grid, n, row, col, mySum):
-  if(row == n - 1):
-    while(col < n):
-      mySum += grid[row][col]
-      col += 1
-    return(mySum)
-  elif(col == n - 1):
-    while(row < n):
-      mySum += grid[row][col]
-      row += 1
-    return(mySum)
+def path_sum(grid, n, row, col):
+  if(row == n - 1 and col == n - 1):
+    return(grid[row][col])
   else:
-    mySum += grid[row][col]
-    if(grid[row + 1][col] < grid[row][col + 1]):
-      col += 1
+    if(row == n - 1):
+      return(grid[row][col] + path_sum(grid, n, row, col + 1))
+    elif(col == n - 1):
+      return(grid[row][col] + path_sum(grid, n, row + 1, col))
     else:
-      row += 1
-    return(pathSumHelper(grid, n, row, col, mySum))
+      return(grid[row][col] + max(path_sum(grid, n, row + 1, col), path_sum(grid, n, row, col + 1)))
     
+# dynamic programming solution (can easily find path)
+def path_sum_dp(grid, path):
+  n = len(grid)
+  dp = [[0 for j in range(n + 1)] for i in range(n + 1)]
+  for i in range(1, n + 1):
+    for j in range(1, n + 1):
+      dp[i][j] = grid[i - 1][j - 1] + max(dp[i][j - 1], dp[i - 1][j])
+  i = j = 1
+  while(i < n and j < n):
+    path.append(grid[i - 1][j - 1])
+    if(dp[i][j + 1] > dp[i + 1][j]):
+      j += 1
+    else:
+      i += 1
+  while(i < n):
+    path.append(grid[i - 1][j - 1])
+    i += 1
+  while(j < n):
+    path.append(grid[i - 1][j - 1])
+    j += 1
+  path.append(grid[i - 1][j - 1])
+  return(dp[n][n])
+
 def main():
   # open file for reading
   in_file = open ("./grid.txt", "r")
@@ -75,7 +86,10 @@ def main():
   print ()
 
   # get the maximum path sum and print
-  max_path_sum = path_sum (grid, dim, 0, 0)
-  print ('Greatest path sum is', max_path_sum)
+  path = []
+  max_path_sum = path_sum(grid, dim, 0, 0)
+  max_path_sum = path_sum_dp(grid, path)
+  print ('Greatest path sum is', max_path_sum, "\n")
+  print(f"Actual path is {path}")
 
 main()

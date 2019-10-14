@@ -125,6 +125,13 @@ def main():
         [0, 0, 1, 1, 1],
         [0, 0, 1, 1, 1]
     ]
+    myArr = [
+        [1, 0, 1, 0, 1],
+        [1, 0, 1, 0, 1],
+        [1, 0, 1, 0, 1],
+        [1, 0, 1, 0, 1],
+        [1, 0, 1, 0, 1]
+    ]
     print(f"Q2: The largest rectangle is {largestRectangle([[num for num in row] for row in myArr])} units\n")
     printArr(myArr)
 
