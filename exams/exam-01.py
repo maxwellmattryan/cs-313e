@@ -38,19 +38,37 @@ class Triangle(object):
     
 # Q2:
 # Given a grid of 0s and 1s, find the largest rectangle
-# of 1s in the grid.
+# of 1s in the grid (using histograms)
 def largestRectangle(grid):
+    # get maximum area of histogram
+    def maxAreaInHistogram(hist):
+        stack = []
+        largest = 0
+        for index, height in enumerate(hist):
+            last = None
+            while(stack and stack[-1][1] > height):
+                last = stack.pop()
+                largest = max(largest, (index - last[0]) * last[1])
+            if last is not None:
+                stack.append((last[0], height))
+            else:
+                stack.append((index, height))
+        index = len(hist)
+        while stack:
+            last = stack.pop()
+            largest = max(largest, (index - last[0]) * last[1])
+        return(largest)
+
+    # convert grid into histogram
     for i in range(1, len(grid)):
         for j in range(len(grid[i])):
             if(grid[i][j] == 1):
                 grid[i][j] = grid[i - 1][j] + 1
-    for i in range(len(grid)):
-        grid[i].sort(reverse=True)
-    for i in range(len(grid)):
-        for j in range(len(grid)):
-            grid[i][j] *= (j + 1)
-    area = max([max([num for num in row]) for row in grid])
-    return(area)
+
+    # find maximum area of each row of new histogram grid
+    maxArea = max([maxAreaInHistogram(row) for row in grid])
+    return(maxArea)
+
 
 # Q3:
 # Given a string, what is the longest possible palindrome
@@ -58,6 +76,8 @@ def largestRectangle(grid):
 def longestPalindrome(string):
     # helper method to determine if string is a palindrome
     def isPalindrome(string):
+        if(len(string) % 2 == 0):
+            return(False)
         left = right = len(string) // 2
         while(left >= 0 and right < len(string)):
             if(string[left] != string[right]):
@@ -98,6 +118,12 @@ def inverseFactorial(n):
             lo = x
     return(-1)
 
+# Q5 :
+# Given a set of people, create pairings such that everyone's requirements are satisfied
+def findPairings():
+    print(f"Q5: Fix me\n")
+    return(-1)
+
 # EC:
 # Trace Ackermann's function
 # if m = 0, A(m, n) => n + 1
@@ -115,7 +141,7 @@ def ackermann(m, n):
 def main():
     # Q1 - Python classes
     myTriangle = Triangle(0, 0, 2, 0, 0, 2)
-    print(f"Q1: Fix me...\n")
+    print(f"Q1: Fix me\n")
 
     # Q2 - Largest rectangle of 1s
     myArr = [
@@ -125,29 +151,25 @@ def main():
         [0, 0, 1, 1, 1],
         [0, 0, 1, 1, 1]
     ]
-    myArr = [
-        [1, 0, 1, 0, 1],
-        [1, 0, 1, 0, 1],
-        [1, 0, 1, 0, 1],
-        [1, 0, 1, 0, 1],
-        [1, 0, 1, 0, 1]
-    ]
     print(f"Q2: The largest rectangle is {largestRectangle([[num for num in row] for row in myArr])} units\n")
     printArr(myArr)
 
     # Q3 - Longest palindrome in string
-    myString = "aibohphobia"
+    myString = "asdaibohphobia"
     print(f"Q3: The longest palindrome in \"{myString}\" is \"{longestPalindrome(myString)}\"\n")
 
     # Q4 - Inverse factorial of integer
-    n = 9
+    n = 4
     n = math.factorial(n)
     print(f"Q4: The inverse factorial of {n} is {inverseFactorial(n)}\n")
+
+    # Q5 - Subset problem
+    print(f"{findPairings()}")
 
     # EC - Ackermann's function trace (n = 3)
     n = 4
     myGrid = [[ackermann(i, j) for j in range(n)] for i in range(n)]
-    print(f"EC: The Ackermann function traced up to {n}\n")
+    print(f"EC: The Ackermann function traced up to n = {n}\n")
     printArr(myGrid)
 
 main()
