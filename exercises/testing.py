@@ -65,18 +65,30 @@ def linked_list_test():
     print(f"After reverse:", myList, "\n")
 
 def binary_tree_test():
-    print(f"Binary tree")
+    print(f"Binary tree:\n")
     root = ds.binary_tree.node(50)
     root.left = ds.binary_tree.node(25)
     root.left.left = ds.binary_tree.node(12.5)
+    root.left.left.left = ds.binary_tree.node(6.25)
+    root.left.left.right = ds.binary_tree.node(18.75)
     root.left.right = ds.binary_tree.node(37.5)
+    root.left.right.left = ds.binary_tree.node(31.25)
+    root.left.right.right = ds.binary_tree.node(43.75)
+
     root.right = ds.binary_tree.node(75)
     root.right.left = ds.binary_tree.node(62.5)
+    root.right.left.left = ds.binary_tree.node(56.25)
+    root.right.left.right = ds.binary_tree.node(68.75)
     root.right.right = ds.binary_tree.node(87.5)
+    root.right.right.left = ds.binary_tree.node(81.25)
+    root.right.right.right = ds.binary_tree.node(93.75)
+    
     root.print()
 
+    root.insert(ds.binary_tree.node(25))
+
 def main():
-    #linked_list_test()
+    linked_list_test()
     binary_tree_test()
 
 main()

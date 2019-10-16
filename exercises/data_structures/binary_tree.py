@@ -11,6 +11,11 @@ class node(object):
     def print(self, level=0):
         if(self.right != None):
             self.right.print(level + 1)
-        print("    " * level + repr(self.value))
+        print("\t" * level + repr(self.value))
         if(self.left != None):
             self.left.print(level + 1)
+
+    # insert new node
+    def insert(self, new):
+        print(f"FIXME: Insert a node")
+        return(-1)
