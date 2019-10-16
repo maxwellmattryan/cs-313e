@@ -48,7 +48,7 @@ def printAlg(method, name, arr, target):
 # RANDOM FOR LIST CREATION
 import random
 import time
-import sorting
+import algorithms.sorting as sorting
 
 def main():
     # N = SIZE OF ARRAY

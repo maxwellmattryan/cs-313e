@@ -73,6 +73,7 @@ def largestRectangle(grid):
 # Q3:
 # Given a string, what is the longest possible palindrome
 # within the string
+# todo : can this be implemented faster using binary search algorithm
 def longestPalindrome(string):
     # helper method to determine if string is a palindrome
     def isPalindrome(string):

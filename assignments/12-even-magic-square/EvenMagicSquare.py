@@ -19,19 +19,35 @@ import math
 # Permute through a list => O(n!)
 def permute(a, lo):
     hi = len(a)
+    n = int(math.sqrt(hi))
+    magicConst = (n * ((n ** 2) + 1)) / 2
     # if lo equals hi, then all values have been swapped 
     if(lo == hi):
         grid = convert(a)
         if(isMagicSquare(grid)):
-            printGrid(grid)
+            printGrid(grid) 
     else:
-        for i in range(lo, hi):
-            a[lo], a[i] = a[i], a[lo]
-            permute(a, lo + 1)
-            a[lo], a[i] = a[i], a[lo]
+        # todo: SMART OPTIMIZATIONS GO HERE !
+        # maybe this should be a while loop ... ?
+        i = lo
+        while(i < hi):
+            if(i == 0 or (i % n == 0 and i > 0)):
+                rowSum = sum([a[i + j] for j in range(n)])
+                print(f"{[a[i + j] for j in range(n)]} => Row sum = {rowSum} and magic constant = {magicConst}")
+                if(rowSum == magicConst):
+                    print(f"Good row")
+                    i += n
+                else:
+                    a[i], a[i + 1] = a[i + 1], a[i]
+                    permute(a, lo + 1)
+                    a[i], a[i + 1] = a[i + 1], a[i]
+            else:
+                a[lo], a[i] = a[i], a[lo]
+                permute(a, lo + 1)
+                a[lo], a[i] = a[i], a[lo]
+            i += 1
 
 # Convert 1D to 2D => ?
-# this is where the smart checking will have to go to optimize program
 def convert(myList):
     n = int(math.sqrt(len(myList)))
     myGrid = [[myList[i + j] for j in range(n)] for i in range(0, n ** 2, n)]

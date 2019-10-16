@@ -75,7 +75,6 @@ def quickSort(arr, lo, hi):
         pivot = partition(arr, lo, hi)
         quickSort(arr, lo, pivot - 1)
         quickSort(arr, pivot + 1, hi)
-
 def partition(arr, lo, hi):
     m = lo - 1
     pivot = arr[hi]
@@ -86,6 +85,11 @@ def partition(arr, lo, hi):
     arr[m + 1], arr[hi] = arr[hi], arr[m + 1]
     return(m + 1)
 
+# Heap Sort -
+# description...
+def heapSort(arr):
+    print(f"FIXME")
+    return(-1)
 
 # PRINT METHOD FOR TIME 
 # displays in ms if under 1 second, otherwise in s
