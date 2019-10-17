@@ -12,40 +12,33 @@
 
 #  Date Created: 10-13-2019
 
-#  Date Last Modified: 10-13-2019
+#  Date Last Modified: 10-17-2019
 
 import math
 
 # Permute through a list => O(n!)
-def permute(a, lo):
+def permute(a, lo, squares):
+    if(len(squares) >= 10):
+        return
     hi = len(a)
     n = int(math.sqrt(hi))
-    magicConst = (n * ((n ** 2) + 1)) / 2
+    magicConst = int((n * ((n ** 2) + 1)) / 2)
+    if(lo == 4 or lo == 8 or lo == 12 or lo == 16):
+        rowSum = sum([a[j] for j in range(lo - n, lo)])
+        if(rowSum != magicConst):
+            return
     # if lo equals hi, then all values have been swapped 
     if(lo == hi):
         grid = convert(a)
         if(isMagicSquare(grid)):
-            printGrid(grid) 
+            squares.append([num for num in a])
+            if(len(squares) >= 10):
+                return
     else:
-        # todo: SMART OPTIMIZATIONS GO HERE !
-        # maybe this should be a while loop ... ?
-        i = lo
-        while(i < hi):
-            if(i == 0 or (i % n == 0 and i > 0)):
-                rowSum = sum([a[i + j] for j in range(n)])
-                print(f"{[a[i + j] for j in range(n)]} => Row sum = {rowSum} and magic constant = {magicConst}")
-                if(rowSum == magicConst):
-                    print(f"Good row")
-                    i += n
-                else:
-                    a[i], a[i + 1] = a[i + 1], a[i]
-                    permute(a, lo + 1)
-                    a[i], a[i + 1] = a[i + 1], a[i]
-            else:
-                a[lo], a[i] = a[i], a[lo]
-                permute(a, lo + 1)
-                a[lo], a[i] = a[i], a[lo]
-            i += 1
+        for i in range(lo, hi):
+            a[lo], a[i] = a[i], a[lo]
+            permute(a, lo + 1, squares)
+            a[lo], a[i] = a[i], a[lo]
 
 # Convert 1D to 2D => ?
 def convert(myList):
@@ -57,18 +50,11 @@ def convert(myList):
 def isMagicSquare(grid):
     n = len(grid)
     magicConst = (n * ((n ** 2) + 1)) / 2
-    # check rows and columns
+    # check columns
     for i in range(n):
-        rowSum = 0
-        for j in range(n):
-            rowSum += grid[i][j]
-            if(i == 0):
-                colSum = 0
-                for k in range(n):
-                    colSum += grid[k][j]
-                if(colSum != magicConst):
-                    return(False)
-        if(rowSum != magicConst):
+        colSum = sum([grid[j][i] for j in range(n)])
+        rowSum = sum([grid[i][j] for j in range(n)])
+        if(colSum != magicConst or rowSum != magicConst):
             return(False)
     diag1 = diag2 = 0
     for i in range(n):
@@ -85,10 +71,11 @@ def printGrid(grid):
 
 def main():
     # Create 1D list of integers 1-16
-    myList = [i + 1 for i in range(9)]
-    print(f"1D : {myList}")
+    myList = [i + 1 for i in range(16)]
 
     # Permute this list (and print all valid magic squares)
-    permute(myList, 0)
+    squares = []
+    permute(myList, 0, squares)
+    [print(square) for square in squares]
 
 main()
