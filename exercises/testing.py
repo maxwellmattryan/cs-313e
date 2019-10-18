@@ -1,22 +1,23 @@
-import data_structures as ds
+import data_structures.linked_list as ll
+import data_structures.binary_search_tree as bst
 import random
 
 def linked_list_test():
     # appending test
-    myList = ds.linked_list.linked_list()
+    myList = ll.linked_list()
     print(f"Appending values")
     for i in range(150):
-        node = ds.linked_list.node(random.randint(-i, i))
+        node = ll.node(random.randint(-i, i))
         myList.append(node)
         print(f"{node.data} appended")
         myList.print()
     print()
 
     # prepending test
-    myList = ds.linked_list.linked_list()
+    myList = ll.linked_list()
     print(f"Prepending values")
     for i in range(10):
-        node = ds.linked_list.node(random.randint(-i, i))
+        node = ll.node(random.randint(-i, i))
         myList.prepend(node)
         print(f"{node.data} prepended")
         myList.print()
@@ -52,7 +53,7 @@ def linked_list_test():
     print()
 
     # sorting
-    [myList.prepend(ds.linked_list.node(random.randint(0, i))) for i in range(10)]
+    [myList.prepend(ll.node(random.randint(0, i))) for i in range(10)]
     print(f"Before sort:", myList, "\n")
     myList.sort()
     print(f"After sort:", myList, "\n")
@@ -64,31 +65,22 @@ def linked_list_test():
     myList.reverse()
     print(f"After reverse:", myList, "\n")
 
-def binary_tree_test():
-    print(f"Binary tree:\n")
-    root = ds.binary_tree.node(50)
-    root.left = ds.binary_tree.node(25)
-    root.left.left = ds.binary_tree.node(12.5)
-    root.left.left.left = ds.binary_tree.node(6.25)
-    root.left.left.right = ds.binary_tree.node(18.75)
-    root.left.right = ds.binary_tree.node(37.5)
-    root.left.right.left = ds.binary_tree.node(31.25)
-    root.left.right.right = ds.binary_tree.node(43.75)
-
-    root.right = ds.binary_tree.node(75)
-    root.right.left = ds.binary_tree.node(62.5)
-    root.right.left.left = ds.binary_tree.node(56.25)
-    root.right.left.right = ds.binary_tree.node(68.75)
-    root.right.right = ds.binary_tree.node(87.5)
-    root.right.right.left = ds.binary_tree.node(81.25)
-    root.right.right.right = ds.binary_tree.node(93.75)
+def binary_search_tree_test():
+    print(f"Binary search tree:\n")
+    root = bst.node(50)
+    for i in range(10):
+        root.insert(bst.node(random.randint(0, 100)))
     
     root.print()
 
-    root.insert(ds.binary_tree.node(25))
+    root.insert(bst.node(25))
+    root.print()
+    print(root.find(25))
+    root.remove(root.left.value)
+    root.print()
 
 def main():
     linked_list_test()
-    binary_tree_test()
+    binary_search_tree_test()
 
 main()
