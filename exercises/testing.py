@@ -5,7 +5,7 @@ def linked_list_test():
     # appending test
     myList = ds.linked_list.linked_list()
     print(f"Appending values")
-    for i in range(10):
+    for i in range(150):
         node = ds.linked_list.node(random.randint(-i, i))
         myList.append(node)
         print(f"{node.data} appended")
