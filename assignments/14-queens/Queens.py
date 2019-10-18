@@ -14,6 +14,8 @@
 
 #  Date Last Modified: 10-18-2019
 
+import sys
+
 # define queens class
 class Queens(object):
     # initialize the board
@@ -60,7 +62,7 @@ class Queens(object):
                     self.board[i][col] = "*"
 
 # store solutions into file named "solutions-<dimenion>.txt"
-def storeData(dimension, solutions):
+def writeToFile(dimension, solutions):
     myFile = open(f"solutions-{dimension}.txt", "w")
     for i in range(len(solutions)):
         myFile.write(f"Solution {i + 1:0{len(str(len(solutions)))}d}\n")
@@ -72,7 +74,7 @@ def main():
 
     # prompt user to enter size of the board
     n = int(eval(input("Enter the size of the board: ")))
-    while(n < 1 or n > 100):
+    while(n < 1 or n > 16):
         n = eval(input("Enter the size of the board: "))
     print()
 
@@ -85,7 +87,7 @@ def main():
     # print solutions and final program statement
     print(f"{game}\nThere are {len(game.solutions)} solutions for a {n} x {n} board.")
 
-    # store solutions into file
-    storeData(n, game.solutions)
+    # store solutions into file if specified to do so
+    #writeToFile(n, game.solutions)
 
 main()
