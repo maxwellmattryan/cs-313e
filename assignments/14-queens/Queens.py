@@ -19,12 +19,19 @@ class Queens(object):
     # initialize the board
     def __init__(self, n=4):
         self.n = n
+        self.solutions = []
         self.board = [["*" for j in range(self.n)] for i in range(self.n)]
 
     # print the board
-    def printBoard(self):
-        [print(row) for row in self.board]
-        print()
+    def __str__(self):
+        count = 0
+        for solution in self.solutions:
+            count += 1
+            for row in solution:
+                print(f"{' '.join(row)}")
+            if(count < len(self.solutions)):
+                print()
+        return("")
 
     # check if no queen will defeat another
     def isValid(self, row, col):
@@ -40,43 +47,32 @@ class Queens(object):
                 if(rowDiff == colDiff and self.board[i][j] == "Q"):
                     return(False)
         return(True)
-
-    # recursively solve via backtracking
-    def recursiveSolve(self, col, solutions):
+            
+    # print board if solution exists
+    def solve(self, col):
         if(col == self.n):
-            solutions.append(self.board)
-            return(True)
+            self.solutions.append([[self.board[i][j] for j in range(self.n)] for i in range(self.n)])
         else:
             for i in range(self.n):
                 if(self.isValid(i, col)):
                     self.board[i][col] = "Q"
-                    if(self.recursiveSolve(col + 1, solutions)):
-                        return(True)
+                    self.solve(col + 1)
                     self.board[i][col] = "*"
-            return(False)
-            
-    # print board if solution exists
-    def solve(self):
-        solutions = []
-        for i in range(self.n):
-            if(self.recursiveSolve(i, solutions)):
-                self.printBoard() 
-        return(solutions)   
 
 def main():
     # prompt user to enter size of the board
     n = int(eval(input("Enter the size of the board: ")))
-    while(n < 1 or n > 8):
+    while(n < 1 or n > 100):
         n = eval(input("Enter the size of the board: "))
     print()
 
     # create chess board
     game = Queens(n)
 
-    # find the solution(s), return an array of solution
-    solutions = game.solve()
+    # find the solution(s)
+    game.solve(0)
 
-    # final print statement 
-    print(f"There are {len(solutions)} solutions for a {n} x {n} board.")
+    # print solutions and final program statement
+    print(f"{game}\nThere are {len(game.solutions)} solutions for a {n} x {n} board.")
 
 main()
