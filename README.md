@@ -43,12 +43,14 @@ This is my repository containing all content related from the Fall 2019 semester
         - A(m, n) = A(m - 1, A(m, n - 1)) if m > 0 and n > 0
 ## Exercises
 - [Data Structures](https://github.com/maxwellmattryan/cs-313e/tree/develop/exercises/data_structures)
-    - Stacks, Queues
-    - Binary Search Trees
-    - Linked Lists (+ Doubly-Linked Lists)
+    - Stacks, queues
+    - Binary search trees
+    - Linked lists (+ doubly-linked lists)
+    - Hash tables
 - [Algorithms](https://github.com/maxwellmattryan/cs-313e/tree/develop/exercises/algorithms)
-    - Sorting (selection, bubble, insertion, merge, quick, and heap)
+    - Sorting (selection, bubble, insertion, merge, quick, heap)
     - Searching (sequential, binary)
+    - Hashing (linear probing, quadratic probing, double hashing)
 ### Instructions
 These scripts are imported into a testing script as modules. Their tests are located within the testing.py script, which is where you can test any functionality of the particular data structure or algorithm.
 ```
