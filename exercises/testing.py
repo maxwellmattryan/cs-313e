@@ -1,8 +1,26 @@
+# import local modules
 import data_structures.linked_list as ll
 import data_structures.binary_search_tree as bst
+import data_structures.stack as s
 import random
 
+def binary_search_tree_test():
+    print("## BINARY SEARCH TREE TESTING ##\n")
+    print(f"Binary search tree:\n")
+    root = bst.node(50)
+    for i in range(10):
+        root.insert(bst.node(random.randint(0, 100)))
+    
+    root.print()
+
+    root.insert(bst.node(25))
+    root.print()
+    print(root.find(25))
+    #root.remove(root.left.value)
+    root.print()
+
 def linked_list_test():
+    print("\n## LINKED LIST TESTING ##\n")
     # appending test
     myList = ll.linked_list()
     print(f"Appending values")
@@ -10,7 +28,7 @@ def linked_list_test():
         node = ll.node(random.randint(-i, i))
         myList.append(node)
         print(f"{node.data} appended")
-        myList.print()
+    myList.print()
     print()
 
     # prepending test
@@ -65,22 +83,22 @@ def linked_list_test():
     myList.reverse()
     print(f"After reverse:", myList, "\n")
 
-def binary_search_tree_test():
-    print(f"Binary search tree:\n")
-    root = bst.node(50)
-    for i in range(10):
-        root.insert(bst.node(random.randint(0, 100)))
-    
-    root.print()
-
-    root.insert(bst.node(25))
-    root.print()
-    print(root.find(25))
-    root.remove(root.left.value)
-    root.print()
+def stack_test():
+    print("## STACK TESTING ##\n")
+    stack = s.Stack(s.Node(100))
+    for i in range(100):
+        stack.push(random.randint(-100, 100))
+    print("Original stack:\n", stack, "\n\n", "Popping following elements:")
+    for i in range(25):
+        print(stack.pop(), end=" ")
+    print("\n\nStack after popping:\n", stack)
+    print(f"\nResult of peek:\n{stack.peek()}")
+    stack = s.Stack()
+    print(f"\nResult of popping an empty stack:\n{stack.pop()}")
 
 def main():
-    linked_list_test()
     binary_search_tree_test()
+    linked_list_test()
+    stack_test()
 
 main()
