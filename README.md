@@ -1,8 +1,7 @@
 # CS 313E - Elements of Software Design
 ## About
-This is my repository containing all content related to the course, CS 313E, from the University of Texas at Austin. This course is taught by Dr. Shyamal Mitra and explores algorithms, data structures, object oriented programming paradigms and design concepts. 
+This is my repository containing all content related from the Fall 2019 semester course, CS 313E, from the University of Texas at Austin. This course is taught by Dr. Shyamal Mitra and explores algorithms, data structures, object oriented programming paradigms and software design concepts. 
 ## Assignments
-This is the bulk of the work. Each assignment subfolder containts a script to run the Python code as well as the html file for accessing the problem in case of the source link being unavailable.
 1. [(Odd) Magic Sqaure](https://github.com/maxwellmattryan/cs-313e/blob/develop/assignments/01-magic-square/MagicSquare.py)
     - Create a 3x3 grid of integers such that every row, column, and the two diagonals equal the same number, which is 15 in the case of a 3x3 grid.
 2. [Collapsing Intervals](https://github.com/maxwellmattryan/cs-313e/blob/develop/assignments/02-intervals/Intervals.py)
@@ -28,11 +27,10 @@ This is the bulk of the work. Each assignment subfolder containts a script to ru
 12. [(Even) Magic Square](https://github.com/maxwellmattryan/cs-313e/blob/develop/assignments/12-even-magic-square/EvenMagicSquare.py)
     - In contrast to odd magic squares, even magic squares contain vastly more solutions for each dimension. For example, the solution set for dimension = 4 contains 880 valid grids while the solution set for dimension = 3 contains only 8 valid squares.
 13. [Nesting Boxes](https://github.com/maxwellmattryan/cs-313e/blob/develop/assignments/13-boxes/Boxes.py)
-    - Given a set a boxes (list of three dimensions represented by integers), find the largest subset of nesting boxes. A box can nest within another if it's length, width, and height are strictly less than the other box's respective dimension. Boxes are allowed to be rotated, which allows you to rearrange the order of the dimensions. 
+    - Given a set a boxes (list of three dimensions represented by integers), find the largest subset of nesting boxes. A box can nest within another if it's length, width, and height are strictly less than the other box's respective dimension. Boxes are allowed to be rotated therefore the order of dimensions representing a single box does not matter.
 14. [Eight Queens Problem](https://github.com/maxwellmattryan/cs-313e/blob/develop/assignments/14-queens/Queens.py)
     - Given a number _n_, denoting the number of queens and the dimension of the chessboard, print all boards containing n queens with each queen in a position so that it cannot capture or be captured by another queen.
 ## Exams
-This folder contains questions and solutions from the three semester exams (there is no final).
 - [Exam 01](https://github.com/maxwellmattryan/cs-313e/blob/develop/exams/exam-01.py)
     1. Define a Triangle class (assuming a Point class has been written), with proper methods for perimeter, area, point_inside, and is_isosceles.
     2. Given a grid of 0s and 1s, find the largest rectangle of 1s (use a max area of a histogram)
@@ -44,7 +42,6 @@ This folder contains questions and solutions from the three semester exams (ther
         - A(m, n) = A(m - 1, 1) if m > 0 and n = 0
         - A(m, n) = A(m - 1, A(m, n - 1)) if m > 0 and n > 0
 ## Exercises
-This work was not necessary, but I found it helpful to write data structures from scratch along with methods for searching, removing, inserting, sorting, and so forth. To run the code inside this folder:
 - [Data Structures](https://github.com/maxwellmattryan/cs-313e/tree/develop/exercises/data_structures)
     - Stacks, Queues
     - Binary Search Trees
@@ -52,12 +49,13 @@ This work was not necessary, but I found it helpful to write data structures fro
 - [Algorithms](https://github.com/maxwellmattryan/cs-313e/tree/develop/exercises/algorithms)
     - Sorting (selection, bubble, insertion, merge, quick, and heap)
     - Searching (sequential, binary)
+### Instructions
+These scripts are imported into a testing script as modules. Their tests are located within the testing.py script, which is where you can test any functionality of the particular data structure or algorithm.
 ```
-cd <path.../cs-313e/exercises>
+cd <path-to/cs-313e/exercises>
 python testing.py
-```
-Simply open up the testing script to modify or change any test parameters.  
+``` 
 ## Acknowledgements
-I am grateful for the amazing opportunity to learn from Dr. Mitra - he was absolutely excellent and I always felt as though I was learning loads from him every class. I fully recommend this class to anyone interested or able to take it. 
+I am grateful for the amazing opportunity to learn from Dr. Mitra - he was absolutely excellent and I always felt as though I was learning loads from him every class. I fully recommend this class to anyone interested or able to take it. The work and effort is worth it.
    
-Thank you very much for reading me !
+Thank you very much for reading !
