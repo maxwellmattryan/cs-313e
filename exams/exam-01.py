@@ -1,11 +1,6 @@
 # dependencies
 import math
 
-# array printing method
-def printArr(arr):
-    [print(row) for row in arr]
-    print()
-
 # point class used for triangle class
 class Point(object):
     def __init__(self, x=0, y=0):
@@ -152,15 +147,39 @@ def longestPalindrome(string):
 # A group of friends wants to do a secret santa with each friend being assigned to another and no
 # friend can be assigned to themselves (this is called derangement). The friends are named A, E, I,
 # O, U, and Y. Additionally, E does not like Y and A does not like E and each will get bad gifts for
-# the other if they have the opportunity to do so. Write the pairings() function that returns a list
+# the other if they have the opportunity to do so. Write the findPairings() function that returns a list
 # with all the assignments that do not assign any of the friends to themselves, nor pair E to Y or
 # A to E. You may add helper functions as needed.
 # Match the friends for secret santa
 # friends = ["A", "E", "I", "O", "U", "Y"]
-# pairings(friends) => ["E:I", "I:O", "O:U", "U:Y", "Y:A"]
-def findPairings():
-    print(f"Q5: Fix me\n")
-    return(-1)
+# findPairings(friends) => ["E:I", "I:O", "O:U", "U:Y", "Y:A"]
+def findPairings(friends):
+    # given two friends, f1 and f2, return True if they are a valid match and False otherwise
+    def canPair(f1, f2):
+        if(f1 == f2):
+            return(False)
+        elif(f1 == "A" and f2 == "E") or (f1 == "E" and f2 == "A"):
+            return(False)
+        elif(f1 == "E" and f2 == "Y") or (f1 == "Y" and f2 == "E"):
+            return(False)
+        return(True)
+    n = len(friends)
+    grid = [[0 for j in range(n)] for i in range(n)]
+    for i in range(len(friends)):
+        for j in range(len(friends)):
+            if(canPair(friends[i], friends[j])):
+                grid[i][j] += 1
+    pairings = []
+    used = [] 
+    for i in range(len(grid)):
+        for j in range(len(grid[i])):
+            if(grid[i][j] == 1 and j  not in used):
+                used.append(j)
+                pairings.append(f"{friends[i]}:{friends[j]}")
+                break
+    return(pairings)
+
+
 
 # EC:
 # Trace Ackermann's function
@@ -190,24 +209,25 @@ def main():
         [0, 0, 1, 1, 1]
     ]
     print(f"Q2: The largest rectangle is {largestRectangle([[num for num in row] for row in myArr])} units\n")
-    printArr(myArr)
+    [print(row) for row in myArr]
 
     # Q3 - Longest palindrome in string
     myString = "asdaibohphobia"
-    print(f"Q3: The longest palindrome in \"{myString}\" is \"{longestPalindrome(myString)}\"\n")
+    newString = longestPalindrome(myString)
+    print(f"\nQ3: The longest palindrome in \"{myString}\" is \"{newString}\" of length {len(newString)}\n")
 
     # Q4 - Inverse factorial of integer
     n = 4
     n = math.factorial(n)
     print(f"Q4: The inverse factorial of {n} is {inverseFactorial(n)}\n")
 
-    # Q5 - Subset problem
-    print(f"{findPairings()}")
+    # Q5 - Friend pairing problem
+    print(f"Q5: A valid set of pairs is {findPairings(['A', 'E', 'I', 'O', 'U', 'Y'])}\n")
 
     # EC - Ackermann's function trace (n = 3)
     n = 4
     myGrid = [[ackermann(i, j) for j in range(n)] for i in range(n)]
     print(f"EC: The Ackermann function traced up to n = {n}\n")
-    printArr(myGrid)
+    [print(row) for row in myGrid]
 
 main()
