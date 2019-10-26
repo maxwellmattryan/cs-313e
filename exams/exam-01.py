@@ -3,10 +3,16 @@ import math
 
 # point class used for triangle class
 class Point(object):
+    # initialization of Point object
     def __init__(self, x=0, y=0):
         self.x = x
         self.y = y
 
+    # handle print calling
+    def __str__(self):
+        return(f"({self.x}, {self.y})")
+
+    # given another point, other, find the distance to it
     def dist(self, other):
         return(math.hypot(self.x - other.x, self.y - other.y))
 
@@ -14,30 +20,50 @@ class Point(object):
 # A triangle is defined by the three vertices. Write the following functions of the Triangle class
 # assuming that the Point class has already been written for you. You may add helper functions as needed.
 class Triangle(object):
-
     # default constructor assigning (0, 0), (1, 0), and (0, 1) as vertices unless specified 
     def __init__(self, v1_x=0, v1_y=0, v2_x=1, v2_y=0, v3_x=0, v3_y=1):
+        #if(abs(v1_x * (v2_y - v3_y)) - (v2_x * (v1_y - v3_y)) + (v3_x * (v1_y - v2_y)) < 1.0e-8):
         self.v1 = Point(v1_x, v1_y)
         self.v2 = Point(v2_x, v2_y)
         self.v3 = Point(v3_x, v3_y)
+        self.tol = 1.0e-8 # used for correcting mathematical operations using floating point values
 
     # calculate and return the area of the triangle
     def area(self):
-        a = self.v1.dist(self.v2)
-        b = self.v1.dist(self.v3)
-        return(a * b * 0.5)
+        return(abs(
+            (self.v3.x + self.v1.x) * (self.v3.y - self.v1.y) +
+            (self.v1.x + self.v2.x) * (self.v1.y - self.v2.y) +
+            (self.v2.x + self.v3.x) * (self.v2.y - self.v3.y))
+        )
 
     # return True if the triangle is an isosceles right angled triangle
     def isRight(self):
-        return(-1)
+        a = self.v1.dist(self.v2)
+        b = self.v2.dist(self.v3)
+        c = self.v3.dist(self.v1)
+        if(
+            (a == b and abs(math.hypot(a, b) - c) < self.tol) or 
+            (b == c and abs(math.hypot(b, c) - a) < self.tol) or 
+            (c == a and abs(math.hypot(c, a) - b) < self.tol)
+        ):
+            return(True)
+        return(False)
 
     # calculate the return the perimeter of the triangle
     def perimeter(self):
-        return(-1)
+        return(
+            self.v1.dist(self.v2) + 
+            self.v2.dist(self.v3) + 
+            self.v3.dist(self.v1)
+        )
     
     # return True if a Point p is strictly inside the triangle or False otherwise
     def pointInside(self, p):
-        return(-1)
+        totalArea = 0
+        totalArea += Triangle(self.v1.x, self.v1.y, self.v2.x, self.v2.y, p.x, p.y).area()
+        totalArea += Triangle(self.v2.x, self.v2.y, self.v3.x, self.v3.y, p.x, p.y).area()
+        totalArea += Triangle(self.v3.x, self.v3.y, self.v1.x, self.v1.y, p.x, p.y).area()
+        return(abs(totalArea - self.area()) < self.tol)
     
 # Q2:
 # Given a 2D list filled with 0s and 1s, write the function largestRectangle() that finds the largest
@@ -197,8 +223,12 @@ def ackermann(m, n):
 
 def main():
     # Q1 - Python classes
-    myTriangle = Triangle(0, 0, 2, 0, 0, 2)
-    print(f"Q1: Fix me\n")
+    myTriangle = Triangle(0, 0, 3, 0, 0, 4)
+    print(f"Q1: Given a triangle of vertices, {myTriangle.v1}, {myTriangle.v2}, and {myTriangle.v3}")
+    print(f"\nPerimeter = {myTriangle.perimeter()}")
+    print(f"Area = {myTriangle.area()}")
+    print(f"Is right triangle = {myTriangle.isRight()}")
+    print(f"Is (2, 1) inside = {myTriangle.pointInside(Point(2, 1))}")
 
     # Q2 - Largest rectangle of 1s
     myArr = [
@@ -208,7 +238,7 @@ def main():
         [0, 0, 1, 1, 1],
         [0, 0, 1, 1, 1]
     ]
-    print(f"Q2: The largest rectangle is {largestRectangle([[num for num in row] for row in myArr])} units\n")
+    print(f"\nQ2: The largest rectangle is {largestRectangle([[num for num in row] for row in myArr])} units\n")
     [print(row) for row in myArr]
 
     # Q3 - Longest palindrome in string
@@ -217,7 +247,7 @@ def main():
     print(f"\nQ3: The longest palindrome in \"{myString}\" is \"{newString}\" of length {len(newString)}\n")
 
     # Q4 - Inverse factorial of integer
-    n = 4
+    n = 8
     n = math.factorial(n)
     print(f"Q4: The inverse factorial of {n} is {inverseFactorial(n)}\n")
 
