@@ -20,68 +20,62 @@ def binary_search_tree_test():
     root.print()
 
 def linked_list_test():
-    print("\n## LINKED LIST TESTING ##\n")
-    # appending test
-    myList = ll.linked_list()
-    print(f"Appending values")
-    for i in range(150):
-        node = ll.node(random.randint(-i, i))
-        myList.append(node)
-        print(f"{node.data} appended")
-    myList.print()
-    print()
+    print(f"=== LINKED LIST TESTING ===\n")
 
-    # prepending test
-    myList = ll.linked_list()
-    print(f"Prepending values")
-    for i in range(10):
-        node = ll.node(random.randint(-i, i))
-        myList.prepend(node)
-        print(f"{node.data} prepended")
-        myList.print()
-    print()
+    myList = ll.LinkedList()
+    size = 10
+    
+    print("Test 01 - Appending:\n")
+    for i in range(size):
+        num = random.randint(-size, size)
+        print(f"{i}: {num}")
+        myList.append(num)
+    print(f"\n{myList}\n")
 
-    # removal test 
-    print(f"Removing values")
-    for i in range(5):
-        myList.print()
-        print(f"{myList.head} removed")
-        myList.remove(None)
-    print()
+    print("Test 02 - Prepending:\n")
+    for i in range(size):
+        num = random.randint(-size, size)
+        print(f"{i}: {num}")
+        myList.prepend(num)
+    print(f"\n{myList}\n") 
 
-    # recursive traversal
-    print(f"Traversing recursively...")
-    myList.print_recursive(myList.head)
-    print()
+    print(f"Test 03 - Removing:\n")
+    removeIndex = random.randint(0, myList.length - 1)
+    removeTarget = myList.get(removeIndex)
+    print(f"Removing {removeTarget} ({myList.search(removeTarget)}):")
+    myList.remove(removeTarget)
+    print(f"\n{myList}\n")
 
-    # finding index of value
-    print(f"Index of 3 = {myList.index_of(3)}\n")
+    print(f"Test 04 - Removing At:\n")
+    removeIndex = random.randint(0, myList.length - 1)
+    removeTarget = myList.get(removeIndex)
+    print(f"Removing at i = {removeIndex} ({myList.get(removeIndex)}):")
+    myList.removeAt(removeIndex)
+    print(f"\n{myList}\n") 
 
-    # finding value at index
-    n = len(myList)
-    print(f"Length of linked list = {n}")
-    print(f"Value at {n // 2} = {myList.get(n // 2)}\n")
+    print(f"Test 05 - Inserting:\n")
+    insertIndex = random.randint(0, myList.length)
+    insertValue = random.randint(-myList.length, myList.length)
+    print(f"Inserting {insertValue} at i = {insertIndex} ({myList.get(insertIndex)}):")
+    myList.insert(insertValue, insertIndex)
+    print(f"\n{myList}\n")
 
-    # clear all elements
-    print(f"Before clearing: ", end="")
-    myList.print()
-    myList.clear()
-    print(f"After clearing: ", end="")
-    myList.print()
-    print()
+    print(f"Test 06 - Inserting After:\n")
+    insertIndex = random.randint(0, myList.length)
+    insertValue = random.randint(-myList.length, myList.length)
+    print(f"Inserting {insertValue} after i = {insertIndex} ({myList.get(insertIndex)}):")
+    myList.insertAfter(insertValue, insertIndex)
+    print(f"\n{myList}\n")
 
-    # sorting
-    [myList.prepend(ll.node(random.randint(0, i))) for i in range(10)]
-    print(f"Before sort:", myList, "\n")
+    print(f"Maximum = {myList.maximum()}\n\nMinimum = {myList.minimum()}\n")
+
+    print(f"Test 07 - Reversing:")
+    myList.reverse()
+    print(f"\n{myList}\n")
+
+    print(f"Test 08 - Sorting:")
     myList.sort()
-    print(f"After sort:", myList, "\n")
-
-    # reversing
-    print(f"Before reverse:", myList, "\n")
-    myList.reverse()
-    print(f"After reverse:", myList, "\n")
-    myList.reverse()
-    print(f"After reverse:", myList, "\n")
+    print(f"\n{myList}\n")
 
 def stack_test():
     print("## STACK TESTING ##\n")
@@ -97,8 +91,6 @@ def stack_test():
     print(f"\nResult of popping an empty stack:\n{stack.pop()}")
 
 def main():
-    binary_search_tree_test()
     linked_list_test()
-    stack_test()
 
 main()
