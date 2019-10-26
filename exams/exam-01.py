@@ -1,13 +1,12 @@
 # dependencies
 import math
 
-# Array printing method
+# array printing method
 def printArr(arr):
     [print(row) for row in arr]
     print()
 
-# Q1:
-# Define a Triangle class (assume Point class is written)
+# point class used for triangle class
 class Point(object):
     def __init__(self, x=0, y=0):
         self.x = x
@@ -16,29 +15,48 @@ class Point(object):
     def dist(self, other):
         return(math.hypot(self.x - other.x, self.y - other.y))
 
+# Q1:
+# A triangle is defined by the three vertices. Write the following functions of the Triangle class
+# assuming that the Point class has already been written for you. You may add helper functions as needed.
 class Triangle(object):
+
+    # default constructor assigning (0, 0), (1, 0), and (0, 1) as vertices unless specified 
     def __init__(self, v1_x=0, v1_y=0, v2_x=1, v2_y=0, v3_x=0, v3_y=1):
         self.v1 = Point(v1_x, v1_y)
         self.v2 = Point(v2_x, v2_y)
         self.v3 = Point(v3_x, v3_y)
 
-    def perimeter(self):
-        return(-1)
-
+    # calculate and return the area of the triangle
     def area(self):
         a = self.v1.dist(self.v2)
         b = self.v1.dist(self.v3)
         return(a * b * 0.5)
-    
+
+    # return True if the triangle is an isosceles right angled triangle
     def isRight(self):
         return(-1)
 
+    # calculate the return the perimeter of the triangle
+    def perimeter(self):
+        return(-1)
+    
+    # return True if a Point p is strictly inside the triangle or False otherwise
     def pointInside(self, p):
         return(-1)
     
 # Q2:
-# Given a grid of 0s and 1s, find the largest rectangle
-# of 1s in the grid (using histograms)
+# Given a 2D list filled with 0s and 1s, write the function largestRectangle() that finds the largest
+# rectangle made up of only 1s and returns the area of this rectangle. You may solve this problem 
+# iteratively.
+# Example: 
+# rect is a 2D list that is filled with 0s and 1s
+# return an integer of the largest area of 1s
+# rect = [
+#   [0, 0, 0, 0, 0],
+#   [0, 0, 1, 1, 0],
+#   [0, 1, 1, 1, 0]
+# ]
+# largestRectangle(rect) => 4
 def largestRectangle(grid):
     # get maximum area of histogram
     def maxAreaInHistogram(hist):
@@ -71,9 +89,38 @@ def largestRectangle(grid):
 
 
 # Q3:
-# Given a string, what is the longest possible palindrome
-# within the string
-# todo : can this be implemented faster using binary search algorithm
+# Given n, it is easy to get the factorial of n. It might be a big number, but you can still compute it.
+# However, the inverse problem is difficult. Given some largest number, n, write the function, 
+# inverseFactorial(n), find x such that x! is equal to n. In other words 
+# abs(x! - n) < abs((x - 1)! - n) and abs(x! - n) < abs((x + 1)! - n). You may use Python's 
+# math.factorial() in your algorithm. Assume that n is a positive integer.
+# inverseFactorial(40320) => 8
+# inverseFactorial(115) => 5
+def inverseFactorial(n):
+    if(n == 1 or n == 2):
+        return(n)
+    lo = 0
+    hi = n // 2
+    while(lo < hi):
+        x = (lo + hi) // 2
+        xF = math.factorial(x)
+        if(xF == n):
+            return(x)
+        elif(xF > n):
+            hi = x
+        else:
+            lo = x
+    return(-1)
+
+# Q4:
+# Given a string, s, return the length of the longest palindrome that is a substring of s. There could
+# be two or more substrings that are the longest palindromes in s, then just return the length of any
+# one. There are two edge cases that your function must be able to handle - the string s itself is a 
+# palindrome or there is no substring of length 2 or greater that is a palindrome. The string s will
+# only be lowercase letters.
+# longestPalindrome("radar") => 5
+# longestPalindrome("abcde") => 1
+# longestPalindrome("babad") => 3
 def longestPalindrome(string):
     # helper method to determine if string is a palindrome
     def isPalindrome(string):
@@ -101,35 +148,25 @@ def longestPalindrome(string):
                 maxPalindrome = tempString
     return(maxPalindrome)
 
-# Q4:
-# Given a number, n, find x such that factorial(x) == n
-def inverseFactorial(n):
-    if(n == 1 or n == 2):
-        return(n)
-    lo = 0
-    hi = n // 2
-    while(lo < hi):
-        x = (lo + hi) // 2
-        xF = math.factorial(x)
-        if(xF == n):
-            return(x)
-        elif(xF > n):
-            hi = x
-        else:
-            lo = x
-    return(-1)
-
 # Q5 :
-# Given a set of people, create pairings such that everyone's requirements are satisfied
+# A group of friends wants to do a secret santa with each friend being assigned to another and no
+# friend can be assigned to themselves (this is called derangement). The friends are named A, E, I,
+# O, U, and Y. Additionally, E does not like Y and A does not like E and each will get bad gifts for
+# the other if they have the opportunity to do so. Write the pairings() function that returns a list
+# with all the assignments that do not assign any of the friends to themselves, nor pair E to Y or
+# A to E. You may add helper functions as needed.
+# Match the friends for secret santa
+# friends = ["A", "E", "I", "O", "U", "Y"]
+# pairings(friends) => ["E:I", "I:O", "O:U", "U:Y", "Y:A"]
 def findPairings():
     print(f"Q5: Fix me\n")
     return(-1)
 
 # EC:
 # Trace Ackermann's function
-# if m = 0, A(m, n) => n + 1
-# if m > 0 and n = 0, A(m, n) => A(m - 1, 1)
-# if m > 0 and n > 0, A(m, n) => A(m - 1, A(m, n - 1))
+# if m = 0,           f(m, n) => n + 1
+# if m > 0 and n = 0, f(m, n) => f(m - 1, 1)
+# if m > 0 and n > 0, f(m, n) => f(m - 1, f(m, n - 1))
 def ackermann(m, n):
     if(m == 0):
         return(n + 1)
