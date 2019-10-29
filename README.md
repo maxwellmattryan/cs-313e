@@ -30,6 +30,10 @@ This is my repository containing all content related from the Fall 2019 semester
     - Given a set a boxes (list of three dimensions represented by integers), find the largest subset of nesting boxes. A box can nest within another if it's length, width, and height are strictly less than the other box's respective dimension. Boxes are allowed to be rotated therefore the order of dimensions representing a single box does not matter.
 14. [Eight Queens Problem](https://github.com/maxwellmattryan/cs-313e/blob/develop/assignments/14-queens/Queens.py)
     - Given a number _n_, denoting the number of queens and the dimension of the chessboard, print all boards containing n queens with each queen in a position so that it cannot capture or be captured by another queen.
+15. [Reducible Words](https://github.com/maxwellmattryan/cs-313e/blob/develop/assignments/15-reducible-words/Reducible.py)
+    - What is the longest English word that remains a valid English word as you remove one letter at a time from it? Once only one letter is left, it is only valid if it is "a", "i", or "o". Such words are known as reducible words. Consider the example, "string":
+        - _string -> sting -> sing -> sin -> in -> i_
+    - Given a list of valid English words (length of roughly 113,809), write a program that finds the longest reducible word(s). To solve this problem optimally, the solution __must__ implement hashing.
 ## Exams
 - [Exam 01](https://github.com/maxwellmattryan/cs-313e/blob/develop/exams/exam-01.py)
     1. Define a Triangle class (assuming a Point class has been written), with proper methods for perimeter, area, point_inside, and is_isosceles.
