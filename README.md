@@ -50,8 +50,8 @@ This is my repository containing all content related from the Fall 2019 semester
 ## Exercises
 - [Data Structures](https://github.com/maxwellmattryan/cs-313e/tree/develop/exercises/data_structures)
     - Stacks, queues
-    - Binary search trees
-    - Linked lists (+ doubly-linked lists)
+    - Trees (binary search trees, expression trees, and decision trees)
+    - Linked lists (singly, doubly, and circularly-linked)
     - Hash tables
 - [Algorithms](https://github.com/maxwellmattryan/cs-313e/tree/develop/exercises/algorithms)
     - Sorting (selection, bubble, insertion, merge, quick, heap)
