@@ -179,33 +179,78 @@ def longestPalindrome(string):
 # Match the friends for secret santa
 # friends = ["A", "E", "I", "O", "U", "Y"]
 # findPairings(friends) => ["E:I", "I:O", "O:U", "U:Y", "Y:A"]
-def findPairings(friends):
+# def findPairings(friends):
+#     # given two friends, f1 and f2, return True if they are a valid match and False otherwise
+#     def canPair(f1, f2):
+#         if(f1 == f2):
+#             return(False)
+#         elif(f1 == "A" and f2 == "E") or (f1 == "E" and f2 == "A"):
+#             return(False)
+#         elif(f1 == "E" and f2 == "Y") or (f1 == "Y" and f2 == "E"):
+#             return(False)
+#         return(True)
+#     n = len(friends)
+#     grid = [[0 for j in range(n)] for i in range(n)]
+#     for i in range(len(friends)):
+#         for j in range(len(friends)):
+#             if(canPair(friends[i], friends[j])):
+#                 grid[i][j] += 1
+#     pairings = []
+#     used = [] 
+#     for i in range(len(grid)):
+#         for j in range(len(grid[i])):
+#             if(grid[i][j] == 1 and j  not in used):
+#                 used.append(j)
+#                 pairings.append(f"{friends[i]}:{friends[j]}")
+#                 break
+#     return(pairings)
+
+def findPairings(friends, pairingsSet):
     # given two friends, f1 and f2, return True if they are a valid match and False otherwise
     def canPair(f1, f2):
         if(f1 == f2):
             return(False)
-        elif(f1 == "A" and f2 == "E") or (f1 == "E" and f2 == "A"):
-            return(False)
-        elif(f1 == "E" and f2 == "Y") or (f1 == "Y" and f2 == "E"):
-            return(False)
+        # elif(f1 == "A" and f2 == "E") or (f1 == "E" and f2 == "A"):
+        #     return(False)
+        # elif(f1 == "E" and f2 == "Y") or (f1 == "Y" and f2 == "E"):
+        #     return(False)
         return(True)
+
+    # returns True if no other sender has claimed that recipient
+    def isValidColumn(grid, row, col):
+        temp = row
+        while(temp >= 0):
+            if(grid[temp][col] == 2):
+                return(False)
+            temp -= 1
+        temp = row
+        while(temp < len(grid)):
+            if(grid[temp][col] == 2):
+                return(False)
+            temp += 1
+        return(True)
+    
+    # recursive helper method once grid is made
+    def findPairingsHelper(grid, friends, pairings):
+        if(len(pairings) == len(friends)):
+            pairingsSet.append(pairings[:])
+        else:
+            row = len(pairings)
+            for j in range(len(grid[row])):
+                if(grid[row][j] == 1 and isValidColumn(grid, row, j)):
+                    grid[row][j] += 1
+                    pairings.append(f"{friends[row]}:{friends[j]}")
+                    findPairingsHelper(grid, friends, pairings)
+                    pairings.pop()
+                    grid[row][j] -= 1
+
     n = len(friends)
     grid = [[0 for j in range(n)] for i in range(n)]
     for i in range(len(friends)):
         for j in range(len(friends)):
             if(canPair(friends[i], friends[j])):
                 grid[i][j] += 1
-    pairings = []
-    used = [] 
-    for i in range(len(grid)):
-        for j in range(len(grid[i])):
-            if(grid[i][j] == 1 and j  not in used):
-                used.append(j)
-                pairings.append(f"{friends[i]}:{friends[j]}")
-                break
-    return(pairings)
-
-
+    findPairingsHelper(grid, friends, [])
 
 # EC:
 # Trace Ackermann's function
@@ -252,7 +297,17 @@ def main():
     print(f"Q4: The inverse factorial of {n} is {inverseFactorial(n)}\n")
 
     # Q5 - Friend pairing problem
-    print(f"Q5: A valid set of pairs is {findPairings(['A', 'E', 'I', 'O', 'U', 'Y'])}\n")
+    pairingsSet = []
+    findPairings(['A', 'E', 'I', 'O', 'U', 'Y'], pairingsSet)
+    print(f"Q5: Valid sets of pairs are\n")
+    [print(row) for row in pairingsSet]
+    print()
+    # letters = []
+    # for i in range(65, 91):
+    #     letters.append(chr(i))
+    #     pairingsSet = []
+    #     findPairings(letters, pairingsSet)
+    #     [print(row) for row in pairingsSet]
 
     # EC - Ackermann's function trace (n = 3)
     n = 4
