@@ -34,8 +34,11 @@ This is my repository containing all content related from the Fall 2019 semester
     - What is the longest English word that remains a valid English word as you remove one letter at a time from it? Once only one letter is left, it is only valid if it is "a", "i", or "o". Such words are known as reducible words. Consider the example, "string":
         - _string -> sting -> sing -> sin -> in -> i_
     - Given a list of valid English words (roughly 113,809 entries), write a program that finds the longest reducible word(s). To solve this problem optimally, the solution __must__ implement hashing.
-16. [Singly Linked Lists](https://github.com/maxwellmattryan/cs-313e/blob/develop/assignments/16-singly-linked-list/TestLinkedList.py)
+16. [Singly Linked List](https://github.com/maxwellmattryan/cs-313e/blob/develop/assignments/16-singly-linked-list/TestLinkedList.py)
     - Write the various methods for a linked list implementation in Python (such as insertion, deletion, removal, sorting, copying, merging, searching, and so forth) and test them. Assume that the data you are handling is just integers for now (for easier comparisons with no errors in floating point precision). 
+17. [Josephus Problem (Circularly Linked List)](https://github.com/maxwellmattryan/cs-313e/blob/develop/assignments/17-josephus/Josephus.py)
+    - The Josephus problem is as follows: there is a group of soldiers surrounded by an overwhelming enemy force. There is no hope for victory, so they make a pact to commit suicide. They stand in a circle and starting from a randomly selected solider, they count _n_ soliders. That soldier is killed by the starting solider and the count begins again from the next solider after. One by one, each solider is killed until one is standing who is free to join the enemy forces.
+    - Given an input file with total number of solders, the starting solider, and _n_, write a program that determines the last solider alive using an implementation of a linked list.
 ## Exams
 - [Exam 01](https://github.com/maxwellmattryan/cs-313e/blob/develop/exams/exam-01.py)
     1. Define a Triangle class (assuming a Point class has been written), with proper methods for perimeter, area, point_inside, and is_isosceles.

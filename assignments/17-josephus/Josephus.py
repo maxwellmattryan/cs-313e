@@ -12,7 +12,7 @@
 
 #  Date Created: 10-30-2019
 
-#  Date Last Modified: 10-30-2019
+#  Date Last Modified: 11-04-2019
 
 class Link(object):
     # Link constructor
@@ -45,16 +45,12 @@ class CircularList(object):
     def copy(self):
         if(self.head == None):
             return(None)
-        current = self.head
         newList = CircularList()
-        newList.head = current
+        current = self.head
         while(current != self.tail):
             newList.insert(current.data)
             current = current.next
-            if(current == self.tail):
-                newList.tail = current
-                newList.insert(current.data)
-                break
+        newList.insert(current.data)
         return(newList)
 
     # Find the link with the given data (value)
@@ -70,9 +66,9 @@ class CircularList(object):
 
     # Delete a link with a given data (value)
     def delete (self, data):
-        self.length -= 1
         if(self.head == None):
             return(None)
+        self.length -= 1
         prev = current = self.head
         while(current.data != data):
             if(current == self.tail):
@@ -90,22 +86,21 @@ class CircularList(object):
     # Delete the nth link starting from the Link start 
     # Return the next link from the deleted Link
     def delete_after (self, start, n):
-        self.length -= 1
         if(self.head == None):
             return(None)
-        prev = start
-        current = prev.next
-        while(n - 1 > 1):
+        self.length -= 1
+        prev = current = start
+        while(n - 1 > 0):
             prev = current
             current = current.next
             n -= 1
         prev.next = current.next
         if(current == self.head):
             self.head = prev.next
-            self.tail.next = self.head
-        if(current == self.tail):
+        elif(current == self.tail):
             self.tail = prev
-        return(prev.next.data)
+        print(current)
+        return(current.next)
 
     # Return a string representation of a Circular List
     def __str__ (self):
@@ -126,7 +121,7 @@ class CircularList(object):
 
 # returns data from input file (num of people, ordering of men, beginning count position)
 def get_data():
-    myFile = open(r"c:/users/matt/documents/school/2019/fall/cs-313e/assignments/17-josephus/josephus.txt", "r")
+    myFile = open("josephus.txt", "r")
     data = [
         int(myFile.readline().strip()),
         int(myFile.readline().strip()),
@@ -137,38 +132,14 @@ def get_data():
 def main():
     # extract data from input file
     data = get_data()
-    [print(row) for row in data] 
-    print()
 
     # create linked list of people of length data[0] (amount of people)
     people = CircularList()
     [people.insert(i + 1) for i in range(0, data[0], data[1])]
-    print(people, "\n")
 
-    # # reduce list to single person 
-    # person = data[2]
-    # while(people.length != 1):
-    #     person = people.delete_after(people.find(person), data[2])
-    #     print(person)
-    # print()
-
-    # using for manipulation
-    m_people = people.copy()
-    print(m_people)
-
-    # finding certain people
-    print(f"find(1) => {people.find(1)}")
-    print(f"find({data[0] // 2}) => {people.find(data[0] // 2)}")
-    print(f"find({data[0]}) => {people.find(data[0])}\n")
-
-    # deleting certain people
-    print(f"delete({people.delete(1)}) {people}")
-    print(f"delete({people.delete(7)}) {people}")
-    print(f"delete({people.delete(data[0])}) {people}\n")
-
-    # deleting after certain people
-    print(f"{people.delete_after(people.find(1), 3)} => {people}\n")
-    print(f"{people.delete_after(people.find(20), 3)} => {people}\n")
-    print(f"{people.delete_after(people.find(39), 3)} => {people}\n")
+    # reduce list to single person 
+    last_person = people.find(data[1])
+    while(people.length > 0):
+        last_person = people.delete_after(people.find(last_person.data), data[2])
 
 main()
