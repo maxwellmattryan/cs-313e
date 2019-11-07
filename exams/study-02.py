@@ -34,8 +34,53 @@ def is_palindrome(string):
             stack.pop()
     return(len(stack) == 0)
 
+# Q3 - Given an array of tokens, evaluate it accordingly 
+def operate(operand1, operand2, operator):
+    if(operator == "+"):
+        return(operand1 + operand2)
+    elif(operator == "-"):
+        return(operand1 - operand2)
+    elif(operator == "*"):
+        return(operand1 * operand2)
+    elif(operator == "/"):
+        return(operand1 / operand2)
+    elif(operator == "//"):
+        return(operand1 // operand2)
+    elif(operator == "%"):
+        return(operand1 % operand2)
+    elif(operator == "**"):
+        return(operand1 ** operand2)
+def postfix_eval(tokens):
+    stack = []
+    n = 0
+    while(n < len(tokens)):
+        if(isinstance(tokens[n], int)):
+            stack.append(tokens[n])
+        else:
+            operator = tokens[n]
+            operand1 = stack.pop()
+            operand2 = stack.pop()
+            result = operate(operand1, operand2, operator)
+            stack.append(result)
+        n += 1
+    return(stack[0])
+def prefix_eval(tokens):
+    stack = []
+    n = 1
+    while(n <= len(tokens)):
+        if(isinstance(tokens[-n], int)):
+            stack.append(tokens[-n])
+        else:
+            operator = tokens[-n]
+            operand1 = stack.pop()
+            operand2 = stack.pop()
+            result = operate(operand1, operand2, operator)
+            stack.append(result)
+        n += 1
+    return(stack[0])
+
 # Q5 - Stack / Queue implementation via (singly) linked lists
-# Queue - enqueue, dequeue, isEmpty, size
+# Queue - enqueue, dequeue, is_empty, size
 class Link(object):
     # link constructor
     def __init__(self, data, next=None):
@@ -45,7 +90,7 @@ class Link(object):
     # str representation of link
     def __str__(self):
         return(f"{self.data}")
-# Stack - push, pop, peek, isEmpty, size
+# Stack - push, pop, peek, is_empty, size
 class Stack(object):
     # stack constructor
     def __init__(self):
@@ -61,6 +106,14 @@ class Stack(object):
             print(current, end=", ")
             current = current.next
         return(str(current))
+
+    # returns True if stack is empty
+    def is_empty(self):
+        return(self.length == 0)
+
+    # return size of stack
+    def size(self):
+        return(self.length)
 
     # return the topmost element on stack
     def peek(self):
@@ -91,6 +144,53 @@ class Stack(object):
         else:
             self.tail.next = new
             self.tail = new
+# Queue - enqueue, dequeue, isEmpty, size
+class Queue(object):
+    # queue constructor
+    def __init__(self):
+        self.first = self.last = None
+        self.length = 0
+    
+    # handle str representation
+    def __str__(self):
+        if(self.first == None):
+            return("")
+        current = self.first
+        while(current.next != None):
+            print(current, end=", ")
+            current = current.next
+        return(str(current))
+
+    # returns True if stack is empty
+    def is_empty(self):
+        return(self.length == 0)    
+
+    # dequeue returns the next element and removes from queue
+    def dequeue(self):
+        if(self.first == None):
+            return(None)
+        self.length -= 1
+        item = self.first
+        if(item.next == None):
+            self.first = self.last = None
+        else:
+            self.first = item.next
+        return(item)
+            
+    
+    # queue places an element into the last position
+    def enqueue(self, data):
+        self.length += 1
+        new = Link(data)
+        if(self.first == None):
+            self.first = new
+        else:
+            self.last.next = new
+        self.last = new
+
+    # return size of stack
+    def size(self):
+        return(self.length)
 
 # Q7 - Pancake flipping problem
 def flip(pancakes):
@@ -132,34 +232,41 @@ def main():
     print(f"\"false\" => {is_palindrome('false')}")    
     print(f"\"racecar\" => {is_palindrome('racecar')}\n")    
 
-    # # Q3
-    # print(f"Q3: Convert between prefix, infix, and postfix notation")
+    # Q3
+    print(f"Q3: Convert between prefix, infix, and postfix notation")
+    t_prefix = ["*", 2, "+", "*", 2, 10, "+", 5, 3]
+    print(f"prefix_eval({t_prefix}) => {prefix_eval(t_prefix)}")
+    t_postfix = t_prefix
+    t_postfix.reverse()
+    print(f"postfix_eval({t_postfix}) => {postfix_eval(t_postfix)}\n")
     
-    # # Q4
-    # print(f"Q4: Return if a given html file is valid (considering its tags)")
-    
+    # Q4
+    # stack implementation
+    print(f"Q4(A): Implement a stack using a linked list")
+    myStack = Stack() # create stack
+    [myStack.push(i + 1) for i in range(20)] # push values in order
+    print(f"{myStack}")
+    print(f"peek() => {myStack.peek()}") # peek and print result
+    [print(f"pop() => {myStack.pop()}") for i in range(myStack.length // 2)] # pop each element off the list
+    print(f"{myStack}\nHead = {myStack.head}, Tail = {myStack.tail}, length = {myStack.length}, is_empty() => {myStack.is_empty()}\n") # print empty stack 
+
+    # queue implementation
+    print(f"Q4(B): Implement a queue using a linked list")
+    myQueue = Queue()
+    [myQueue.enqueue(i + 1) for i in range(20)]
+    print(f"{myQueue}")
+    [print(f"dequeue() => {myQueue.dequeue()}") for i in range(myQueue.length // 2)]
+    print(f"{myQueue}\nFirst = {myQueue.first}, Last = {myQueue.last}, length = {myQueue.length}, is_empty() => {myQueue.is_empty()}\n")
+
     # # Q5
-    # print(f"Q5: Use a linked list to represent stacks or queues and write their respective methods")
-    # # stack implementation
-    # myStack = Stack() # create stack
-    # [myStack.push(i + 1) for i in range(20)] # push values in order
-    # print(f"{myStack}\npeek() => {myStack.peek()}") # peek and print result
-    # [print(myStack.pop()) for i in range(myStack.length + 1)] # pop each element off the list
-    # print(f"{myStack}\nHead = {myStack.head}, Tail = {myStack.tail}") # print empty stack 
-
-    # # queue implementation
-
-    # # Q6
-    # print(f"Q6: Implement a doubly-linked list class")
+    # print(f"Q5: Implement a doubly-linked list class")
     
-    # Q7
-    print(f"Q7: Pancake chef problem")
-    pancakes = [random.randint(1, i * 10) for i in range(1, 20)]
-    print(pancakes)
-    pancakes = flip(pancakes)
-    print(pancakes)
+    # Q6
+    print(f"Q6: Sort a stack of pancakes by only flipping")
+    pancakes = [random.randint(1, i * 3) for i in range(1, 10)]
+    print(f"flip({pancakes}) => {flip(pancakes)}")
     
-    # # Q8
-    # print(f"Q8: Radix sort (using queue implementation)")
+    # # Q7
+    # print(f"Q7: Radix sort (using queue implementation)")
 
 main()
