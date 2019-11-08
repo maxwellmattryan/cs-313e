@@ -53,18 +53,17 @@ def operate(operand1, operand2, operator):
         return(operand1 ** operand2)
 def postfix_eval(tokens):
     stack = []
-    n = 0
-    while(n < len(tokens)):
-        if(isinstance(tokens[n], int)):
-            stack.append(tokens[n])
-        else:
-            operator = tokens[n]
-            operand1 = stack.pop()
-            operand2 = stack.pop()
-            result = operate(operand1, operand2, operator)
-            stack.append(result)
-        n += 1
+    for token in tokens:
+        if(isinstance(token, int)):
+            stack.append(token)
+            continue
+        operator = token
+        operand1 = stack.pop()
+        operand2 = stack.pop()
+        result = operate(operand1, operand2, operator)
+        stack.append(result)
     return(stack[0])
+    
 def prefix_eval(tokens):
     stack = []
     n = 1
@@ -297,25 +296,20 @@ class DoublyLinkedList(object):
     def remove(self, target_data):
         if(self.head == None):
             return(None)
-        self.length -= 1
-        current = self.head
-        while(current.data != target_data):
-            current = current.next
-            if(current == None):
-                return(None)
-        if(current == self.head):
-            self.head = current.next
-            self.head.prev = None
-            if(current == self.tail):
-                self.tail = None
-        elif(current == self.tail):
-            self.tail = current.prev
+        target_link = self.find(target_data)
+        if(target_link == self.head):
+            if(target_link == self.tail):
+                self.head = self.tail = None
+            else:
+                self.head = self.head.next
+                self.head.prev = None
+        elif(target_link == self.tail):
+            self.tail = self.tail.prev
             self.tail.next = None
         else:
-            prev = current.prev
-            prev.next = current.next
-            current.next.prev = prev
-        return(current)
+            previous = target_link.prev
+            previous.next = target_link.next
+            target_link.next.prev = previous
 
     # reverse and return new list
     def reverse(self):
@@ -468,6 +462,6 @@ def main():
     s_myNums = radix_sort(myNums)
     totalTime = time.time() - totalTime
     print(f"radix_sort([{myNums[0]}, ..., {myNums[len(myNums) - 1]}]) => [{s_myNums[0]}, ..., {s_myNums[len(s_myNums) - 1]}]")
-    print(f"Total time = {totalTime:.03f}s")
+    print(f"Elapsed time = {totalTime:.03f}s")
 
 main()
