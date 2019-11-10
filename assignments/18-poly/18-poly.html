@@ -1,0 +1,157 @@
+
+<!-- saved from url=(0073)https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/assgn18.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title> Programming Assignment 18 </title>
+</head>
+
+<body>
+<h3> Linked List Representation of Polynomials ( Due 11 Nov 2019 ) </h3>
+<p>
+A polynomial is of the form: <br><br>
+
+a<sub>n</sub>x<sup>n</sup> + a<sub>n - 1</sub>x<sup>n - 1</sup> + 
+… + a<sub>1</sub>x<sup>1</sup> + a<sub>0</sub>x<sup>0</sup>
+<br><br>
+We are going to assume that the polynomials that we will be 
+representing will have integer coefficients and exponents. The 
+coefficients can be positive or negative. The zero-coefficient
+terms are not shown in the polynomial expression. The exponents
+are zero or greater.
+</p>
+
+<p>
+In this assignment you will represent a polynomial as a Linked List.
+You will redefine the Link class and then work on the Linked List
+class. You will implement two main arithmetical functions on polynomials
+- addition and multiplication. You may add as many helper functions
+as needed.
+</p>
+
+<p>
+<b>Input: </b> You will read input from a file <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/poly.txt">
+poly.txt</a>. You will have data for just two polynomials separated by
+a single blank line. The first line of data will be <i>n</i> the number 
+of terms in the first polynomial having non-zero coefficients. It will
+be followed by <i>n</i> lines of data. Each line having two integers
+separated by two or more spaces. The first integer will be the coefficient
+and the second integer will be the exponent. It will be followed by blank 
+line. This will be followed by a single integer <i>m</i> representing the 
+number of non-zero coefficient terms in the second polynomial. It will be 
+followed by <i>m</i> lines. Each line will have two integers separated by
+one or more spaces representing the coefficient and exponent.
+</p>
+
+<p>
+<b>Output: </b> Your output will be the sum and product of the two
+polynomials in the following format:
+</p><pre>Sum: (3, 4) + (3, 3) + (5, 2) + (-6, 1) + (2, 0)
+
+Product: (15, 7) + (-10, 6) + (7, 5) + (18, 4) + (-34, 3) + (10, 2)
+</pre>
+Both the sum and the product will be in descending order of the
+exponents. There should not be any zero coefficient term in the
+output.
+<p></p>
+
+<p>
+Here is the template of the code:
+</p><pre>class Link (object):
+  def __init__ (self, coeff = 1, exp = 1, next = None):
+    self.coeff = coeff
+	self.exp = exp
+	self.next = next
+
+  def __str__ (self):
+    return '(' + str (self.coeff) + ', ' + str (self.exp) + ')'
+
+class LinkedList (object):
+  def __init__ (self):
+    self.first = None
+
+  # keep Links in descending order of exponents
+  def insert_in_order (self, coeff, exp):
+
+  # add polynomial p to this polynomial and return the sum
+  def add (self, p):
+
+  # multiply polynomial p to this polynomial and return the product
+  def mult (self, p):
+
+  # create a string representation of the polynomial
+  def __str_ (self):
+
+def main():
+  # open file poly.txt for reading
+
+  # create polynomial p
+
+  # create polynomial q
+
+  # get sum of p and q and print sum
+
+  # get product of p and q and print product
+
+if __name__ == "__main__":
+  main()
+</pre>
+<p></p>
+
+<p>
+For this assignment you may work with a partner. Both of you
+must read the paper on <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/PairProg-CACM-1999.pdf">
+Pair Programming. </a>.
+</p>
+
+<p>
+The file that you will be uploading will be called <b> Poly.py</b>.
+We are looking for clean and structured design. The file will have a 
+header of the following form:
+</p><pre>#  File: Poly.py
+
+#  Description:
+
+#  Student Name:
+
+#  Student UT EID:
+
+#  Partner Name:
+
+#  Partner UT EID:
+
+#  Course Name: CS 313E
+
+#  Unique Number: 
+
+#  Date Created:
+
+#  Date Last Modified:
+</pre>
+<p></p>
+
+<p>
+If you are working with a partner both of you will be submitting your
+program (from both accounts) but make sure that you have your partner's
+name and eid in your program. If you are working alone, then remove the
+two lines that has the partner's name and eid in the header.
+</p>
+
+<p>
+Use the <a href="http://canvas.utexas.edu/"> Canvas </a> system to 
+submit your <b>Poly.py</b> file. We should receive your work by 
+11 PM on Monday, 11 Nov 2019. There will be substantial penalties if 
+you do not adhere to the guidelines. Remember Python is case sensitive.  
+The name of your file must match exactly what we have specified.
+</p>
+
+<ul>
+<li> Your Python program should have the proper header. </li>
+<li> Your code must run on the command line before submission. </li>
+<li> You should be submitting your file through the web based 
+     <i>Canvas</i> program. We will not accept files e-mailed to us.</li>
+<li> Here is the <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/grading.html"> Grading Criteria. </a></li>
+</ul>
+<p></p>
+
+
+
+</body></html>
