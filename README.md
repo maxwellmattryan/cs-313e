@@ -1,4 +1,4 @@
-<img align="right" height="35" alt="UT longhorn logo" src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Texas_Longhorns_logo.svg">
+<img align="right" height="35" bottom="0" alt="UT longhorn logo" src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Texas_Longhorns_logo.svg">
 
 #  CS 313E - Elements of Software Design
 ## Table of Contents
