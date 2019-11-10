@@ -1,0 +1,156 @@
+
+<!-- saved from url=(0073)https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/assgn19.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"> 
+<title> Programming Assignment 13 </title>
+</head>
+
+<body>
+<h3> Expression Tree ( Due 15 Nov 2019 ) </h3>
+<p>
+For this assignment you will read a file <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/expression.txt">
+expression.txt</a> and create an expression tree. The expression will
+be a valid infix expression with the all the necessary parentheses so
+that there is no ambiguity in the order of the expression. You will
+evaluate the expression and print the result. You will also write the
+prefix and postfix versions of the same expression without any
+parentheses.
+</p>
+
+<p>
+In an expression tree the nodes are either operators or operands.
+The operators will be in the set ['+', '-', '*', '/', '//', '%', '**']. 
+The operands will be either integers or floating point numbers. All the 
+operand nodes will be leaves of the expression tree. All the operator 
+nodes will have exactly two children.
+</p>
+
+<p>
+The outline of your program will be as follows:
+</p><pre>class Stack (object):
+
+class Node (object):
+
+class Tree (object):
+  def __init__ (self):
+
+  def create_tree (self, expr):
+
+  def evaluate (self, aNode):
+
+  def pre_order (self, aNode):
+
+  def post_order (self, aNode):
+
+def main():
+
+main()
+</pre>
+<p></p>
+
+<p>
+The function <i>create_tree()</i> will take as input parameter an
+infix expression with parentheses as a String and create an 
+Expression Tree from it. <i>Assume that the expression string is
+valid.</i>
+</p>
+
+<p>
+You will take the expression string and break it into tokens. 
+There are four different kinds of tokens - left parenthesis, 
+right parenthesis, operator, and operand. When we read a left 
+parenthesis we are starting a new expression and when we read 
+a right parenthesis we are ending an expression. Here is the 
+algorithm that you will use:
+</p><ol>
+<li> If the current token is a left parenthesis add a new node
+as the left child of the current node. Push current node on the
+stack and make current node equal to the left child. </li>
+<li> If the current token is an operator set the current node's
+data value to the operator. Push current node on the stack. Add 
+a new node as the right child of the current node and make the 
+current node equal to the right child. </li>
+<li> If the current token is an operand, set the current node's
+data value to the operand and make the current node equal to the 
+parent by popping the stack. </li>
+<li> If the current token is a right parenthesis make the current
+node equal to the parent node by popping the stack <i>if it is 
+not empty</i>. </li>
+</ol>
+<p></p>
+
+<p>
+For the input expression, this is what your program will output:
+</p><pre>( ( 8 + 3 ) * ( 7 - 2 ) ) = 55
+
+Prefix Expression: * + 8 3 - 7 2
+
+Postfix Expression: 8 3 + 7 2 - *
+</pre>
+<p></p>
+
+<p>
+The file that you will be submitting will be called <b>ExpressionTree.py</b>. 
+We will be looking for good documentation, descriptive variable names, 
+clean logical structure, and adherence to the coding conventions discussed 
+in class.
+</p>
+
+<p>
+You may work with a partner on this assignment. Both of you must read the
+paper on <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/PairProg-CACM-1999.pdf"> Pair Programming</a> and
+abide by the ground rules as stated in that paper. The file will have a 
+header of the following form:
+</p><pre>#  File: ExpressionTree.py
+
+#  Description:
+
+#  Student's Name:
+
+#  Student's UT EID:
+
+#  Partner's Name:
+
+#  Partner's UT EID:
+
+#  Course Name: CS 313E 
+
+#  Unique Number: 
+
+#  Date Created:
+
+#  Date Last Modified:
+</pre>
+<p></p>
+
+<p>
+If you are working with a partner both of you will be submitting your
+program (from both accounts) but make sure that you have your partner's
+name and eid in your program. If you are working alone, then remove the
+two lines that has the partner's name and eid in the header.
+</p>
+
+<p>
+Use the <a href="http://canvas.utexas.edu/"> Canvas </a> system to 
+submit your <b>ExpressionTree.py</b> file. We should receive your work by 
+11 PM on Friday, 15 Nov 2019. There will be substantial penalties if 
+you do not adhere to the guidelines. Remember Python is case sensitive.  
+The name of your file must match exactly what we have specified.
+</p><ul>
+<li> Your Python program should have the proper header. </li>
+<li> Your code must run on the command line before submission. </li>
+<li> You should be submitting your file through the web based 
+     <i>Canvas</i> program. We will not accept files e-mailed to us.</li>
+<li> Here is the <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/grading.html"> Grading Criteria. </a></li>
+</ul>
+<p></p>
+
+<h4> References </h4>
+<ul>
+<li> <a href="http://en.wikipedia.org/wiki/Binary_expression_tree">
+ Binary Expression Tree </a></li>
+</ul>
+
+
+
+
+</body></html>

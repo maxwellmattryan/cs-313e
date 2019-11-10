@@ -1,0 +1,166 @@
+
+<!-- saved from url=(0073)https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/assgn20.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title> Programming Assignment 20 </title>
+</head>
+
+<body>
+<h3> Encryption / Decryption with Binary Search Trees (Due 18 Nov 2019 ) </h3>
+<p>
+In this assignment you will create a simple encryption scheme using a
+binary search tree. To encode a sentence, insert each letter into a 
+binary tree using the ASCII value as a comparative measure. 
+</p>
+
+<p>
+To encode the sentence <i>meet me</i>, start by inserting the letters
+"m", followed by "e" and followed by "t" into the binary tree. In the
+first insertion, the binary tree is empty, so "m" becomes the root
+node of the tree. The "e" is inserted next. Since "e" is less than
+"m", it becomes the left child of "m" node. The second "e" is not
+inserted as there is an "e" in the tree already. The "t" becomes the
+right child of the "m" node. The next character is the space character
+and is considered less than any letter and becomes the left most leaf.
+</p>
+
+<p>
+To encode, use the following convention: assign the root node of the
+tree a "*" character. Every other character in the tree, assign a
+character string based on how many "lefts" and how many "rights" are
+involved in the tree traversal. For "left" traversals, use a "&lt;",
+for "right" traversals use a "&gt;". In the above example, "e" will
+be represented as "&lt;" and "t" will become "&gt;". The space 
+character will become "&lt;&lt;". To complete the code, every
+character must be separated by a marker called the delimiter. Use
+"!" (the exclamation mark) as a delimiter for the code.
+</p>
+
+<p>
+Using these conventions, the string <i>"meet me"</i> when encrypted
+becomes <i>"*!&lt;!&lt;!&gt;!&lt;&lt;!*!&lt;"</i>.
+</p>
+
+<p>
+For this assignment we are only going to encrypt lower case letters
+"a" through "z" and the space character. When the input string is
+given for encryption, convert it to lower case. Only encrypt the
+lower case letters and spaces. Ignore all digits, punctuation marks,
+and special characters. Basically, you will drop the the digits,
+punctuation marks and special characters.
+</p>
+
+<p>
+For the encryption to work, a key has to be given. This key is used
+to create the binary search tree. The encryption key for this 
+assignment is <i>"the quick brown fox jumps over the lazy dog"</i>.
+</p>
+
+<p>
+You will have to modify the Binary Search Tree code given in class.
+Here is a suggested outline of that:
+</p><pre>class Tree (object):
+  # the init() function creates the binary search tree with the
+  # encryption string. If the encryption string contains any
+  # character other than the characters 'a' through 'z' or the
+  # space character drop that character.
+  def __init__ (self, encrypt_str):
+
+  # the insert() function adds a node containing a character in
+  # the binary search tree. If the character already exists, it
+  # does not add that character. There are no duplicate characters
+  # in the binary search tree.
+  def insert (self, ch):
+
+  # the search() function will search for a character in the binary
+  # search tree and return a string containing a series of lefts
+  # (&lt;) and rights (&gt;) needed to reach that character. It will
+  # return a blank string if the character does not exist in the tree.
+  # It will return * if the character is the root of the tree.
+  def search (self, ch):
+
+  # the traverse() function will take string composed of a series of
+  # lefts (&lt;) and rights (&gt;) and return the corresponding 
+  # character in the binary search tree. It will return an empty string
+  # if the input parameter does not lead to a valid character in the tree.
+  def traverse (self, st):
+
+  # the encrypt() function will take a string as input parameter, convert
+  # it to lower case, and return the encrypted string. It will ignore
+  # all digits, punctuation marks, and special characters.
+  def encrypt (self, st):
+
+  # the decrypt() function will take a string as input parameter, and
+  # return the decrypted string.
+  def decrypt (self, st):
+</pre>
+You may add other helper functions as needed. There is no need to add
+a delete function.
+<p></p>
+
+<p>
+The sample session for the assignment will go as follows:
+</p><pre>Enter encryption key: the quick brown fox jumps over the lazy dog
+
+Enter string to be encrypted:
+Encrypted string:
+
+Enter string to be decrypted:
+Decrypted string:
+</pre>
+<p></p>
+
+<p>
+The file that you will be turning in will be called <b>BST_Cipher.py</b>.
+The file will have a header of the following form:
+</p><pre>
+#  File: BST_Cipher.py
+
+#  Description:
+
+#  Student Name:
+
+#  Student UT EID:
+
+#  Partner Name:
+
+#  Partner UT EID:
+
+#  Course Name: CS 313E
+
+#  Unique Number: 
+
+#  Date Created:
+
+#  Date Last Modified:
+
+</pre>
+For this assignment you may work with a partner. If you do, both of 
+you must read the paper on <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/PairProg-CACM-1999.pdf"> Pair
+Programming </a> and submit the <b>same</b> copy of the program from
+both accounts but make sure that you have your partner's name and eid
+in the header. If you are doing this assignment by yourself, then 
+remove the <i>Partner Name</i> and <i> Partner UT EID</i> from the 
+header. 
+<p></p>
+
+
+<p>
+Use the <a href="http://canvas.utexas.edu/"> Canvas </a> system to 
+submit your <b>BST_Cipher.py</b> file. We should receive your work by 
+11 PM on Monday, 18 Nov 2019. There will be substantial penalties if 
+you do not adhere to the guidelines. Remember Python is case sensitive.  
+The name of your file must match exactly what we have specified.
+</p>
+
+<ul>
+<li> Your Python program should have the proper header. </li>
+<li> Your code must run before submission. </li>
+<li> You should be submitting your file through the web based 
+     <i>Canvas</i> program. We will not accept files e-mailed to us.</li>
+<li> Here is the <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/grading.html"> Grading Criteria. </a></li>
+</ul>
+
+
+
+
+</body></html>
