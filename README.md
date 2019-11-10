@@ -1,4 +1,10 @@
 # CS 313E - Elements of Software Design
+## Table of Contents
+- [About](#about)
+- [Assignments](#assignments)
+- [Exams](#exams)
+- [Exercises](#exercises)
+- [Acknowledgments](#acknowledgments)
 ## About
 This is my repository containing all content related from the Fall 2019 semester course, CS 313E, from the University of Texas at Austin. This course is taught by Dr. Shyamal Mitra and explores algorithms, data structures, object oriented programming paradigms and software design concepts. 
 ## Assignments
@@ -39,6 +45,10 @@ This is my repository containing all content related from the Fall 2019 semester
 17. [Josephus Problem (Circularly Linked List)](https://github.com/maxwellmattryan/cs-313e/blob/develop/assignments/17-josephus/Josephus.py)
     - The Josephus problem is as follows: there is a group of soldiers surrounded by an overwhelming enemy force. There is no hope for victory, so they make a pact to commit suicide. They stand in a circle and starting from a randomly selected solider, they count _n_ soliders. That soldier is killed by the starting solider and the count begins again from the next solider after. One by one, each solider is killed until one is standing who is free to join the enemy forces.
     - Given an input file with total number of solders, the starting solider, and _n_, write a program that determines the last solider alive using an implementation of a linked list.
+18. [Polynomial Operations w/ Linked Lists](https://github.com/maxwellmattryan/cs-313e/blob/develop/assignments/18-poly/Poly.py)
+    - Assuming that the polynomials given will have non-zero integer coefficients and exponents are greater than zero, define a Linked List (and Link) class that represents a polynomial. You will be given a file, [poly.txt](https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/poly.txt), containing data for just two polynomials. The first line will represent the number of given terms, _n_, for the first polynomial followed by _n_ lines. Each line has two integers separated by a space, with the first int representing the coefficient and the second representing the exponent. Following this will be a blank line, then the exact same format for the second polynomial.
+    - Create a linked list of terms that contain the coefficient, exponent, and pointer to the next term. Then write methods to multiply and add polynomials together (do not forget a simplify / reduce method).
+
 ## Exams
 - [Exam 01](https://github.com/maxwellmattryan/cs-313e/blob/develop/exams/exam-01.py)
     1. Define a Triangle class (assuming a Point class has been written), with proper methods for perimeter, area, point_inside, and is_isosceles.
@@ -66,7 +76,9 @@ These scripts are imported into a testing script as modules. Their tests are loc
 cd <path-to/cs-313e/exercises>
 python testing.py
 ``` 
-## Acknowledgements
+## Acknowledgments
 I am grateful for the amazing opportunity to learn from Dr. Mitra - he was absolutely excellent and I always felt as though I was learning loads from him every class. I fully recommend this class to anyone interested or able to take it. The work and effort is worth it.
    
 Thank you very much for reading !
+
+[back to top &#8593;](#cs-313e---elements-of-software-design)
