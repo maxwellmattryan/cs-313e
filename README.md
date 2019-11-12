@@ -51,6 +51,12 @@ This is my repository containing all content related from the Fall 2019 semester
     - Assuming that the polynomials given will have non-zero integer coefficients and exponents are greater than zero, define a Linked List (and Link) class that represents a polynomial. You will be given a file, [poly.txt](https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/poly.txt), containing data for just two polynomials. The first line will represent the number of given terms, _n_, for the first polynomial followed by _n_ lines. Each line has two integers separated by a space, with the first int representing the coefficient and the second representing the exponent. Following this will be a blank line, then the exact same format for the second polynomial.
     - Create a linked list of terms that contain the coefficient, exponent, and pointer to the next term. Then write methods to multiply and add polynomials together (do not forget a simplify / reduce method).
 
+19. [Expression Trees](https://github.com/maxwellmattryan/cs-313e/blob/develop/assignments/19-expression-tree/ExpressionTree.py)
+    - Given a valid mathematical expression in infix notation, create an expression tree. Write methods that evaluate the expression and also print the prefix and postfix notation equivalent. 
+
+20. [Cipher Encryption / Decryption with Binary Search Trees](https://github.com/maxwellmattryan/cs-313e/blob/develop/assignments/20-bst-cipher/BST_Cipher.py)
+    - Write a program that will encrypt / decrypt string inputs based on a given encryption key. First create a BST comprised of unique set of letters in the encryption key. To encrypt a string, change each character's representation to the specific traversal moves required to get the character. To decrypt, simply follow the given directions in the input.
+
 ## Exams
 - [Exam 01](https://github.com/maxwellmattryan/cs-313e/blob/develop/exams/exam-01.py)
     1. Define a Triangle class (assuming a Point class has been written), with proper methods for perimeter, area, point_inside, and is_isosceles.

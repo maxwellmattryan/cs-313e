@@ -41,11 +41,10 @@ class Stack (object):
 # Node class
 class Node (object):
     # node constructor
-    def __init__(self, data, left=None, right=None, h_dist=0):
+    def __init__(self, data, left=None, right=None):
         self.data = data
         self.left = left
         self.right = right
-        self.h_dist = h_dist
     
     # print the tree
     def print(self, levels=None):
@@ -140,7 +139,6 @@ def main():
     expr = get_expr()
     myTree = Tree()
     myTree.create_tree(expr)
-    myTree.print()
     print(f"{' '.join(expr)} = {myTree.evaluate(myTree.root)}\n")
 
     print("Prefix Expression:", end=" ")
