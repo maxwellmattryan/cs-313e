@@ -138,14 +138,13 @@ def get_poly_input():
         for i in range(num_terms):
             coeff, exp = [int(token) for token in my_file.readline().strip().split(" ")]
             my_list.insert_in_order(coeff, exp)
+        my_list.simplify()
         return(my_list)
 
     my_file = open("./poly.txt")
     p = create_list(my_file)
-    p.simplify()
     my_file.readline()
     q = create_list(my_file)
-    q.simplify()
     return(p, q)
 
 def main():
