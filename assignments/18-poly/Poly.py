@@ -12,7 +12,7 @@
 
 #  Date Created: 11-10-2019
 
-#  Date Last Modified: 11-10-2019
+#  Date Last Modified: 11-11-2019
 
 # link class 
 class Link (object):
@@ -132,7 +132,8 @@ class LinkedList (object):
 # return polynomials p and q as linked lists with data from poly.txt
 def get_poly_input():
     # helper function for creating the list from data
-    def create_list(num_terms, my_file):
+    def create_list(my_file):
+        num_terms = int(my_file.readline())
         my_list = LinkedList()
         for i in range(num_terms):
             coeff, exp = [int(token) for token in my_file.readline().strip().split(" ")]
@@ -140,11 +141,11 @@ def get_poly_input():
         return(my_list)
 
     my_file = open("./poly.txt")
-    num_terms = int(my_file.readline())
-    p = create_list(num_terms, my_file)
+    p = create_list(my_file)
+    p.simplify()
     my_file.readline()
-    num_terms = int(my_file.readline())
-    q = create_list(num_terms, my_file)
+    q = create_list(my_file)
+    q.simplify()
     return(p, q)
 
 def main():
