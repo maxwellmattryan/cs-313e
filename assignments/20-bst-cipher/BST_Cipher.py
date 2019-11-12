@@ -22,6 +22,10 @@ class Node (object):
         self.left = left
         self.right = right
 
+    # string representation
+    def __str__(self):
+        return(f"{self.data}")
+
     # handle printing
     def print(self):
         if(self != None):
@@ -90,7 +94,18 @@ class Tree (object):
     # character in the binary search tree. It will return an empty string
     # if the input parameter does not lead to a valid character in the tree.
     def traverse (self, st):
-        ...
+        if(self.root != None):
+            current = self.root
+            for command in st:
+                if(command == "*"):
+                    return(str(self.root))
+                elif(command == "<"):
+                    current = current.left
+                else:
+                    current = current.right
+                if(current == None):
+                    return("")
+            return(current.data)
 
     # the encrypt() function will take a string as input parameter, convert
     # it to lower case, and return the encrypted string. It will ignore
@@ -106,7 +121,11 @@ class Tree (object):
     # the decrypt() function will take a string as input parameter, and
     # return the decrypted string.
     def decrypt (self, st):
-        ...
+        if(self.root != None):
+            decrypted_chars = []
+            for letter in st.split("!"):
+                decrypted_chars.append(self.traverse(letter))
+            return("".join(decrypted_chars))
 
     # print binary search tree
     def print(self):
@@ -114,7 +133,14 @@ class Tree (object):
             self.root.print()
 
 def main():
-    myTree = Tree("meet me")
-    print(f"{myTree.encrypt('meet me')}")
+    encryption_key = input("Enter encryption key: ")
+    myTree = Tree(encryption_key)
+    print()
+
+    encryption_str = input("Enter string to be encrypted: ")
+    print(f"Encrypted string: {myTree.encrypt(encryption_str)}\n")
+
+    decryption_str = input("Enter string to be decrypted: ")
+    print(f"Decrypted string: {myTree.decrypt(decryption_str)}")
 
 main()
