@@ -45,6 +45,14 @@ class Node (object):
         self.data = data
         self.left = left
         self.right = right
+        self.tol = 10e-8
+
+    # handle str representation
+    def __str__(self):
+        if(isinstance(self.data, float)):
+            if(self.data % 1 <= self.tol):
+                return(f"{self.data:.0f}")
+        return(f"{self.data}")
     
     # print the tree
     def print(self, levels=None):
@@ -87,7 +95,7 @@ class Tree (object):
                 if expr_stack.size() > 0:
                     current = expr_stack.pop()
             else:
-                current.data = int(exp_token)
+                current.data = float(exp_token)
                 current = expr_stack.pop()
 
     def evaluate(self, aNode):
@@ -115,7 +123,7 @@ class Tree (object):
 
     def pre_order (self, aNode):
         if(aNode != None):
-            print(aNode.data, end= " ")
+            print(aNode, end= " ")
             self.pre_order(aNode.left)
             self.pre_order(aNode.right)
 
@@ -128,7 +136,7 @@ class Tree (object):
         if(aNode != None):
             self.post_order(aNode.left)
             self.post_order(aNode.right)
-            print(aNode.data, end=" ")
+            print(aNode, end=" ")
 
 # read in string expression from file
 def get_expr():
@@ -147,7 +155,5 @@ def main():
 
     print("Postfix Expression:", end=" ")
     myTree.post_order(myTree.root)
-    print()
-    print(f"todo: add floating number support")
 
 main()
