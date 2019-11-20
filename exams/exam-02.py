@@ -27,7 +27,7 @@ class DoublyLinkedList(object):
             return("")
         current = self.head 
         str_links = ""
-        str_connect = " -> "
+        str_connect = ", "
         while(current != None):
             str_links += f"{current}{str_connect}"
             current = current.next
@@ -69,10 +69,12 @@ class DoublyLinkedList(object):
                 return(None)
         if(current == self.head):
             self.head = self.head.next
+            self.head.prev = None
             if(current == self.tail):
                 self.tail = None
         elif(current == self.tail):
             self.tail = self.tail.prev
+            self.tail.next = None
         else:
             prev = current.prev
             current.next.prev = prev
@@ -80,7 +82,133 @@ class DoublyLinkedList(object):
         return(current)
 
 # Q2:
+# Create a hash table that uses a separate chaining to hash and store names.
+# Separate chaining is using a LinkedList at each index as a means to avoid linear probing.
+# Use a singly LinkedList to create the buckets for each index in the hash table.
+# Assume that there is a hash function that returns an index to your table.
+#
+# Write the create_hash_table function that creates a list where each elements is
+# None to start with. Assume that the Link class has already been written for you.
+# Write the insert_name function that adds a string to the hash table and a 
+# find_name function to find a name in the table. The hash table must be a list
+# of Links.
+class Link(object):
+    # link constructor
+    def __init__(self, data, next=None):
+        self.data = data
+        self.next = None
+
+    # handle str representation
+    def __str__(self):
+        return(f"{self.data}")
+
+def get_hash(name, size):
+    # assume that this function will apply a hash function to a 
+    # name and give you an index for where to place your string
+    # in a list of length size
+    hash_idx = 0
+    name = name.lower()
+    for i in range(len(name)):
+        letter = ord(name[i]) - 96
+        hash_idx = (hash_idx * 26 + letter) % size
+    return(hash_idx)
+
+# initialize and return a hash table filled with None
+def create_hash_table(size):
+    return([None for i in range(size)])
+
+# insert a name into the table, do not return anything
+def insert_name(h_table, name):
+    h_size = len(h_table)
+    h_index = get_hash(name, h_size)
+    if(h_table[h_index] == None):
+        h_table[h_index] = Link(name)
+    else:
+        current = h_table[h_index]
+        while(current.next != None):
+            current = current.next
+        current.next = Link(name)
+
+# find a name in the table, return True if name is there and False otherwise
+def find_name(h_table, name):
+    h_size = len(h_table)
+    h_index = get_hash(name, h_size)
+    if(h_table[h_index] == None):
+        return(False)
+    current = h_table[h_index]
+    while(current != None):
+        if(current.data == name):
+            return(True)
+        current = current.next
+    return(False)
+
+# print the hash table to format for linked lists
+def print_hash_table(h_table):
+    total_str = ""
+    for i in range(len(h_table)):
+        row_str = f"{i}: "
+        if(h_table[i] != None):
+            current = h_table[i]
+            str_connect = ", "
+            while(current != None):
+                row_str += f"{current}{str_connect}"
+                current = current.next
+            row_str = row_str[:-len(str_connect)]
+        else:
+            row_str += "None"
+        total_str += row_str + "\n"
+    print(total_str[:-1])
+
 # Q3:
+# Write a function is_balanced that takes as input a string that contains
+# among other characters parentheses, square brackets, curly braces, and chevron
+# brackets. It returns True if these are properly nested and False otherwise. We say a bracket
+# is properly nested if it is closed and before the brackets it is in are closed.
+# For instance, ([]) is properly nested, but ([)] is not. The function will
+# return True for an empty string or a string that has no brackets. You must use
+# a Stack. Assume that the Stack ckass hass been written for you. Here are the brackets
+# that you should consider.
+#
+# is_balanced("abcdef") => True
+# is_balanced("(a + b) * [d * f]") => True 
+# is_balanced("(a + $) b = ) (a ( )") => False
+# is_balanced("())") => False
+# is_balanced("([{]})") => False 
+# is_balanced("[n] > [m]") => False
+# is_balanced("") => True
+class Stack(object):
+    # stack constructor (built with Python list)
+    def __init__(self):
+        self.stack = []
+    
+    # push a value to the stack
+    def push(self, value):
+        self.stack.append(value)
+
+    # pop an elemnet from the stack
+    def pop(self):
+        if(len(self.stack) > 0):
+            return(self.stack.pop())
+        return(None)
+
+    # peek at the element at the top of the stack
+    def peek(self):
+        if(len(self.stack) > 0):
+            return(self.stack[-1])
+        return(None)
+
+def is_balanced(string):
+    stack = Stack()
+    for char in string:
+        if(char == "(" or char == "[" or char == "{" or char == "<"):
+            stack.push(char)
+        elif(char == ")" or char == "]" or char == "}" or char == ">"):
+            if (char == ")" and stack.peek() == "(") or (char == "]" and stack.peek() == "[") or (char == "}" and stack.peek() == "{") or (char == ">" and stack.peek() == "<"):
+                stack.pop()
+            else:
+                return(False)
+    return(len(stack.stack) == 0)
+
 # Q4:
 # Q5:
 # EC:
@@ -92,5 +220,40 @@ def main():
     myList = DoublyLinkedList()
     [myList.insert_in_order(random.randint(-size, size)) for i in range(size)]
     print(myList)
+    [print(f"myList.delete({i + 1}) => {myList.delete(i + 1)}") for i in range(size)]
+    print(myList, "\n")
+
+    # Q2 - Hash table w/ Linked List collision handling
+    print(f"Q2: Hash Table w/ Linked List Collision Handling")
+    h_table = create_hash_table(5)
+    names = ["Cooper", "Matt", "Zoe", "Peter", "Jonathan", "MJ"]
+    [insert_name(h_table, name) for name in names]
+    print_hash_table(h_table)
+    name = "Cooper"
+    print(f"find_name(h_table, '{name}') => {find_name(h_table, name)}")
+    print(f"find_name(h_table, 'Phyllis') => {find_name(h_table, 'Phyllis')}")
+    name = "Peter"
+    print(f"find_name(h_table, '{name}') => {find_name(h_table, name)}\n")
+
+    # is_balanced("abcdef") => True
+# is_balanced("(a + b) * [d * f]") => True 
+# is_balanced("(a + $) b = ) (a ( )") => False
+# is_balanced("())") => False
+# is_balanced("([{]})") => False 
+# is_balanced("[n] > [m]") => False
+# is_balanced("") => True
+
+    # Q3 - Expression Balancing w/ Stacks
+    print(f"Q3: Expression Balancing w/ Stacks")
+    test_string = "(a + b) * [d * f]"
+    print(f"is_balanced('{test_string}') => {is_balanced(test_string)}")
+    test_string = "(a + $) b = ) (a ( )"
+    print(f"is_balanced('{test_string}') => {is_balanced(test_string)}")
+    test_string = ""
+    print(f"is_balanced('{test_string}') => {is_balanced(test_string)}")
+    test_string = "[n] > [m]"
+    print(f"is_balanced('{test_string}') => {is_balanced(test_string)}")
+    test_string = "([{]})"
+    print(f"is_balanced('{test_string}') => {is_balanced(test_string)}")
 
 main()
