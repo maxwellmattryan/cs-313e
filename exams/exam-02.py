@@ -248,9 +248,12 @@ def pancake_sort(sizes):
     if(len(sizes) == 1):
         return(sizes)
     else:
-        flapjack = max(sizes)
-        flip_stack = sizes[:sizes.index(flapjack) + 1]
-        print(flip_stack)
+        flapjack_index = sizes.index(max(sizes)) # find index of largest pancake
+        flip_stack = sizes[:flapjack_index + 1] # grab all pancakes left of largest pancake (including itself) 
+        flip_stack.reverse() # reverse so that the largest pancake is in leftmost position
+        sizes = flip_stack + sizes[flapjack_index + 1:] # concatenate flipped stack with the other pancakes that weren't flipped
+        sizes.reverse() # flip the entire stack so that the biggest now at the rightmost position
+        return(pancake_sort(sizes[:-1]) + sizes[-1:]) # call pancake sort on other pancakes 
 
 # EC:
 
@@ -295,11 +298,15 @@ def main():
     pop_list = [2, 4, 3, 1]
     print(f"is_valid({push_list}, {pop_list}) => {is_valid(push_list, pop_list)}")
     pop_list = [4, 3, 1, 2]
-    print(f"is_valid({push_list}, {pop_list}) => {is_valid(push_list, pop_list)}")
+    print(f"is_valid({push_list}, {pop_list}) => {is_valid(push_list, pop_list)}\n")
 
     # Q5 - Pancake Sorting
     print(f"Q5: Pancake Sort")
-    pancakes = [7, 2, 5, 3, 4, 6]
+    pancakes = [7, 1, 2, 5, 3, 4, 3]
     print(f"pancake_sort({pancakes}) => {pancake_sort(pancakes)}")
+    pancake_amt = 100
+    pancakes = [random.randint(1, pancake_amt) for i in range(pancake_amt)]
+    s_pancakes = pancake_sort(pancakes)
+    print(f"pancake_sort([{pancakes[0]}, ..., {pancakes[-1]}]) => [{s_pancakes[0]}, {s_pancakes[1]}, ..., {s_pancakes[-2]}, {s_pancakes[-1]}]")
 
 main()
