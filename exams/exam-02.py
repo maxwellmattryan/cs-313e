@@ -256,6 +256,30 @@ def pancake_sort(sizes):
         return(pancake_sort(sizes[:-1]) + sizes[-1:]) # call pancake sort on other pancakes 
 
 # EC:
+# Now, you will see what it takes to read standard "infix" arithmetic expressions.
+# We will only focus on addition and multiplication. There are 4 types of expressions
+# that are built out of each other: A (add expression), M (multiply expression),
+# P (parenthetical expression), and N (any integer). Any valid expression can be built
+# reursively by the following substitutions.
+# 
+# A => M or A => M + A
+# M => P or M => P * M
+# P => N or P => (A)
+# 
+# So we convert the symbol 'A' to '3 * 4' by: A => M => P * M => 3 * P => 3 * 4
+# See A had to go through M to get to P * M. This is because we are only allowed to
+# substitute M or M + A for A. Any arithmetic expression can be built this way.
+# For example,
+# 5 + (3 * 2 + 4) * 3 + 1
+# A
+# M + A
+# P + M               + A
+# 5 + P           * M + M  
+# 5 + (A        ) * P + P
+# 5 + (M     + A) * 3 + 1
+# 5 + (P * M + P) * 3 + 1
+# 5 + (3 * P + 4) * 3 + 1
+# 5 + (3 * 2 + 4) * 3 + 1
 
 def main():
     # Q1 - Doubly Linked List
@@ -307,6 +331,20 @@ def main():
     pancake_amt = 100
     pancakes = [random.randint(1, pancake_amt) for i in range(pancake_amt)]
     s_pancakes = pancake_sort(pancakes)
-    print(f"pancake_sort([{pancakes[0]}, ..., {pancakes[-1]}]) => [{s_pancakes[0]}, {s_pancakes[1]}, ..., {s_pancakes[-2]}, {s_pancakes[-1]}]")
+    print(f"pancake_sort([{pancakes[0]}, ..., {pancakes[-1]}]) => [{s_pancakes[0]}, {s_pancakes[1]}, ..., {s_pancakes[-2]}, {s_pancakes[-1]}]\n")
+
+    # EC - Infix Expression Building
+    print(f"EC: Infix Expression Building")
+    expression_table = [
+        ["A"],
+        ["M"],
+        ["",  "P", "",  "", "", "*", "M"],
+        ["(", "A", ")", "", "", "*", "M"],
+        ["(", "M", "+", "A", ")", "*", "M"],
+        ["(", "P", "+", "M", ")", "*", "4"],
+        ["(", "2", "+", "P", ")", "*", "4"],
+        ["(", "2", "+", "3", ")", "*", "4"],
+    ]
+    [print(' '.join(row)) for row in expression_table]
 
 main()
