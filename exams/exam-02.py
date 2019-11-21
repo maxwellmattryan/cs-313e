@@ -182,7 +182,7 @@ class Stack(object):
         self.stack = []
     
     # push a value to the stack
-    def push(self, value):
+    def push(self, value): 
         self.stack.append(value)
 
     # pop an elemnet from the stack
@@ -210,6 +210,25 @@ def is_balanced(string):
     return(len(stack.stack) == 0)
 
 # Q4:
+# Assume that there is the Stack object. You are given the sequence of distinct
+# elements that are pushed as a list. You are also given the series of pops of 
+# those elements as a list. Write a function is_valid that returns True if the 
+# list of pops can be obtained from some combination of pushes and pops.
+#
+# For example if the push_list = [1, 2, 3, 4] and the pop_lists = [2, 4, 3, 1], 
+# then your function will return True. Here is the combination - push(1), push(2),
+# pop(2), push(3), push(4), pop(4), pop(3), pop(1).
+def is_valid(push_list, pop_list):
+    stack = Stack()
+    for num in push_list:
+        stack.push(num)
+        while(len(stack.stack) > 0 and stack.peek() == pop_list[0]):
+            stack.pop()
+            if(len(pop_list) == 1):
+                break
+            pop_list = pop_list[1:]
+    return(len(stack.stack) == 0)
+
 # Q5:
 # EC:
 
@@ -235,14 +254,6 @@ def main():
     name = "Peter"
     print(f"find_name(h_table, '{name}') => {find_name(h_table, name)}\n")
 
-    # is_balanced("abcdef") => True
-# is_balanced("(a + b) * [d * f]") => True 
-# is_balanced("(a + $) b = ) (a ( )") => False
-# is_balanced("())") => False
-# is_balanced("([{]})") => False 
-# is_balanced("[n] > [m]") => False
-# is_balanced("") => True
-
     # Q3 - Expression Balancing w/ Stacks
     print(f"Q3: Expression Balancing w/ Stacks")
     test_string = "(a + b) * [d * f]"
@@ -254,6 +265,14 @@ def main():
     test_string = "[n] > [m]"
     print(f"is_balanced('{test_string}') => {is_balanced(test_string)}")
     test_string = "([{]})"
-    print(f"is_balanced('{test_string}') => {is_balanced(test_string)}")
+    print(f"is_balanced('{test_string}') => {is_balanced(test_string)}\n")
+
+    # Q4 - Valid Stack Push / Pop Sequence
+    print(f"Q4: Valid Stack Push / Pop Sequences")
+    push_list = [1, 2, 3, 4]
+    pop_list = [2, 4, 3, 1]
+    print(f"is_valid({push_list}, {pop_list}) => {is_valid(push_list, pop_list)}")
+    pop_list = [4, 3, 1, 2]
+    print(f"is_valid({push_list}, {pop_list}) => {is_valid(push_list, pop_list)}")
 
 main()
