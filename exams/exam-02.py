@@ -230,6 +230,28 @@ def is_valid(push_list, pop_list):
     return(len(stack.stack) == 0)
 
 # Q5:
+# A chef has cooked a stack of pancakes, but the pancakes are all different sizes.
+# He would like to order them such that the largest pancake is at the bottom
+# and the smallest pancake is on the top. He has a spatula that he can insert 
+# anywhere in the stack of pancakes and flip the pancakes on top of the spatula.
+# Devise and code and algorithm that will sort the pancakes in ascending order
+# with the minimum number of flips. The input parameter, sizes, is an list of
+# diameters of the initial stack of pancakes. Given sizes = [7, 2, 5, 3, 4, 6].
+# 
+# Only the following operations are allowed:
+# Get a slice of the array: slice = sizes[2:5] => [5, 3, 4]
+# Reverse the slice: slice.reverse() => [4, 3, 5]
+# Get the maximum in the slice: max(slice) => 5 
+# Find the index of the maximum element: sizes.index(5) => 2
+# Add slices together with either extend() or the + operator
+def pancake_sort(sizes):
+    if(len(sizes) == 1):
+        return(sizes)
+    else:
+        flapjack = max(sizes)
+        flip_stack = sizes[:sizes.index(flapjack) + 1]
+        print(flip_stack)
+
 # EC:
 
 def main():
@@ -274,5 +296,10 @@ def main():
     print(f"is_valid({push_list}, {pop_list}) => {is_valid(push_list, pop_list)}")
     pop_list = [4, 3, 1, 2]
     print(f"is_valid({push_list}, {pop_list}) => {is_valid(push_list, pop_list)}")
+
+    # Q5 - Pancake Sorting
+    print(f"Q5: Pancake Sort")
+    pancakes = [7, 2, 5, 3, 4, 6]
+    print(f"pancake_sort({pancakes}) => {pancake_sort(pancakes)}")
 
 main()
