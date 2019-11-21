@@ -73,11 +73,12 @@ class Tree (object):
 
     # Prints out all nodes at the given level
     def print_level (self, level):
+        if(level < 1):
+            return
         def print_level_helper(level, node):
             if(node != None):
                 if(level == 1):
                     print(f"{node}", end=" ")
-
                 else:
                     print_level_helper(level - 1, node.left_child)
                     print_level_helper(level - 1, node.right_child)
@@ -85,6 +86,8 @@ class Tree (object):
 
     # Returns the height of the tree
     def get_height (self):
+        if(self.root == None):
+            return (-1)
         def get_height_helper(node, height):
             if(node != None):
                 if(not node.has_child()):
@@ -110,68 +113,92 @@ class Tree (object):
 
 def main():
     # Create three trees (two similar, one different)
-    tree1 = Tree()
-    tree2 = Tree()
-    tree3 = Tree()
+    tree_a = Tree()
+    tree_b = Tree()
+    tree_c = Tree()
+
+    # Create two extra trees for testing (an empty tree and a tree with only one element)
+    tree_zero = Tree()
+    tree_one = Tree()
+    tree_one.insert(random.randint(-1000000, 1000000))
 
     # initialize tree size
-    size = 250
+    size = 120
 
-    # insert same random element into tree1 and tree2 and different one into tree3 (which will *probably* cause a different height)
+    # insert same random element into tree_a and tree_b and different one into tree_c (which will *probably* cause a different height)
     for i in range(size):
         rand_num = random.randint(-size, size)
-        tree1.insert(rand_num)
-        tree2.insert(rand_num)
-        tree3.insert(random.randint(-size, size))
+        tree_a.insert(rand_num)
+        tree_b.insert(rand_num)
+        tree_c.insert(random.randint(-size, size))
 
     # Test your method is_similar()
     print(f"TEST: is_similar")
-    print(f"tree1.is_similar(tree2) => {tree1.is_similar(tree2)}")
-    print(f"tree1.is_similar(tree3) => {tree1.is_similar(tree3)}")
-    print(f"tree1.is_similar(Tree()) => {tree1.is_similar(Tree())}")
-    print(f"Tree().is_similar(tree1) => {Tree().is_similar(tree1)}")
-    print(f"Tree().is_similar(Tree()) => {Tree().is_similar(Tree())}\n")
+    print(f"tree_a.is_similar(tree_a) => {tree_a.is_similar(tree_a)}")
+    print(f"tree_a.is_similar(tree_b) => {tree_a.is_similar(tree_b)}")
+    print(f"tree_a.is_similar(tree_c) => {tree_a.is_similar(tree_c)}")
+    print(f"tree_a.is_similar(tree_one) => {tree_a.is_similar(tree_one)}")
+    print(f"tree_a.is_similar(tree_zero) => {tree_a.is_similar(tree_zero)}")
+    print(f"tree_one.is_similar(tree_a) => {tree_one.is_similar(tree_a)}")
+    print(f"tree_one.is_similar(tree_one) => {tree_one.is_similar(tree_one)}")
+    print(f"tree_one.is_similar(tree_zero) => {tree_one.is_similar(tree_zero)}")
+    print(f"tree_zero.is_similar(tree_a) => {tree_zero.is_similar(tree_a)}")
+    print(f"tree_zero.is_similar(tree_one) => {tree_zero.is_similar(tree_one)}")
+    print(f"tree_zero.is_similar(tree_zero) => {tree_zero.is_similar(tree_zero)}\n")
 
     # Print the various levels of two of the trees that are different
     print(f"TEST: print_level")
-    print("Tree 1:")
-    for i in range(1, tree1.get_height() + 2):
+    print("tree_a, tree_b:")
+    for i in range(1, tree_a.get_height() + 2):
         print(f"L{i}:", end=" ")
-        tree1.print_level(i)
-        print()
-
-    print("\nTree 2:")
-    for i in range(1, tree2.get_height() + 2):
-        print(f"L{i}:", end=" ")
-        tree2.print_level(i)
+        tree_a.print_level(i)
         print()
     
-    print("\nTree 3:")
-    for i in range(1, tree3.get_height() + 2):
+    print("\ntree_c:")
+    for i in range(1, tree_c.get_height() + 2):
         print(f"L{i}:", end=" ")
-        tree3.print_level(i)
+        tree_c.print_level(i)
         print()
-
-    print("\nTree():")
-    for i in range(1, Tree().get_height() + 2):
-        print(f"L{i}:", end=" ")
-        Tree().print_level(i)
-        print()
+    print(f"\ntree_c.print_level(-5) =>", end=" ")
+    tree_c.print_level(-5)
+    print(f"\ntree_c.print_level(0) =>", end=" ")
+    tree_c.print_level(0)
+    print(f"\ntree_c.print_level(1) =>", end=" ")
+    tree_c.print_level(1)
+    random_level = random.randint(1, tree_c.get_height() + 1)
+    print(f"\ntree_c.print_level({random_level}) =>", end=" ")
+    tree_c.print_level(random_level)
     print()
+
+    print(f"\ntree_one.print_level(1) =>", end=" ")
+    tree_one.print_level(1)
+    print()
+    print(f"tree_one.print_level(2) =>", end=" ")
+    tree_one.print_level(2)
+    print("\n")
+
+    print(f"tree_zero.print_level(0) =>", end=" ")
+    tree_zero.print_level(0)
+    print()
+    print(f"tree_zero.print_level(1) =>", end=" ")
+    tree_zero.print_level(1)
+    print("\n")
 
     # Get the height of the two trees that are different
     print(f"TEST: get_height")
-    print(f"tree1.get_height() => {tree1.get_height()}")
-    print(f"tree2.get_height() => {tree2.get_height()}")
-    print(f"tree3.get_height() => {tree3.get_height()}")
-    print(f"Tree().get_height() => {Tree().get_height()}\n")
+    print(f"tree_a.get_height() => {tree_a.get_height()}")
+    print(f"tree_b.get_height() => {tree_b.get_height()}")
+    print(f"tree_c.get_height() => {tree_c.get_height()}")
+    print(f"tree_one.get_height() => {tree_one.get_height()}")
+    print(f"tree_zero.get_height() => {tree_zero.get_height()}\n")
 
     # Get the total n
     print(f"TEST: num_nodes")
-    print(f"tree1.num_nodes() => {tree1.num_nodes()}")
-    print(f"tree2.num_nodes() => {tree2.num_nodes()}")
-    print(f"tree3.num_nodes() => {tree3.num_nodes()}")
-    print(f"Tree().num_nodes() => {Tree().num_nodes()}\n")
+    print(f"tree_a.num_nodes() => {tree_a.num_nodes()}")
+    print(f"tree_b.num_nodes() => {tree_b.num_nodes()}")
+    print(f"tree_c.num_nodes() => {tree_c.num_nodes()}")
+    print(f"tree_one.num_nodes() => {tree_one.num_nodes()}")
+    print(f"tree_zero.num_nodes() => {tree_zero.num_nodes()}\n")
 
 # This line above main is for grading purposes. It will not affect how
 # your code will run while you develop and test it.
