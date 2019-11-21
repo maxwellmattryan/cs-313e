@@ -87,7 +87,7 @@ This is my repository containing all content related from the Fall 2019 semester
     - Linked lists (singly, doubly, and circularly-linked)
     - Hash tables
 - [Algorithms](https://github.com/maxwellmattryan/cs-313e/tree/develop/exercises/algorithms)
-    - Sorting (selection, bubble, insertion, merge, quick, heap)
+    - Sorting (selection, bubble, insertion, merge, quick, heap, radix)
     - Searching (sequential, binary)
     - Hashing (linear probing, quadratic probing, double hashing)
 ### Instructions
