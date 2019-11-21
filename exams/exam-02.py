@@ -335,6 +335,7 @@ def main():
 
     # EC - Infix Expression Building
     print(f"EC: Infix Expression Building")
+    print(f"( 2 + 3 ) * 4 =>")
     expression_table = [
         ["A"],
         ["M"],
