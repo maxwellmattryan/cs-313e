@@ -68,6 +68,18 @@ This is my repository containing all content related from the Fall 2019 semester
         - A(m, n) = n + 1 if m = 0
         - A(m, n) = A(m - 1, 1) if m > 0 and n = 0
         - A(m, n) = A(m - 1, A(m, n - 1)) if m > 0 and n > 0
+- [Exam 02](https://github.com/maxwellmattryan/cs-313e/blob/develop/exams/exam-02.py)
+    1. Given a doubly linked list, write an insert_in_order and delete method using a provided implementation of a DoubleLink.
+    2. Implement a hash table that uses separate chaining to hash and store names. Use a LinkedList at each index to accomplish this and to avoid linear probing.
+    3. Given a string of tokens of an expression, write a function that returns True if that expression is valid. An expression is valid if its brackets are properly nested, meaning a pair of brackets is opened and closed __within__ another.
+    4. Given both a sequence of pushes and pops to make to the stack, determine if the two sequences are a valid possible push / pop combination. 
+    5.  Given a stack of pancakes, sort the pancakes in increasing order only by flipping either a pancake or a stack of pancakes on top of the unflipped pancakes.
+    6. (Extra credit) - Fill out the expression building table for (2 + 3) * 4 using the four of the expression types: 
+        - A (add expression)
+        - M (multiply expression)
+        - P (parenthetical expression)
+        - N (integer)
+
 ## Exercises
 - [Data Structures](https://github.com/maxwellmattryan/cs-313e/tree/develop/exercises/data_structures)
     - Stacks, queues
