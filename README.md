@@ -93,9 +93,10 @@ This is my repository containing all content related from the Fall 2019 semester
     - Trees (binary search trees, expression trees, and decision trees)
     - Linked lists (singly, doubly, and circularly-linked)
     - Hash tables
+    - Graphs
 - [Algorithms](https://github.com/maxwellmattryan/cs-313e/tree/develop/exercises/algorithms)
-    - Sorting (selection, bubble, insertion, merge, quick, heap, radix)
-    - Searching (sequential, binary)
+    - Sorting (selection, bubble, insertion, merge, quick, heap, radix, topological sort)
+    - Searching (sequential, binary, depth-first, breadth-first)
     - Hashing (linear probing, quadratic probing, double hashing)
 ### Instructions
 These scripts are imported into a testing script as modules. Their tests are located within the testing.py script, which is where you can test any functionality of the particular data structure or algorithm.
