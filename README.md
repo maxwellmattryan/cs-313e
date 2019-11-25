@@ -64,6 +64,9 @@ This is my repository containing all content related from the Fall 2019 semester
         - get_height() => height of binary tree
         - num_nodes() => total number of nodes in binary tree
 
+22. [Graph Traversal](https://github.com/maxwellmattryan/cs-313e/blob/develop/assignments/22-graph-traversal/Graph.py)
+    - Given a file, [graph.txt](https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/graph.txt), write various methods for graphs (searching (breadth-first, depth-first), adding, removing, etc.). 
+
 ## Exams
 - [Exam 01](https://github.com/maxwellmattryan/cs-313e/blob/develop/exams/exam-01.py)
     1. Define a Triangle class (assuming a Point class has been written), with proper methods for perimeter, area, point_inside, and is_isosceles.
