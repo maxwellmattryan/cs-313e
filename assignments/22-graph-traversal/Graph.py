@@ -208,7 +208,7 @@ class Graph (object):
     def delete_edge (self, start_vertex_label, end_vertex_label):
         start_index = self.get_index(start_vertex_label)
         end_index = self.get_index(end_vertex_label)
-        self.adj_matrix[start_index][end_index] = 0
+        self.adj_matrix[start_index][end_index] = self.adj_matrix[end_index][start_index] = 0
         
     # delete a vertex from the vertex list and all edges from and
     # to it in the adjacency matrix
