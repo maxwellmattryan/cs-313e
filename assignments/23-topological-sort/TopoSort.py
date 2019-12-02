@@ -224,41 +224,45 @@ class Graph (object):
     # determine if a directed graph has a cycle
     # this function should return a boolean and not print the result
     def has_cycle (self): # implement via dfs
-        stack = Stack()
-        vertex_index = 0
-        self.vertices[vertex_index].visited = True
-        stack.push(vertex_index)
-        while(not stack.is_empty()):
-            next_vertex = self.get_adj_unvisited_vertex(stack.peek())
-            if next_vertex == -1:
-                next_vertex = stack.pop()
-            else:
-                self.vertices[next_vertex].visited = True
-                stack.push(next_vertex)
-                # iterate through stack to see if next_vertex has path to any vertex in stack
-                for i in range(len(self.vertices)):
-                    if(self.adj_matrix[next_vertex][i] != 0):
-                        if i in stack.stack:
-                            return True
+        if(len(self.vertices) > 0):
+            stack = Stack()
+            vertex_index = 0
+            self.vertices[vertex_index].visited = True
+            stack.push(vertex_index)
+            while(not stack.is_empty()):
+                next_vertex = self.get_adj_unvisited_vertex(stack.peek())
+                if next_vertex == -1:
+                    next_vertex = stack.pop()
+                else:
+                    self.vertices[next_vertex].visited = True
+                    stack.push(next_vertex)
+                    # iterate through stack to see if next_vertex has path to any vertex in stack
+                    for i in range(len(self.vertices)):
+                        if(self.adj_matrix[next_vertex][i] != 0):
+                            if i in stack.stack:
+                                return True
+            return False
         return False
 
     # return a list of vertices after a topological sort
     # this function should not print the list
     def toposort (self):
-        vertex_queue = Queue()
-        vertex_index = 0 
-        # loop and collect all vertices with zero in_degree
-        while(True):
-            vertex = self.vertices[vertex_index]
-            if vertex.in_degree == 0:
-                vertex_queue.enqueue(vertex)
-                self.delete_vertex(vertex.label)
-                if len(self.vertices) == 0:
-                    break
-            vertex_index += 1
-            if(vertex_index == len(self.vertices)):
-                vertex_index = 0
-        return [vertex.label for vertex in vertex_queue.queue]
+        if(len(self.vertices) > 0):
+            vertex_queue = Queue()
+            vertex_index = 0 
+            # loop and collect all vertices with zero in_degree
+            while(True):
+                vertex = self.vertices[vertex_index]
+                if vertex.in_degree == 0:
+                    vertex_queue.enqueue(vertex)
+                    self.delete_vertex(vertex.label)
+                    if len(self.vertices) == 0:
+                        break
+                else:
+                    vertex_index += 1
+                if(vertex_index == len(self.vertices)):
+                    vertex_index = 0
+            return [vertex.label for vertex in vertex_queue.queue]
 
     # gets in_degree of a given vertex (requires vertex label)
     def get_in_degree(self, vertex_label):
@@ -286,6 +290,7 @@ def main():
         graph.add_directed_edge(start_index, end_index)
 
     # test if a directed graph has a cycle
+    graph = Graph()
     print(f"has_cycle():\n{graph.has_cycle()}\n")
 
     # test topological sort
