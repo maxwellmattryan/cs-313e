@@ -67,6 +67,9 @@ This is my repository containing all content related from the Fall 2019 semester
 22. [Graph Traversal](https://github.com/maxwellmattryan/cs-313e/blob/develop/assignments/22-graph-traversal/Graph.py)
     - Given a file, [graph.txt](https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/graph.txt), write various methods for graphs (searching (breadth-first, depth-first), adding, removing, etc.). 
 
+23. [Topological Sort and Cycle Detection](https://github.com/maxwellmattryan/cs-313e/blob/develop/assignments/23-topological-sort/TopoSort.py)
+    - Given a graph from an input .gif file and a txt file, create a Graph object with all vertices and edges properly notated in an adjacency matrix. From here, write two methods: one that returns true if a graph has a cycle and false otherwise, and one that topologically sorts the graph (which can only happen if the graph does __NOT__ have a cycle).
+
 ## Exams
 - [Exam 01](https://github.com/maxwellmattryan/cs-313e/blob/develop/exams/exam-01.py)
     1. Define a Triangle class (assuming a Point class has been written), with proper methods for perimeter, area, point_inside, and is_isosceles.

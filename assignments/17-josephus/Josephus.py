@@ -135,7 +135,7 @@ def main():
 
     # create linked list of people of length data[0] (amount of people)
     people = CircularList()
-    [people.insert(i + 1) for i in range(0, data[0], data[1])]
+    [people.insert(i + 1) for i in range(0, data[0])]
 
     # reduce list to single person 
     last_person = people.find(data[1])
