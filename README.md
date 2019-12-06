@@ -70,6 +70,16 @@ This is my repository containing all content related from the Fall 2019 semester
 23. [Topological Sort and Cycle Detection](https://github.com/maxwellmattryan/cs-313e/blob/develop/assignments/23-topological-sort/TopoSort.py)
     - Given a graph from an input .gif file and a txt file, create a Graph object with all vertices and edges properly notated in an adjacency matrix. From here, write two methods: one that returns true if a graph has a cycle and false otherwise, and one that topologically sorts the graph (which can only happen if the graph does __NOT__ have a cycle).
 
+24. [Greatest Path Sum in Triangle](https://github.com/maxwellmattryan/cs-313e/blob/develop/assignments/24-triangle-path-sum/Triangle.py)
+    - Use the four algorithm paradigms (brute force, divide and conquer, greedy, and dynamic programming) to calculate the greatest sum path from the top to the bottom from a given input file:  
+    
+        3  
+        75  
+        94 62  
+        37 43 99  
+    
+    - The first line denotes _n_ number of rows in the triangle. The next following _n_ lines of data will have only positive integers greater than 0. The first line of data in the triangle will have only one number, the second line in the triangle will have two, and so on. The _n<sup>th</sup>_ line will have _n_ integers.
+
 ## Exams
 - [Exam 01](https://github.com/maxwellmattryan/cs-313e/blob/develop/exams/exam-01.py)
     1. Define a Triangle class (assuming a Point class has been written), with proper methods for perimeter, area, point_inside, and is_isosceles.
