@@ -87,6 +87,7 @@ def create_triangle(size):
 def main ():
     # read triangular grid from file
     triangle_grid = read_file()
+    triangle_grid = create_triangle(20)
 
     ti = time.time()
     # output greatest path from exhaustive search
