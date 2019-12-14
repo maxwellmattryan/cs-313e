@@ -203,7 +203,7 @@ This is my repository containing all content related from the Fall 2019 semester
             - What would the heap look like when you add all elements?
             - Why do we use max-heaps, and what are the benefits?
 
-    3. Using Dijkstra's shortest path algorithm, find the shortest paths from vertex D to all the other vertices in the above graph.
+    3. Using Dijkstra's shortest path algorithm, find the shortest paths from vertex D to all the other vertices in the given [graph](https://github.com/maxwellmattryan/cs-313e/blob/develop/exams/resources/graph.png).
 
     4. (Extra credit) - You have a set of bottles with different volumes filled with your favorite drink. You may drink as much as you want with the constraint that you cannot drink from two adjacent bottles. How can you maximize your intake? Manually fill the table with columns for the index, volume, and s(v) - the largest sum so far - and then write the code to do the same.
 

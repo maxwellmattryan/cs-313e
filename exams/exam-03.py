@@ -2,13 +2,6 @@
 import random
 import math
 
-# Given classes (normally each question would have the classes
-# with the specific methods, but for the sake of Python being 
-# correctly interpreted, only one class definition can exist.
-# Therefore each question will simply be a method that instead
-# of being in the class definition, will exist outside of that 
-# scope, but if Python could dynamically add methods to classes...)
-
 # Stack
 class Stack(object):
     # constructor
