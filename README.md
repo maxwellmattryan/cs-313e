@@ -172,40 +172,40 @@ This is my repository containing all content related from the Fall 2019 semester
 
 - [Exam 03](https://github.com/maxwellmattryan/cs-313e/blob/develop/exams/exam-03.py)
 
-    - Choose __two__ of the following:
+    1. Choose __two__ of the following:
 
-        1. A perfect binary tree is a binary tree in which all interior nodes have two children and all leaf nodes have the same depth. Given a binary tree, write a method that returns True if is perfect and False otherwise. The Node and Tree classes have been defined, and you may write a helper method if you wish.
+        - A perfect binary tree is a binary tree in which all interior nodes have two children and all leaf nodes have the same depth. Given a binary tree, write a method that returns True if is perfect and False otherwise. The Node and Tree classes have been defined, and you may write a helper method if you wish.
 
-        2. Given a sorted list of integers write a method to create a balanced binary search tree. The list contains the proper number of elements to create a balanced tree.
+        - Given a sorted list of integers write a method to create a balanced binary search tree. The list contains the proper number of elements to create a balanced tree.
 
-        3. Given an undirected graph and a starting vertex _x_, print all of the vertex labels within a distance _k_ (the number of vertices needed to travel through in order to reach your destination) from the starting vertex. The Vertex and Graph classes have been defined, and you may not use helper methods.
+        - Given an undirected graph and a starting vertex _x_, print all of the vertex labels within a distance _k_ (the number of vertices needed to travel through in order to reach your destination) from the starting vertex. The Vertex and Graph classes have been defined, and you may not use helper methods.
 
-        4. Given a binary search tree, write a method to print its inorder traversal without using recursion. Use a stack to help achieve this. You may assume the Stack class has been defined with methods for push(), pop(), and peek().
+        - Given a binary search tree, write a method to print its inorder traversal without using recursion. Use a stack to help achieve this. You may assume the Stack class has been defined with methods for push(), pop(), and peek().
         
-        5. Implement the Graph class using only an adjacency list rather than an adjacency matrix. The adjacency list shall be a list of dictionaries, with the first one referring to the edges starting from the first vertex and so on. The key for each key-value pair is the ending vertex, and the value is the weight of this edge.
+        - Implement the Graph class using only an adjacency list rather than an adjacency matrix. The adjacency list shall be a list of dictionaries, with the first one referring to the edges starting from the first vertex and so on. The key for each key-value pair is the ending vertex, and the value is the weight of this edge.
 
-    - Choose __one__ of the following:
+    2. Choose __one__ of the following:
 
-        6. Answer both parts:
+        - Answer both parts:
 
-            - Using the given [graph](./), following Kruskal's algorithm, list the edges in the order that they would be added to form the minimum spanning tree.
-            - Repeat the above step, but use Prim's algorithm and start on vertex C 
+            - Using the given [graph](https://github.com/maxwellmattryan/cs-313e/blob/develop/exams/resources/graph.png), following Kruskal's algorithm, list the edges in the order that they would be added to form the minimum spanning tree.
+            - Repeat the above step, but use Prim's algorithm and start on vertex C.
 
-        7. Add the list below to an empty AVL tree.
+        - Add the list below to an empty AVL tree.
             - [3, 9, 4, 5, 32, 29, 16, 31, 1, 77, 7]
             - What would the tree look look when you add 5?
             - What would the tree look like when you add all elements?
             - Why do we use self-balancing trees, and what are the benefits?
         
-        8. Add the list below to an empty max-heap.
+        - Add the list below to an empty max-heap.
             - [3, 9, 4, 5, 32, 29, 16, 31, 1, 77, 7]
             - What would the heap look look when you add 5?
             - What would the heap look like when you add all elements?
             - Why do we use max-heaps, and what are the benefits?
-    <br/><br/>
-    9. Using Dijkstra's shortest path algorithm, find the shortest paths from vertex D to all the other vertices in the above graph.
 
-    10. (Extra credit) - You have a set of bottles with different volumes filled with your favorite drink. You may drink as much as you want with the constraint that you cannot drink from two adjacent bottles. How can you maximize your intake? Manually fill the table with columns for the index, volume, and s(v) - the largest sum so far - and then write the code to do the same.
+    3. Using Dijkstra's shortest path algorithm, find the shortest paths from vertex D to all the other vertices in the above graph.
+
+    4. (Extra credit) - You have a set of bottles with different volumes filled with your favorite drink. You may drink as much as you want with the constraint that you cannot drink from two adjacent bottles. How can you maximize your intake? Manually fill the table with columns for the index, volume, and s(v) - the largest sum so far - and then write the code to do the same.
 
 ## Exercises
 - [Data Structures](https://github.com/maxwellmattryan/cs-313e/tree/develop/exercises/data_structures)
