@@ -134,6 +134,7 @@ class Graph(object):
     # constructor
     def __init__(self):
         self.vertices = []
+        self.adj_matrix = []
         self.adj_list = []
 
     # ==========================
@@ -141,14 +142,29 @@ class Graph(object):
     # ==========================
     # returns index of the given vertex label
     def get_index(self, label):
-        ...
+        for i in range(len(self.vertices)):
+            if label == self.vertices[i].label:
+                return i
+        return -1
     
     # returns list of immediate neighbors (empty if none exist) given a vertex label
     def get_neighbors(self, label):
-        ...
+        neighbors = []
+        vertex_index = self.get_index(label)
+        for i in range(len(self.adj_matrix[vertex_index])):
+            if self.adj_matrix[vertex_index][i] > 0:
+                neighbors.append(self.vertices[i])
+        return neighbors
 
+    # prints vertices within distance k vertices from x
     def print_within(self, x, k):
-        ...
+        if k == 0:
+            print(x)
+        else:
+            print(x)
+            neighbors = self.get_neighbors(x.label)
+            for neighbor in neighbors:
+                self.print_within(neighbor, k - 1)
 
     # ==========================
     # ====== QUESTION 05 =======
@@ -205,7 +221,7 @@ def create_BST(self, nums):
 # from the starting vertex. The Graph and Vertex classes are
 # defined below. You may only utilize methods defined below (no
 # helper methods!)
-# ANSWER: Refer to lines ??? - ???
+# ANSWER: Refer to lines 140-167
 
 # Q4: 
 # Given a binary search tree, write a method to print an inorder
