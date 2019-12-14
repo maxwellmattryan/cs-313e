@@ -46,7 +46,7 @@ This is my repository containing all content related from the Fall 2019 semester
 
 8. [Work 'Till You Drop](https://github.com/maxwellmattryan/cs-313e/blob/develop/assignments/08-work/Work.py)
 
-    - The scenario is that it's late at night, and you have to write n lines of code before the morning. After writing _v_ lines of code, you drink a cup of coffee to regain some energy,but it actually reduces your productivity so that you only write _v // k ** 1_ new lines of code. After another cup, you can only write _v // k ** 2_. Find the lowest amount of _v_ lines of code so that you can write at least _n_ lines of code where _1 ≤ n ≤ 10^6_ and _2 ≤ k ≤ 10_.
+    - The scenario is that it's late at night, and you have to write n lines of code before the morning. After writing _v_ lines of code, you drink a cup of coffee to regain some energy,but it actually reduces your productivity so that you only write _v // k ** 1_ new lines of code. After another cup, you can only write _v // k ** 2_. Find the lowest amount of _v_ lines of code so that you can write at least _n_ lines of code where _1 ≤ n ≤ 10<sup>6</sup>_ and _2 ≤ k ≤ 10_.
 
 9. [Crossing the Bridge](https://github.com/maxwellmattryan/cs-313e/blob/develop/assignments/09-bridge/Bridge.py)
 

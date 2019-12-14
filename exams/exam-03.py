@@ -34,11 +34,28 @@ class Node(object):
     def __str__(self):
         return str(self.data)
 
+    # returns True if node has at least one child, False otherwise
+    def has_child(self):
+        return self.left != None or self.right != None
+
 # Tree class
 class Tree(object):
     # constructor
     def __init__(self):
         self.root = None
+    
+    # prints out all nodes at the given level
+    def print_level (self, level):
+        if(level < 1):
+            return
+        def print_level_helper(level, node):
+            if(node != None):
+                if(level == 1):
+                    print(f"{node}", end=" ")
+                else:
+                    print_level_helper(level - 1, node.left)
+                    print_level_helper(level - 1, node.right)
+        print_level_helper(level, self.root)
 
     # insert data into the tree
     def insert (self, data):
@@ -52,13 +69,13 @@ class Tree(object):
             while (current != None):
                 parent = current
                 if (data < current.data):
-                    current = current.left_child
+                    current = current.left
                 else:
-                    current = current.right_child
+                    current = current.right
             if (data < parent.data):
-                parent.left_child = new_node
+                parent.left = new_node
             else:
-                parent.right_child = new_node
+                parent.right = new_node
 
     # Returns the height of the tree
     def get_height (self):
@@ -170,16 +187,25 @@ class Graph(object):
     # ====== QUESTION 05 =======
     # ==========================
     def add_vertex(self, label):
-        ...
+        self.vertices.append(Vertex(label))
 
     def add_directed_edge(self, start, finish, weight=1):
-        ... 
+        start_idx = self.get_index(start.label)
+        self.adj_list[start_idx].update(finish, weight)
     
     def add_undirected_edge(self, start, finish, weight=1):
-        ... 
+        start_idx = self.get_index(start.label)
+        self.adj_list[start_idx].update(finish, weight)
+        finish_idx = self.get_index(finish.label)
+        self.adj_list[finish_idx].update(start, weight)
     
     def get_adj_unvisited_vertex(self, vertex):
-        ... 
+        vertex_idx = self.get_index(vertex.label)
+        for key_vertex in self.adj_list[vertex_idx].keys():
+            if key_vertex.visited == False:
+                key_vertex.visited = True
+                return key_vertex 
+        return None  
 
 # Do any TWO questions from Q1 to Q5, any ONE question from Q6 to
 # Q8, and you must do Q9. Unless otherwise indicated, you may
@@ -193,14 +219,14 @@ class Graph(object):
 # determine if it is perfect. Return True if it is perfect, and
 # false if not. The Node and Tree class have been defined below.
 # You may write a helper method if you wish. 
-# ANSWER: Refer to lines 88-111
+# ANSWER: Refer to lines 98-121
 
 # Q2:
 # Given a sorted list of integers, write a method to create a
 # balanced binary search tree. The list contains the proper
 # number of elements to create a balanced tree. Hint: write a
 # helper method that locates the median of the list.
-def create_BST(self, nums):
+def create_BST(nums):
     result_tree = Tree()
     def create_BST_helper(nums):
         if len(nums) == 1:
@@ -221,7 +247,7 @@ def create_BST(self, nums):
 # from the starting vertex. The Graph and Vertex classes are
 # defined below. You may only utilize methods defined below (no
 # helper methods!)
-# ANSWER: Refer to lines 140-167
+# ANSWER: Refer to lines 157-184
 
 # Q4: 
 # Given a binary search tree, write a method to print an inorder
@@ -229,7 +255,7 @@ def create_BST(self, nums):
 # this. Assume the stack class has already been written for you
 # - you may use the Stack classes push(), pop(), and peek()
 # methods. The method header is as follows:
-# ANSWER: Refer to lines 113-130
+# ANSWER: Refer to lines 123-140
 
 # Q5:
 # Implement the Graph class using only an adjacency list, not
@@ -238,7 +264,7 @@ def create_BST(self, nums):
 # from the first vertex and so on. The key for each key-value
 # pair within a dictionary is the ending vertex, and the value
 # is the weight of this edge.
-# ANSWER: Refer to lines ???-???
+# ANSWER: Refer to lines 186-208
 
 # Q6:
 # A: Using the given graph, following Kruskal's algorithm, list
@@ -273,3 +299,44 @@ def create_BST(self, nums):
 # the constraint that you cannot drink from 2 adjacent bottles.
 # How can you maximize your intake? Fill the table with columns
 # for the index, volume, and s(v) which is the largest sum so far. 
+
+# wrapper method for tree level printing (avoid writing loop every time)
+def print_tree_wrapper(tree):
+    for i in range(1, tree.get_height() + 2):
+        print(f"L{i}:", end=" ")
+        tree.print_level(i)
+        print()
+
+def main():
+    print(f"Q1: Test for perfect binary trees\n")
+    size = 31
+    tree = Tree()
+    print_tree_wrapper(tree)
+    print(f"is_perfect() => {tree.is_perfect()} (False)\n")
+    tree.insert(random.randint(0, size * 100))
+    print_tree_wrapper(tree)
+    print(f"is_perfect() => {tree.is_perfect()} (True)\n")
+    tree.insert(tree.root.data - tree.root.data)
+    print_tree_wrapper(tree)
+    print(f"is_perfect() => {tree.is_perfect()} (False)\n")
+    tree.insert(tree.root.data + tree.root.data)
+    print_tree_wrapper(tree)
+    print(f"is_perfect() => {tree.is_perfect()} (True)\n")
+    exp = 6
+    nums = [i + 1 for i in range((2 ** exp) - 1)]
+    tree = create_BST(nums)
+    print_tree_wrapper(tree)
+    print(f"is_perfect() => {tree.is_perfect()} (True)\n")
+
+    print(f"Q2: Creating BSTs from sorted list of numbers\n")
+    nums = [i * i for i in range((2 ** exp) - 1)]
+    print(f"create_BST([]) => {create_BST([]).root}\n")
+    tree = create_BST([50])
+    print(f"create_BST([50]) => {tree.root}")
+    print(f"is_perfect() => {tree.is_perfect()} (True)\n")
+    print(f"create_BST(\n{nums}\n) =>")
+    tree = create_BST(nums)
+    print_tree_wrapper(tree)
+    print(f"is_perfect() => {tree.is_perfect()} (True)\n")
+
+main()
