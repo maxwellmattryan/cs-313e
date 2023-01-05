@@ -22,7 +22,9 @@ pub(crate) fn read_input_file_as_buffer(function_number: usize, input_file: Stri
 }
 
 fn construct_input_file_path_as_string(function_number: usize, input_file: String) -> String {
-    format!("{}/{:02}/{}", INPUT_FILE_DIRECTORY, function_number, input_file)
+    format!("{}/{:02}/{}",
+            INPUT_FILE_DIRECTORY,
+            function_number, input_file)
 }
 
 pub fn test_fn() {
