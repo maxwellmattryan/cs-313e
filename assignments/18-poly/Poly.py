@@ -1,20 +1,4 @@
-#  File: Poly.py
-
-#  Description: Assignment 18 | Linked List Representation of Polynomials
-
-#  Student Name: Matthew Maxwell
-
-#  Student UT EID: mrm5632
-
-#  Course Name: CS 313E
-
-#  Unique Number: 50205
-
-#  Date Created: 11-10-2019
-
-#  Date Last Modified: 11-11-2019
-
-# link class 
+# link class
 class Link (object):
     # link constructor
     def __init__ (self, coeff=1, exp=1, next=None):

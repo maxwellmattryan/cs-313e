@@ -1,19 +1,3 @@
-#  File: ExpressionTree.py
-
-#  Description: Assignment 19 | Expression Tree
-
-#  Student's Name: Matthew Maxwell
-
-#  Student's UT EID: mrm5632
-
-#  Course Name: CS 313E 
-
-#  Unique Number: 50205
-
-#  Date Created: 11-11-2019
-
-#  Date Last Modified: 11-11-2019
-
 # Stack class (implemented with ordinary list)
 class Stack (object):
     # stack constructor

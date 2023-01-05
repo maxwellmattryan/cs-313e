@@ -1,19 +1,3 @@
-#  File: Graph.py
-
-#  Description: Assignment 22 | Graph Traversal
-
-#  Student Name: Matthew Maxwell
-
-#  Student UT EID: mrm5632
-
-#  Course Name: CS 313E
-
-#  Unique Number: 50205
-
-#  Date Created: 11-25-2019
-
-#  Date Last Modified: 11-25-2019
-
 class Stack (object):
     # stack constructor
     def __init__ (self):

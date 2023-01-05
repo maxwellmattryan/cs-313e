@@ -1,19 +1,3 @@
-#  File: TestLinkedList.py
-
-#  Description: Assignment 16 | Singly Linked List
-
-#  Student Name: Matthew Maxwell
-
-#  Student UT EID: mrm5632
-
-#  Course Name: CS 313E
-
-#  Unique Number: 50205
-
-#  Date Created: 10-28-2019
-
-#  Date Last Modified: 10-30-2019
-
 class Link (object):
     # initialize link object
     def __init__(self, data, next=None):

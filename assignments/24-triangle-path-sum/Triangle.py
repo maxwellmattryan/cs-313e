@@ -1,19 +1,3 @@
-#  File: Triangle.py
-
-#  Description: Assignment 24 | Greatest Path Sum in a Triangle
-
-#  Student's Name: Matthew Maxwell
-
-#  Student's UT EID: mrm5632
-
-#  Course Name: CS 313E 
-
-#  Unique Number: 50205
-
-#  Date Created: 12-02-2019
-
-#  Date Last Modified: 12-05-2019
-
 # DEPENDENCIES
 import time
 import random

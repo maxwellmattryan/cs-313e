@@ -1,19 +1,3 @@
-#  File: BST_Cipher.py
-
-#  Description: Assignment 20 | Cipher Encryption with Binary Search Trees
-
-#  Student Name: Matthew Maxwell
-
-#  Student UT EID: mrm5632
-
-#  Course Name: CS 313E
-
-#  Unique Number: 50205
-
-#  Date Created: 11-12-2019
-
-#  Date Last Modified: 11-12-2019
-
 # Node class
 class Node (object):
     # node constructor

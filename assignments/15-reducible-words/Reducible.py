@@ -1,19 +1,3 @@
-#  File: Reducible.py
-
-#  Description: Assignment 15 | Reducible Words 
-
-#  Student Name: Matthew Maxwell
-
-#  Student UT EID: mrm5632
-
-#  Course Name: CS 313E
-
-#  Unique Number: 50205 
-
-#  Date Created: 10-27-2019
-
-#  Date Last Modified: 10-28-2019
-
 # takes as input a string and a hash table and returns True
 # if the string is in the hash table and False otherwise
 def find_word (s, hash_table):

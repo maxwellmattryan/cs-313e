@@ -1,19 +1,3 @@
-#  File: MagicSquare.py
-
-#  Description: Assignment 01
-
-#  Student's Name: Matthew Maxwell
-
-#  Student's UT EID: mrm5632
-
-#  Course Name: CS 313E 
-
-#  Unique Number: 50205
-
-#  Date Created: 09-03-2019
-
-#  Date Last Modified: 09-03-2019
-
 # Populate a 2-D list with numbers from 1 to n2
 # This function must take as input an integer. You may assume that
 # n >= 1 and n is odd. This function must return a 2-D list (a list of

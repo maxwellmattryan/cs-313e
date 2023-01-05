@@ -1,19 +1,3 @@
-#  File: TestBinaryTree.py
-
-#  Description: Assignment 21 | Binary Trees
-
-#  Student Name: Matthew Maxwell
-
-#  Student UT EID: mrm5632  
-
-#  Course Name: CS 313E
-
-#  Unique Number: 50205
-
-#  Date Created: 11-12-2019
-
-#  Date Last Modified: 11-21-2019
-
 import random
 
 class Node (object):

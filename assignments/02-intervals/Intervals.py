@@ -1,19 +1,3 @@
-#  File: Intervals.py
-
-#  Description: Assignment 02 
-
-#  Student Name: Matthew Maxwell
-
-#  Student UT EID: mrm5632
-
-#  Course Name: CS 313E
-
-#  Unique Number: 50205
-
-#  Date Created: 09-04-2019
-
-#  Date Last Modified: 09-09-2019
-
 # READ FILE, RETURN LIST OF TUPLES
 def getTuples():
     myFile = open("C:/Users/Matt/Documents/School/2019/Fall/cs-313e/assignments/intervals-02/intervals.txt", "r")

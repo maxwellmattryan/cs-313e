@@ -1,19 +1,3 @@
-#  File: Josephus.py
-
-#  Description: Assignment 17 | Josephus Problem (Circularly Linked List)
-
-#  Student Name: Matthew Maxwell
-
-#  Student UT EID: mrm5632
-
-#  Course Name: CS 313E
-
-#  Unique Number: 50205 
-
-#  Date Created: 10-30-2019
-
-#  Date Last Modified: 11-04-2019
-
 class Link(object):
     # Link constructor
     def __init__(self, data, next=None):
