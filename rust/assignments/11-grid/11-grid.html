@@ -1,0 +1,161 @@
+
+<!-- saved from url=(0073)https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/assgn11.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title> Programming Assignment 11 </title>
+</head>
+
+<body>
+<h3> Greatest Path Sum in a Grid ( Due 11 Oct 2019 ) </h3>
+<p>
+Assume that you have square grid of positive integers. You want
+to start at the top left corner in the grid and work your way
+down to the bottom right corner. The contraint that you have is
+that you can only move either to the right or down from your current 
+position in the grid. You want to take the path that gives you 
+the greatest sum.
+</p>
+
+<p>
+<b>Input: </b><br>
+You will be given a file called <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/grid.txt">grid.txt</a>.
+The first line in this file will be the dimension <i>n</i> of this 
+square grid. The dimension of the grid will be between 1 and 12 
+inclusive. It will be followed by <i>n</i> lines of data. Each line
+will have <i>n</i> positive integers between 1 and 99 inclusive.
+</p>
+
+<p>
+<b>Output: </b><br>
+First you will output the total number of paths in the grid and then 
+you will output the greatest path sum in the grid. You do NOT have to 
+output the actual path. 
+</p>
+
+<p>
+<b>Extra Credit: </b><br>
+If you do give us the actual path taken then we will give you 10 points
+extra. We are assuming that you will be keeping the numbers contributing
+to the greatest path sum in a list. In your output print the list in
+the format shown below. If there is more than one path that adds to the
+greatest path sum then giving us any one of them is sufficient.
+</p><pre>Actual path is [8, ..., 45]
+</pre>
+<p></p>
+
+<p>
+Here is the template of the code:
+</p><pre># counts all the possible paths in a grid recursively
+def count_paths (n, row, col):
+
+# recursively gets the greatest sum of all the paths in the grid
+def path_sum (grid, n, row, col):
+
+def main():
+  # open file for reading
+  in_file = open ("./grid.txt", "r")
+
+  # read the dimension of the grid
+  dim = in_file.readline()
+  dim = dim.strip()
+  dim = int(dim)
+
+  # create an empty grid
+  grid = []
+
+  # populate the grid
+  for i in range (dim):
+    line = in_file.readline()
+    line = line.strip()
+    row = line.split()
+    for j in range (dim):
+      row[j] = int (row[j])
+    grid.append (row)
+
+  # close the file
+  in_file.close()
+
+  # get the number of paths in the grid and print
+  num_paths = count_paths (dim, 0, 0)
+  print ('Number of paths in a grid of dimension', dim, 'is', num_paths)
+  print ()
+
+  # get the maximum path sum and print
+  max_path_sum = path_sum (grid, dim, 0, 0)
+  print ('Greatest path sum is', max_path_sum)
+
+main()
+</pre>
+<p></p>
+
+<p>
+For this assignment you are asked to write two recursive functions
+<i>count_paths()</i> and <i>path_sum</i>. You may not change the
+function signatures. You may add any helper functions that you
+may need. For the test grid, the sample output will look like:
+</p><pre>Number of paths in a grid of dimension 10 is 48620 
+
+Greatest path sum is 1117
+
+</pre>
+<p></p>
+
+<p>
+For this assignment you may work with a partner. Both of you
+must read the paper on <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/PairProg-CACM-1999.pdf">
+Pair Programming. </a>.
+</p>
+
+<p>
+The file that you will be uploading will be called <b>Grid.py</b>. 
+We are looking for clean and structured design. The file will have 
+a header of the following form:
+</p><pre>#  File: Grid.py
+
+#  Description:
+
+#  Student Name:
+
+#  Student UT EID:
+
+#  Partner Name:
+
+#  Partner UT EID:
+
+#  Course Name: CS 313E
+
+#  Unique Number: 
+
+#  Date Created:
+
+#  Date Last Modified:
+</pre>
+<p></p>
+
+<p>
+If you are working with a partner both of you will be submitting the same
+program but make sure that you have your partner's name and eid in your 
+program. If you are working alone, then remove the two lines that has the 
+partner's name and eid in the header.
+</p>
+
+<p>
+Use the <a href="http://canvas.utexas.edu/"> Canvas </a> system to submit 
+your <b>Grid.py</b> file. We should receive your work by 
+11 PM on Friday, 11 Oct 2019. There will be substantial penalties if 
+you do not adhere to the guidelines. Remember Python is case sensitive.  
+The name of your file must match exactly what we have specified.
+</p>
+
+<ul>
+<li> Your Python program should have the proper header. </li>
+<li> Your code must run before submission. </li>
+<li> You should be submitting your file through the web based 
+     <i>Canvas</i> program. We will not accept files e-mailed to us.</li>
+<li> Here is the <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/grading.html"> Grading Criteria. </a></li>
+</ul>
+<p></p>
+
+
+
+
+</body></html>

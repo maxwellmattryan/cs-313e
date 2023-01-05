@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!-- saved from url=(0073)https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/assgn13.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title> Programming Assignment 13 </title>
+</head>
+
+<body>
+<h3> Nesting Boxes ( Due 18 Oct 2019 ) </h3>
+<p>
+Imagine a room full of boxes. Each box has a length, width, and
+height. Since the boxes can be rotated those terms are inter-
+changeable. The dimensions are integral values in a consistent
+system of units. The boxes have rectangular surfaces and can be
+nested inside each other. A box can nest inside another box if
+all its dimensions are strictly less than the corresponding
+dimensions of the other. You may only nest a box such that the
+corresponding surfaces are parallel to each other. A box may
+not be nested along the diagonal. You cannot also put two or
+more boxes side by side inside another box.
+</p>
+
+<p>
+The list of boxes is given in a file called <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/boxes.txt">
+boxes.txt</a>. The first line gives the number of boxes <i>n</i>. The
+next <i>n</i> lines gives a set of three integers separated by one
+or more spaces. These integers represent the 3 dimensions of a box.
+Since you can rotate the boxes, the order of the dimensions does not
+matter. It may be to your advantage to sort the dimensions in
+ascending order.
+</p>
+
+<p>
+The output of your code will be the largest subset of boxes that nest
+inside each other starting with the inner most box to the outer most
+box. There should be one line for each box.
+</p>
+
+<pre>Largest Subset of Nesting Boxes
+(2, 2, 3)
+(3, 4, 4)
+(5, 5, 6)
+(6, 7, 9)
+</pre>
+
+<p>
+If there is two or more subsets of equal lengths that qualify as being
+the largest subset, then print all the largest qualifying subsets with
+a one line space between each subset. The minimum number of boxes that
+qualify as nesting is 2. If there are no boxes that nest in another,
+then write "No Nesting Boxes" instead of "Largest Subset of Nesting
+Boxes".
+</p>
+
+<p>
+For the data set that has been given to you, here is the
+<a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/boxes.out"> solution set</a>.
+</p>
+
+<p>
+For this assignment you may work with a partner. Both of you
+must read the paper on <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/PairProg-CACM-1999.pdf">
+Pair Programming. </a>.
+</p>
+
+<p>
+The file that you will be turning in will be called <b> Boxes.py</b>.
+We are looking for clean and structured design. The file will have a 
+header of the following form:
+</p><pre>#  File: Boxes.py
+
+#  Description:
+
+#  Student Name:
+
+#  Student UT EID:
+
+#  Partner Name:
+
+#  Partner UT EID:
+
+#  Course Name: CS 313E
+
+#  Unique Number: 
+
+#  Date Created:
+
+#  Date Last Modified:
+
+</pre>
+<p></p>
+
+<p>
+If you are working with a partner both of you will be submitting the same
+program (from both accounts) but make sure that you have your partner's
+name and eid in your program. If you are working alone, then remove the
+two lines that has the partner's name and eid in the header.
+</p>
+
+<p>
+Use the <a href="http://canvas.utexas.edu/"> Canvas </a> system to 
+submit your <b>Boxes.py</b> file. We should receive your work by 
+11 PM on Friday, 18 Oct 2019. There will be substantial penalties if 
+you do not adhere to the guidelines. Remember Python is case sensitive.  
+The name of your file must match exactly what we have specified.
+</p>
+
+<ul>
+<li> Your Python program should have the proper header. </li>
+<li> Your code must run before submission. </li>
+<li> You should be submitting your file through the web based 
+     <i>Canvas</i> program. We will not accept files e-mailed to us.</li>
+<li> Here is the <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/grading.html"> Grading Criteria. </a></li>
+</ul>
+<p></p>
+
+
+
+</body></html>

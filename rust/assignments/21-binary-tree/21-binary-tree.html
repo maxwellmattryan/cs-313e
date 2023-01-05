@@ -1,0 +1,145 @@
+
+<!-- saved from url=(0073)https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/assgn21.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title> Programming Assignment 21 </title>
+</head>
+
+<body>
+<h3> Binary Trees ( Due 22 Nov 2019 ) </h3>
+<p>
+In this assignment you will be adding to the classes Node and
+Tree that we developed in class and testing them. There are
+several short methods that you will have to write. 
+</p>
+
+<p>
+Write a method <i>is_similar()</i> that takes as input two binary trees
+and returns true if the nodes have the same key values and are arranged
+in the same order and false otherwise.
+</p><pre>def is_similar (self, pNode):
+</pre>
+<p></p>
+
+<p>
+Write a method <i>print_level()</i> that takes as input the <i>level</i>
+and prints out all the nodes at that level. If that level does not exist
+for that binary search tree it prints nothing. Use the convention that the
+root is at level 1.
+</p><pre>def print_level (self, level):
+</pre>
+<p></p>
+
+<p>
+Write a method <i>get_height()</i> that returns the height of a binary
+tree. Recall that the height of a tree is the longest path length
+from the root to a leaf.
+</p><pre>def get_height (self):
+</pre>
+<p></p>
+
+<p>
+Write a method <i>num_nodes()</i> that returns the number of nodes in
+the left subtree from the root and the number of nodes in the right
+subtree from the root and the root itself. This function will be useful 
+to determine if the tree is balanced.
+</p><pre>def num_nodes (self):
+</pre>
+<p></p>
+
+<p>
+In this assignment you will be writing helper methods for the Tree
+class that we developed and test them. The following is the outline of 
+the code that you will be submitting. You may include the other
+functions that we developed for completeness.
+</p>
+
+<pre>class Node (object):
+  ...
+
+class Tree (object):
+  # Returns true if two binary trees are similar
+  def is_similar (self, pNode):
+
+  # Prints out all nodes at the given level
+  def print_level (self, level): 
+
+  # Returns the height of the tree
+  def get_height (self): 
+
+  # Returns the number of nodes in the left subtree and
+  # the number of nodes in the right subtree and the root
+  def num_nodes (self):
+
+def main():
+    # Create three trees - two are the same and the third is different
+
+    # Test your method is_similar()
+
+    # Print the various levels of two of the trees that are different
+
+    # Get the height of the two trees that are different
+
+    # Get the total numbe of nodes a binary search tree
+
+</pre>
+
+<p>
+In the class TestBinaryTree you will create several trees and show 
+convincingly that your methods are working. For example you can
+create a tree by inserting the following integers in this order:
+50, 30, 70, 10, 40, 60, 80, 7, 25, 38, 47, 58, 65, 77, 96. There should
+be enough documentation in your code that explains to the student
+assistants what you are testing and how.
+</p>
+
+<p>
+The file that you will be turning in will be called <b>TestBinaryTree.py</b>. 
+The file will have a header of the following form:
+</p><pre>#  File: TestBinaryTree.py
+
+#  Description:
+
+#  Student Name:
+
+#  Student UT EID:
+
+#  Partner Name:
+
+#  Partner UT EID:
+
+#  Course Name: CS 313E
+
+#  Unique Number: 
+
+#  Date Created:
+
+#  Date Last Modified:
+</pre>
+For this assignment you may work with a partner. If you do, both of you
+must read the paper on <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/PairProg-CACM-1999.pdf"> Pair
+Programming </a> and submit the <b>same</b> copy of the program but
+make sure that you have your partner's name and eid in your program.
+If you are doing this assignment by yourself, then remove the 
+<i>Partner Name</i> and <i> Partner UT EID</i> from the header. 
+<p></p>
+
+<p>
+Use the <a href="http://canvas.utexas.edu/"> Canvas </a> system to 
+submit your <b>TestBinaryTree.py</b> file. We should receive your work by 
+11 PM on Friday, 22 Nov 2019. There will be substantial penalties if 
+you do not adhere to the guidelines. Remember Python is case sensitive.  
+The name of your file must match exactly what we have specified.
+</p>
+
+<ul>
+<li> Your Python program should have the proper header. </li>
+<li> Your code must run before submission on the command line. </li>
+<li> You should be submitting your file through the web based 
+     <i>Canvas</i> program. We will not accept files e-mailed to us.</li>
+<li> Here is the <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/grading.html"> Grading Criteria. </a></li>
+</ul>
+
+
+
+
+</body></html>

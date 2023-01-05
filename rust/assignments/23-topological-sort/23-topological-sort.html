@@ -1,0 +1,114 @@
+
+<!-- saved from url=(0073)https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/assgn23.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title> Programming Assignment 23 </title>
+</head>
+
+<body>
+<h3> Topological Sort ( Due 02 Dec 2019 ) </h3>
+<p>
+In this assignment you will be creating a graph from an input gif
+file called <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/dag.gif"> dag.gif</a>. You will complete
+the <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/topo.txt">topo.txt</a> file. 
+</p>
+
+<p>
+The first line in that file will be a single integer <i>v</i>. 
+This number will denote the number of vertices to follow. The next 
+<i>v</i> lines will be the labels for the vertices in alphabetical
+order. There will be one label to a line. The labels are unique. The 
+next line after the labels for vertices will be a single number 
+<i>e</i>. This number will denote the number of edges to follow. 
+There will be one edge per line. Each edge will be of the form - 
+fromVertex and toVertex. Assign a default weight of 1 to each edge. 
+</p>
+
+<p>
+Here is the outline of the <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/Graph.py.txt">code</a> that 
+we developed in class that you will be modifying. You will use 
+<i>topo.txt</i> instead of <i>graph.txt</i> as your input file. You 
+can add an Edge class if you want to. You may use any of the functions 
+that you wrote for the GraphTraversal class in your last assignment. You 
+can add more functions as needed. You will first test if the given Graph 
+does not contain a cycle and then do a topological sort on that Graph. 
+For your output, the vertices on a given level must be printed in 
+alphabetical order.
+</p>
+
+<pre>class Graph (object):
+  # determine if a directed graph has a cycle
+  # this function should return a boolean and not print the result
+  def has_cycle (self):
+
+  # return a list of vertices after a topological sort
+  # this function should not print the list
+  def toposort (self):
+
+def main():
+  # test if a directed graph has a cycle
+
+  # test topological sort
+
+main()
+</pre>
+
+<p>
+For this assignment you may work with a partner. Both of you
+must read the paper on <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/PairProg-CACM-1999.pdf">
+Pair Programming. </a>.
+</p>
+
+<p>
+The file that you will be uploading will be called <b> TopoSort.py</b>.
+We are looking for clean and structured design. The file will have a 
+header of the following form:
+</p><pre>#  File: TopoSort.py
+
+#  Description:
+
+#  Student Name:
+
+#  Student UT EID:
+
+#  Partner Name:
+
+#  Partner UT EID:
+
+#  Course Name: CS 313E
+
+#  Unique Number: 
+
+#  Date Created:
+
+#  Date Last Modified:
+
+</pre>
+<p></p>
+
+<p>
+If you are working with a partner both of you will be submitting your
+program (from both accounts) but make sure that you have your partner's
+name and eid in your program. If you are working alone, then remove the
+two lines that has the partner's name and eid in the header.
+</p>
+
+<p>
+Use the <a href="http://canvas.utexas.edu/"> Canvas </a> system to 
+submit your <b>TopoSort.py</b> file. We should receive your work by 
+11 PM on Monday, 02 Dec 2019. There will be substantial penalties if 
+you do not adhere to the guidelines. Remember Python is case sensitive.  
+The name of your file must match exactly what we have specified.
+</p>
+
+<ul>
+<li> Your Python program should have the proper header. </li>
+<li> Your code must run on the command line before submission. </li>
+<li> You should be submitting your file through the web based 
+     <i>Canvas</i> program. We will not accept files e-mailed to us.</li>
+<li> Here is the <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/grading.html"> Grading Criteria. </a></li>
+</ul>
+<p></p>
+
+
+
+</body></html>

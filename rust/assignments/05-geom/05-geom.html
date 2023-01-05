@@ -1,0 +1,321 @@
+
+<!-- saved from url=(0072)https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/assgn5.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>  Programming Assignment 5 </title>
+</head>
+
+<body>
+<h3> Basic Geometry (Due 20 Sep 2019) </h3>
+<p>
+This assignment is on object oriented programming. You will be developing
+several classes that are fundamental in Geometry - Point, Circle, and
+Rectangle. In main() you will test the various functions that you have 
+written for the classes. <b>Do not change the names of the methods, 
+attributes, or arguments.</b> You may write as many helper functions as
+needed.
+</p>
+
+<p>
+Here is the skeleton of the code that we started writing in class. Write
+the bodies of the functions that we did not complete. You can always add
+more functions.
+</p>
+
+<pre>import math
+
+class Point (object):
+  # constructor 
+  # x and y are floats
+  def __init__ (self, x = 0, y = 0):
+    self.x = x
+    self.y = y
+
+  # get distance
+  # other is a Point object
+  def dist (self, other):
+    return math.hypot (self.x - other.x, self.y - other.y)
+
+  # get a string representation of a Point object
+  # takes no arguments
+  # returns a string
+  def __str__ (self):
+    return '(' + str(self.x) + ", " + str(self.y) + ")"
+
+  # test for equality
+  # other is a Point object
+  # returns a Boolean
+  def __eq__ (self, other):
+    tol = 1.0e-8
+    return ((abs (self.x - other.x) &lt; tol) and (abs(self.y - other.y) &lt; tol))
+
+class Circle (object):
+  # constructor
+  # x, y, and radius are floats
+  def __init__ (self, radius = 1, x = 0, y = 0):
+    self.radius = radius
+    self.center = Point (x, y)
+
+  # compute cirumference
+  def circumference (self):
+    return 2.0 * math.pi * self.radius
+
+  # compute area
+  def area (self):
+    return math.pi * self.radius * self.radius
+
+  # determine if point is strictly inside circle
+  def point_inside (self, p):
+    return (self.center.dist(p) &lt; self.radius)
+
+  # determine if a circle is strictly inside this circle
+  def circle_inside (self, c):
+    distance = self.center.dist (c.center)
+    return (distance + c.radius) &lt; self.radius
+
+  # determine if a circle c overlaps this circle (non-zero area of overlap)
+  # but neither is completely inside the other
+  # the only argument c is a Circle object
+  # returns a boolean
+  def circle_overlap (self, c):
+   
+  # determine the smallest circle that circumscribes a rectangle
+  # the circle goes through all the vertices of the rectangle
+  # the only argument, r, is a rectangle object
+  def circle_circumscribe (self, r):
+
+  # string representation of a circle
+  # takes no arguments and returns a string
+  def __str__ (self):
+    return "Radius: " + str(self.radius) + ", Center: " + str(self.center)
+    
+  # test for equality of radius
+  # the only argument, other, is a circle
+  # returns a boolean
+  def __eq__ (self, other):
+    tol = 1.0e-8
+
+class Rectangle (object):
+  # constructor
+  def __init__ (self, ul_x = 0, ul_y = 1, lr_x = 1, lr_y = 0):
+    if ((ul_x &lt; lr_x) and (ul_y &gt; lr_y)):
+      self.ul = Point (ul_x, ul_y)
+      self.lr = Point (lr_x, lr_y)
+    else:
+      self.ul = Point (0, 1)
+      self.lr = Point (1, 0)
+
+  # determine length of Rectangle (distance along the x axis)
+  # takes no arguments, returns a float
+  def length (self):
+
+  # determine width of Rectangle (distance along the y axis)
+  # takes no arguments, returns a float
+  def width (self):
+
+  # determine the perimeter
+  # takes no arguments, returns a float
+  def perimeter (self):
+    
+  # determine the area
+  # takes no arguments, returns a float
+  def area (self):
+
+  # determine if a point is strictly inside the Rectangle
+  # takes a point object p as an argument, returns a boolean
+  def point_inside (self, p)
+
+  # determine if another Rectangle is strictly inside this Rectangle
+  # takes a rectangle object r as an argument, returns a boolean
+  # should return False if self and r are equal
+  def rectangle_inside (self, r):
+
+  # determine if two Rectangles overlap (non-zero area of overlap)
+  # takes a rectangle object r as an argument returns a boolean
+  def rectangle_overlap (self, r):
+
+  # determine the smallest rectangle that circumscribes a circle
+  # sides of the rectangle are tangents to circle c
+  # takes a circle object c as input and returns a rectangle object
+  def rectangle_circumscribe (self, c):
+
+  # give string representation of a rectangle
+  # takes no arguments, returns a string
+  def __str__ (self):
+    return "UL: " + str(self.ul) + ", LR: " + str(self.lr)
+
+  # determine if two rectangles have the same length and width
+  # takes a rectangle other as argument and returns a boolean
+  def __eq__ (self, other):
+
+def main():
+  # open the file geom.txt
+
+  # create Point objects P and Q
+
+  # print the coordinates of the points P and Q
+
+  # find the distance between the points P and Q
+ 
+  # create two Circle objects C and D
+
+  # print C and D
+
+  # compute the circumference of C
+
+  # compute the area of D
+
+  # determine if P is strictly inside C
+
+  # determine if C is strictly inside D
+
+  # determine if C and D intersect (non zero area of intersection)
+
+  # determine if C and D are equal (have the same radius)
+
+  # create two rectangle objects G and H
+
+  # print the two rectangles G and H
+
+  # determine the length of G (distance along x axis)
+
+  # determine the width of H (distance along y axis)
+
+  # determine the perimeter of G
+
+  # determine the area of H
+
+  # determine if point P is strictly inside rectangle G
+
+  # determine if rectangle G is strictly inside rectangle H
+
+  # determine if rectangles G and H overlap (non-zero area of overlap)
+
+  # find the smallest circle that circumscribes rectangle G
+  # goes through the four vertices of the rectangle
+
+  # find the smallest rectangle that circumscribes circle D
+  # all four sides of the rectangle are tangents to the circle
+
+  # determine if the two rectangles have the same length and width
+
+  # close the file geom.txt
+
+# This line above main is for grading purposes. It will not affect how
+# your code will run while you develop and test it.
+# DO NOT REMOVE THE LINE ABOVE MAIN
+if __name__ == "__main__":
+  main()
+</pre>
+
+<p>
+Note that in this program you will be checking for the equality of 
+two floating point numbers. Since there is a finite precision in the 
+representation of floating point numbers, it is not always possible 
+to determine exact equality. A working solution is to determine 
+equality is to take the absolute value of the difference of the 
+floating point numbers and see if the difference is less than a 
+pre-determined tolerance. This tolerance is arbitrary and is often 
+dictated by the problem that you are trying to solve. Here is a 
+function that tests for equality of two floating point numbers. 
+</p><pre>def is_equal (a, b):
+  tol = 1.0e-8
+  return (abs (x - y) &lt; tol)
+</pre>
+<p></p>
+
+<p>
+You will be reading your input from the file <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/geom.txt">
+geom.txt</a>. The format of the file will be exactly like this:
+</p><pre>-3.0 2.0                           # coordinates of P
+2.0 -1.0                           # coordinates of Q
+1.0 3.0 2.0                        # radius and center of C
+5.0 -2.0 -3.0                      # radius and center of D
+2.0 6.0 8.0 4.0                    # coord ul and lr of rectangle G
+-3.0 2.0 4.0 -3.0                  # coord ul and lr of rectangle H
+</pre>
+The structure of your output will be as follows:
+<pre>Coordinates of P:
+Coordinates of Q: 
+Distance between P and Q:
+Circle C:
+Circle D:
+Circumference of C:
+Area of D:
+P (is / is not) inside C
+C (is / is not) inside D
+C (does / does not) intersect D
+C (is / is not) equal to D
+Rectangle G:
+Rectangle H:
+Length of G:
+Width of H:
+Perimeter of G:
+Area of H:
+P (is / is not) inside G
+G (is / is not) inside H
+G (does / does not ) overlap H
+Circle that circumscribes G:
+Rectangle that circumscribes D:
+Rectangle G (is / is not) equal to H
+</pre>
+<p></p>
+
+<p>
+For this assignment you may work with a partner. Both of you
+must read the paper on <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/PairProg-CACM-1999.pdf">
+Pair Programming. </a>.
+</p>
+
+<p>
+The file that you will be turning in will be called <b> Geom.py</b>.
+We are looking for clean and structured design. The file will have a 
+header of the following form:
+</p><pre>#  File: Geom.py
+
+#  Description:
+
+#  Student Name:
+
+#  Student UT EID:
+
+#  Partner Name:
+
+#  Partner UT EID:
+
+#  Course Name: CS 313E
+
+#  Unique Number: 
+
+#  Date Created:
+
+#  Date Last Modified:
+</pre>
+<p></p>
+
+<p>
+If you are working with a partner both of you will be submitting the
+same program from both accounts, but make sure that you have your partner's
+name and eid in your program. If you are working alone, then remove the
+two lines that has the partner's name and eid in the header.
+</p>
+
+<p>
+Use the <a href="http://canvas.utexas.edu/"> Canvas </a> system to 
+submit your <b>Geom.py</b> file. We should receive your work by 
+11 PM on Friday, 20 Sep 2019. There will be substantial penalties if 
+you do not adhere to the guidelines. Remember Python is case sensitive.  
+The name of your file must match exactly what we have specified.
+</p>
+
+<ul>
+<li> Your Python program should have the proper header. </li>
+<li> Your code must run before submission. </li>
+<li> You should be submitting your file through the web based 
+     <i>Canvas</i> program. We will not accept files e-mailed to us.</li>
+<li> Here is the <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/grading.html"> Grading Criteria. </a></li>
+</ul>
+<p></p>
+
+
+
+</body></html>

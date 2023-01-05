@@ -1,0 +1,212 @@
+
+<!-- saved from url=(0072)https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/assgn3.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title> Programming Assignment 3 </title>
+</head>
+<body>
+<h3> Baby Names (due 13 Sep 2019) </h3>
+<p>
+Complete a program that allows a user to query a data base of the 1000 
+most popular baby names in the United States per decade for the past 11 
+decades under the constraints described below. As always, you may add 
+helper functions and should do so to provide structure to the program and 
+reduce redundancy. One additional constraint: You must use a <i>Dictionary</i> 
+in the solution. You are encouraged to use functions in the <i>String, List</i>
+and <i>Dictionary</i> classes to make the program easier to write. The
+<i>Dictionary</i> class has lots of functions that can make your job 
+easier and one of the goals of this assignment is to learn those functions. 
+</p>
+
+<p>
+Your program will be processing a file with data obtained from the Social 
+Security Administration. They provide a web site showing the distribution 
+of names chosen for children over the last 100 years in the US
+(<a href="http://www.ssa.gov/OACT/babynames/">www.ssa.gov/OACT/babynames/</a>).
+</p>
+
+<p>
+The data represent the 1000 most popular boy and girl names for children born 
+in the US going back to 1900. The data can be boiled down to a single text file
+as shown below. On each line we have the name, followed by the rank of that name
+in 1900, 1910, 1920, ..., 2000 (11 numbers). A rank of 1 was the most popular 
+name that year, while a rank of 997 was not very popular. A 0 means the name 
+did not appear in the top 1000 that year at all. The lines are in alphabetical 
+order.
+</p>
+
+<p>
+...<br>
+Sam 58 69 99 131 168 236 278 380 467 408 466<br>
+Samantha 0 0 0 0 0 0 272 107 26 5 7<br>
+Samara 0 0 0 0 0 0 0 0 0 0 886<br>
+Samir 0 0 0 0 0 0 0 0 920 0 798<br>
+Sammie 537 545 351 325 333 396 565 772 930 0 0<br>
+Sammy 0 887 544 299 202 262 321 395 575 639 755<br>
+Samson 0 0 0 0 0 0 0 0 0 0 915<br>
+Samuel 31 41 46 60 61 71 83 61 52 35 28<br>
+Sandi 0 0 0 0 704 864 621 695 0 0 0<br>
+Sandra 0 942 606 50 6 12 11 39 94 168 257<br>
+...
+</p>
+
+<p>
+Note, a 0 in the data file means the name was not ranked in the top 1000 
+for the corresponding decade. It has some unknown rank greater than 1000. When 
+you store a 0 from the data file in your Dictionary objects you may use 
+something other than 0 if you think it will make your algorithms easier to 
+implement. (Recall altering the way data is stored to fit our needs is part of 
+the magic of programming.)
+</p>
+
+<p>
+We see that <i>Sam</i> was #58 in 1900 and is slowly moving down. 
+<i>Samantha</i> is moving up strong to #7. <i>Samir</i> barely appears in 
+1980, but by 2000 is up to #798. The database is for children born in the
+US, so ethnic trends show up when immigrants have kids.
+</p>
+
+<hr>
+
+<p>
+<b>Suggested steps for implementing the program.</b>
+</p>
+
+<p>
+<b>0.</b> Create an empty dictionary to hold the baby names. Open the 
+file <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/names.txt"> names.txt </a> and read each line of
+data. The baby names become the key and the rankings are stored in a
+list that becomes the value. You may store a rank of a 0 as 1001.
+</p>
+
+<p>
+<b>1.</b> Create a loop in which you display the menu choices. Read
+the user's choice and call a function to perform the necessary action.
+If the user chooses to quit, break out of the loop.
+</p>
+
+<p>
+<b>2.</b> Write a function that returns <i>True</i> if a name exists
+in the dictionary and <i>False</i> otherwise.
+</p>
+
+<p>
+<b>3.</b> Write a function that returns all the rankings for a given
+name.
+</p>
+
+<p>
+<b>4.</b> Write a function that returns a list of names that have
+a rank in all the decades in sorted order by name.
+</p>
+
+<p>
+<b>5.</b> Write a function that displays all the names that have a
+rank in a given decade in order of rank.
+</p>
+
+<p>
+<b>6.</b> Write a function to display all names that are getting more
+popular in every decade. We must be sure that the popularity is increasing. 
+In particular, if we have two 0s, we do not know for sure which one is
+less popular. But if we have only one 0 we know it is less popular than
+any other entry. This means that 0 (if present) must only be there for
+the first decade. The output must be sorted by name.
+</p>
+
+<p>
+<b>7.</b> Write a function to display all names that are getting less
+popular in every decade. We must be sure that the popularity is
+decreasing. In particular, if we have two 0s, we do not know for sure
+which one is less popular. But if we have one 0 then we know that it
+is less popular than any other entry. This means 0 can only be present
+in the last decade (if there is any 0). The output must be sorted by
+name.
+</p>
+
+<p>The menu choices are: </p>
+
+<ol>
+<li> to search for names.</li>
+<li> to display data for one name.</li>
+<li> to display all names that appear in one decade.</li>
+<li> to display all names that appear in all decades.</li>
+<li> to display all names that are more popular in every decade.</li>
+<li> to display all names that are less popular in every decade.</li>
+<li> to quit</li>
+</ol>
+
+<p>
+The <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/nameSurferLog.txt"> sample output </a> is shown. Some
+of the output may not adhere strictly to the constraints that we have
+specified above.
+</p>
+
+<p>
+<b>8.</b> You must use <i>try-except-finally</i> block in your code. You 
+will read the file <i>names.txt</i> locally. After you have read in a line 
+from the file you may have to change the encoding to <i>utf8</i>.
+</p><pre>line = str (line, encoding = 'utf8')
+</pre>
+<p></p>
+
+<p>
+<b>
+You must complete this assignment on your own. You may not acquire from 
+another person or the internet a partial or complete solution to this
+assignment. You may not have another person (other than the instructor, 
+TAs, or proctors) walk you through the solution. You may only discuss 
+general ideas and approaches with other students but you may not develop 
+code together.
+</b>
+</p>
+
+<p>
+You will submit the file <i>BabyNames.py</i>. We will be looking at good 
+documentation, design, and adherence to coding conventions. Your code 
+must have the following header:
+</p><pre>
+#  File: BabyNames.py 
+
+#  Description:  
+
+#  Student Name:  
+
+#  Student UT EID:  
+
+#  Course Name: CS 313E
+
+#  Unique Number: 
+
+#  Date Created:
+
+#  Date Last Modified:
+
+</pre>
+<p></p>
+
+<p>
+Use the <a href="http://canvas.utexas.edu/"> Canvas </a> system to 
+submit your <b>BabyNames.py</b> file. We should receive your work by 
+11 PM on Friday, 13 Sep 2019. There will be substantial penalties if 
+you do not adhere to the guidelines. Remember Python is case sensitive.  
+The name of your file must match exactly what we have specified.
+</p><ul>
+<li> Your Python program should have the proper header. </li>
+<li> Your code must run before submission. </li>
+<li> You should be submitting your file through the web based 
+     <i>Canvas</i> program. We will not accept files e-mailed to us.</li>
+<li> Here is the <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/grading.html"> Grading Criteria. </a></li>
+</ul>
+<p></p>
+
+<p>
+This assignment is based on an assignment created by Nick Parlante and Stuart
+Reges and modified by Mike Scott. Nick Parlante got the idea for this 
+assignment from an article by Peggy Orenstein in the New York Times, 
+<a href="https://www.nytimes.com/2003/07/06/magazine/where-have-all-the-lisas-gone.html">
+Where have all the Lisas Gone?</a>
+</p>
+
+
+
+</body></html>

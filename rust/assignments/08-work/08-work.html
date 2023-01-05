@@ -1,0 +1,110 @@
+
+<!-- saved from url=(0072)https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/assgn8.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title> Programming Assignment 8 </title>
+</head>
+<body>
+<h3> Work Till You Drop (due 30 Sep 2019) </h3>
+<p>
+Vyasa has to complete a programming assignment overnight. He has to
+write n lines of code before morning. He is dead tired and he tries
+drinking some black coffee to keep him awake. But each time he drinks
+a cup of coffee he stays awake for a short amount of time but his 
+productivity goes down by a constant factor <i>k</i>
+</p>
+
+<p>
+This is how he plans to write the program. He will write the first
+<i>v</i> lines of code, then drink his first cup of coffee. Since his
+productivity has gone down by a factor of <i>k</i> he will write 
+<i>v // k</i> lines of code. He will have another cup of coffee and 
+then write <i>v // k**2</i> lines of code. He will have another cup
+of coffee and write <i>v // k**3</i> lines of code and so on. He will
+collapse and fall asleep  when <i>v // k ** p</i> becomes 0. 
+</p>
+
+<p>
+Now Vyasa does want to complete his assignment and maximize on his
+sleep. So he wants to figure out the minimum allowable value of 
+<i>v</i> for a given productivity factor that will allow him to
+write at least n lines of code before he falls asleep.
+</p>
+
+<p>
+Your input file will be called <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/work.txt"> work.txt</a>.
+Here is a typical file:
+</p><pre>2
+7 2
+59 9
+</pre>
+The first line is <i>T</i> the number of test cases. This will be
+followed by <i>T</i> lines of input. Each line of input will have
+two numbers <i>n</i> and <i>k</i>. <i>n</i> is the number of lines
+of code to write and <i>k</i> is the productivity factor, where
+1 &#8804; n &#8804; 10<sup>6</sup> and 2 &#8804; k &#8804; 10.
+<p></p>
+
+<p>
+For each test case your output to the screen will be <i>v</i> lines
+of code the Vyasa has to write. For the above two test cases, the
+output will be:
+</p><pre>4
+54
+</pre>
+You have to modify the binary search algorithm to solve this problem.
+<p></p>
+
+<p>
+<b>
+You must complete this assignment on your own. You may not acquire from 
+another person or the internet a partial or complete solution to this
+assignment. You may not show another student your solution to an
+assignment. You may not have another person (other than the instructor, TAs,
+or proctors) walk you through the solution. You may only discuss general
+ideas and approaches with other students but you may not develop code
+together.
+</b>
+</p>
+
+<p>
+You will submit the file <i>Work.py</i>. We will be looking at good 
+documentation, design, and adherence to coding conventions. Your code 
+must have the following header:
+</p><pre>
+#  File: Work.py 
+
+#  Description:  
+
+#  Student Name:  
+
+#  Student UT EID:  
+
+#  Course Name: CS 313E
+
+#  Unique Number: 
+
+#  Date Created:
+
+#  Date Last Modified:
+
+</pre>
+<p></p>
+
+<p>
+Use the <a href="http://canvas.utexas.edu/"> Canvas </a> system to 
+submit your <b>Work.py</b> file. We should receive your work by 
+11 PM on Monday, 30 Sep 2019. There will be substantial penalties if 
+you do not adhere to the guidelines. Remember Python is case sensitive.  
+The name of your file must match exactly what we have specified.
+</p><ul>
+<li> Your Python program should have the proper header. </li>
+<li> Your code must run before submission. </li>
+<li> You should be submitting your file through the web based 
+     <i>Canvas</i> program. We will not accept files e-mailed to us.</li>
+<li> Here is the <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/grading.html"> Grading Criteria. </a></li>
+</ul>
+<p></p>
+
+
+
+</body></html>

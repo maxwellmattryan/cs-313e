@@ -1,0 +1,139 @@
+
+<!-- saved from url=(0073)https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/assgn14.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"> 
+<title> Programming Assignment 14 </title>
+</head>
+
+<body>
+<h3> Eight Queens Problem ( Due 21 Oct 2019 ) </h3>
+<p> 
+The Eight Queens Problem is a fairly old problem that has been well
+discussed and researched. The first published reference to this
+problem was in a German Chess magazine in 1848 by Max Bezzel. In
+1850, Franz Nauck published all 92 solutions of the problem for
+an 8x8 board. S. Gunther in 1874 suggested a method for finding 
+solutions by using determinants and J.W.L. Glaisher extended this
+method. E. Dijkstra published a detailed description of the
+solution of the problem as a depth-first backtracking algorithm.
+</p>
+
+<p>
+The original statement of the problem ran as follows - how can we
+place eight queens on a regular chess board such that no queen can
+capture another. It turns out there is no unique solution but 92
+possible solutions of which only 12 are distinct. The 12 distinct
+solutions can generate all other solutions through reflections and /
+or rotations. Here is a table that gives the size of the board, all
+possible solutions, and all distinct solutions.
+</p>
+
+<table border="1" width="50%">
+<tbody><tr><th>Size</th><th> All Solutions </th><th> Distinct Solutions </th></tr>
+<tr><td> 1 </td><td> 1 </td><td> 1 </td></tr>
+<tr><td> 2 </td><td> 0 </td><td> 0 </td></tr>
+<tr><td> 3 </td><td> 0 </td><td> 0 </td></tr>
+<tr><td> 4 </td><td> 2 </td><td> 1 </td></tr>
+<tr><td> 5 </td><td> 10 </td><td> 2 </td></tr>
+<tr><td> 6 </td><td> 4 </td><td> 1 </td></tr>
+<tr><td> 7 </td><td> 40 </td><td> 6 </td></tr>
+<tr><td> 8 </td><td> 92 </td><td> 12 </td></tr>
+</tbody></table>
+
+<p>
+This is a classic back-tracking problem and we have discussed the
+<a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/EightQueens.txt"> solution and code </a> in class. The
+code that we worked on prints only one possible solution to the
+problem. There are several variations to this problem and their
+solutions. 
+</p>
+
+<p>
+Prompt the user to enter the size of the board.
+The size of the board must be a number between 1 and 8 inclusive.
+Keep prompting the user to enter a number in that range, if he does
+not get it right. For the size of the board that the user specified
+generate and print <b>all</b> possible solutions for that size. Keep 
+a count of the number of solutions and your last line should print
+the total number. Here is a possible scenario:
+</p><pre>Enter the size of board: 4
+
+* Q * *
+* * * Q
+Q * * *
+* * Q *
+
+* * Q *
+Q * * *
+* * * Q
+* Q * *
+
+There are 2 solutions for a 4 x 4 board.
+</pre>
+For grading purposes, your prompt should end in a colon character then a
+space character (': '). Do not place any colons in any other places in any
+prompt or printed output. Matching the provided sample prompt will expedite
+grading.
+<p></p>
+
+<p>
+The file that you will be turning in will be called <b> Queens.py</b>.
+We are looking for clean and structured design. The file will have a 
+header of the following form:
+</p><pre>#  File: Queens.py
+
+#  Description:
+
+#  Student Name:
+
+#  Student UT EID:
+
+#  Partner Name:
+
+#  Partner UT EID:
+
+#  Course Name: CS 313E
+
+#  Unique Number: 
+
+#  Date Created:
+
+#  Date Last Modified:
+</pre>
+<p></p>
+
+<p>
+If you are working with a partner both of you will be submitting the same
+program (from both accounts) but make sure that you have your partner's
+name and eid in your program. If you are working alone, then remove the
+two lines that has the partner's name and eid in the header.
+</p>
+
+<p>
+Use the <a href="http://canvas.utexas.edu/"> Canvas </a> system to 
+submit your <b>Queens.py</b> file. We should receive your work by 
+11 PM on Monday, 21 Oct 2019. There will be substantial penalties if 
+you do not adhere to the guidelines. Remember Python is case sensitive.  
+The name of your file must match exactly what we have specified.
+</p>
+
+<ul>
+<li> Your Python program should have the proper header. </li>
+<li> Your code must run before submission. </li>
+<li> You should be submitting your file through the web based 
+     <i>Canvas</i> program. We will not accept files e-mailed to us.</li>
+<li> Here is the <a href="https://www.cs.utexas.edu/users/mitra/csFall2019/cs313/assgn/grading.html"> Grading Criteria. </a></li>
+</ul>
+<p></p>
+
+<h4>References</h4>
+<ol>
+<li><a href="http://mathworld.wolfram.com/QueensProblem.html"> Eight 
+Queens Problem Article in Wolfram MathWorld. </a></li>
+<li><a href="http://en.wikipedia.org/wiki/Eight_queens_puzzle"> Article 
+on Eight Queens Problem in Wikipedia</a> Watch the animation of the
+recursive solution. </li>
+</ol>
+
+
+
+</body></html>
