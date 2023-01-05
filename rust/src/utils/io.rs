@@ -1,7 +1,7 @@
 use std::{
-    fs::{File, read_to_string},
+    fs::{read_to_string, File},
     io::BufReader,
-    path::{Path},
+    path::Path,
 };
 
 const INPUT_FILE_DIRECTORY: &str = "./src/challenges/inputs";
